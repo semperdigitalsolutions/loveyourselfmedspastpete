@@ -1,8 +1,10 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
-  site: 'https://totaltransformation.com', // Update with actual domain
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  site: 'https://loveyourselfenoughspa.com',
 });

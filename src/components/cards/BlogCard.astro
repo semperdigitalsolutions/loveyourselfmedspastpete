@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, excerpt, category, featuredImage, publishDate, readTime } = post.data;
+const slug = post.id.replace(/\.md$/, '');
+
+const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric'
+});
+---
+
+<article
+  class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-soft hover:shadow-xl transition-all duration-500 border border-gray-100"
+  data-category-item={category}
+>
+  <!-- Image -->
+  <a href={`/blog/${slug}`} class="block overflow-hidden">
+    <div class="aspect-[16/10] relative overflow-hidden bg-rose-soft">
+      {featuredImage ? (
+        <img
+          src={featuredImage}
+          alt={title}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      ) : (
+        <div class="absolute inset-0 flex items-center justify-center">
+          <span class="material-symbols-outlined text-6xl text-primary/30">article</span>
+        </div>
+      )}
+      <!-- Category Badge on Image -->
+      <span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+        {category}
+      </span>
+    </div>
+  </a>
+
+  <!-- Content -->
+  <div class="p-6 flex flex-col flex-grow">
+    <!-- Title -->
+    <a href={`/blog/${slug}`}>
+      <h3 class="text-xl font-bold text-text-main font-display mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+        {title}
+      </h3>
+    </a>
+
+    <!-- Excerpt -->
+    <p class="text-sm text-text-body leading-relaxed line-clamp-3 mb-6">
+      {excerpt}
+    </p>
+
+    <!-- Meta -->
+    <div class="mt-auto flex items-center justify-between text-xs text-gray-400">
+      <span>{formattedDate}</span>
+      {readTime && <span>{readTime} min read</span>}
+    </div>
+  </div>
+</article>

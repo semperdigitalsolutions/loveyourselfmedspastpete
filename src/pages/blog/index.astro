@@ -1,0 +1,67 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import BlogCard from '../../components/cards/BlogCard.astro';
+import FeaturedPost from '../../components/blog/FeaturedPost.astro';
+import CategoryFilter from '../../components/ui/CategoryFilter.astro';
+import CTABanner from '../../components/sections/CTABanner.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort((a, b) =>
+  b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const featuredPost = sortedPosts.find(post => post.data.featured);
+const regularPosts = sortedPosts.filter(post => post !== featuredPost);
+
+const categories = ['All Posts', 'Skincare', 'Nutrition', 'Treatments', 'Wellness'];
+---
+
+<PageLayout title="Blog" description="Wellness insights, self-care tips, and holistic beauty inspiration.">
+  <!-- Header -->
+  <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto text-center">
+    <span class="text-gold font-bold tracking-widest text-xs uppercase mb-4 block">
+      Journal of Transformation
+    </span>
+    <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-text-main font-display mb-6">
+      Wellness Insights
+    </h1>
+    <p class="max-w-2xl mx-auto text-lg text-text-body">
+      Stories of beauty, wellness, and holistic renewal.
+    </p>
+  </section>
+
+  <!-- Featured Post -->
+  {featuredPost && <FeaturedPost post={featuredPost} />}
+
+  <!-- Category Filter -->
+  <CategoryFilter categories={categories} allLabel="All Posts" filterId="blog" />
+
+  <!-- Posts Grid -->
+  <section class="max-w-7xl mx-auto px-6 pb-16">
+    <div
+      id="posts-grid"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+    >
+      {regularPosts.map((post) => (
+        <BlogCard post={post} />
+      ))}
+    </div>
+
+    {regularPosts.length === 0 && !featuredPost && (
+      <div class="text-center py-16">
+        <span class="material-symbols-outlined text-6xl text-gray-300 mb-4">article</span>
+        <p class="text-text-body">No blog posts available yet. Check back soon!</p>
+      </div>
+    )}
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner
+    headline="Begin Your Transformation"
+    body="Subscribe for weekly inspiration, exclusive wellness tips, and self-care insights."
+    primaryCTA={{ text: "Book Consultation", href: "#" }}
+    secondaryCTA={{ text: "View Services", href: "/services" }}
+    variant="dark"
+  />
+</PageLayout>

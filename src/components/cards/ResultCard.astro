@@ -1,0 +1,79 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  item: CollectionEntry<'gallery'>;
+}
+
+const { item } = Astro.props;
+const { title, category, beforeImage, afterImage, sessions, description, testimonial } = item.data;
+---
+
+<article
+  class="group flex flex-col bg-white rounded-2xl overflow-hidden border border-gold/20 hover:border-gold transition-all duration-500 shadow-card hover:shadow-hover"
+  data-category-item={category}
+>
+  <!-- Before/After Images -->
+  <div class="relative flex h-64 w-full">
+    <!-- Before -->
+    <div class="relative w-1/2 h-full">
+      {beforeImage ? (
+        <img
+          src={beforeImage}
+          alt={`${title} - Before`}
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <div class="absolute inset-0 bg-gray-200"></div>
+      )}
+      <div class="absolute inset-0 bg-black/5"></div>
+      <span class="absolute top-3 left-3 bg-background-dark text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+        Before
+      </span>
+    </div>
+
+    <!-- Gold divider line -->
+    <div class="absolute left-1/2 top-0 bottom-0 w-[3px] bg-gradient-to-b from-gold/40 via-gold to-gold/40 z-10 -translate-x-1/2"></div>
+
+    <!-- After -->
+    <div class="relative w-1/2 h-full">
+      {afterImage ? (
+        <img
+          src={afterImage}
+          alt={`${title} - After`}
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <div class="absolute inset-0 bg-primary-light"></div>
+      )}
+      <span class="absolute top-3 right-3 bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+        After
+      </span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="p-6 flex flex-col flex-grow">
+    <div class="flex justify-between items-start gap-3 mb-3">
+      <h3 class="text-xl font-bold text-text-main font-display">{title}</h3>
+      <span class="text-xs font-bold text-gold bg-gold/10 px-2.5 py-1 rounded-md whitespace-nowrap uppercase tracking-wide flex-shrink-0">
+        {sessions} {sessions === 1 ? 'Session' : 'Sessions'}
+      </span>
+    </div>
+
+    <p class="text-sm text-text-body mb-6 leading-relaxed">
+      {description}
+    </p>
+
+    {testimonial && (
+      <div class="mt-auto bg-rose-soft p-5 rounded-xl relative">
+        <span class="material-symbols-outlined absolute -top-2 left-2 text-primary/30 text-3xl">
+          format_quote
+        </span>
+        <p class="text-primary-dark italic relative z-10 pl-4 font-display text-base leading-relaxed">
+          "{testimonial}"
+        </p>
+      </div>
+    )}
+  </div>
+</article>

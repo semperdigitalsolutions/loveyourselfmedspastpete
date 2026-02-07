@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  service: CollectionEntry<'services'>;
+}
+
+const { service } = Astro.props;
+const { title, shortDescription, image } = service.data;
+const slug = service.id.replace(/\.md$/, '');
+---
+
+<a
+  href={`/services/${slug}`}
+  class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-soft hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border border-gray-100 p-4"
+>
+  <!-- Image placeholder -->
+  <div
+    class="aspect-[4/5] w-full rounded-2xl overflow-hidden bg-rose-soft mb-6 relative"
+  >
+    {image ? (
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover"
+      />
+    ) : (
+      <div class="absolute inset-0 flex items-center justify-center">
+        <span class="material-symbols-outlined text-6xl text-primary/30">spa</span>
+      </div>
+    )}
+    <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <div class="px-2 pb-2 flex flex-col flex-1">
+    <h3 class="text-xl font-bold mb-2 text-text-main font-display">{title}</h3>
+    <p class="text-text-body text-sm leading-relaxed mb-6 line-clamp-3 flex-1">{shortDescription}</p>
+    <span
+      class="inline-flex items-center text-primary hover:text-primary-dark font-bold text-xs tracking-wider gap-2 uppercase"
+    >
+      LEARN MORE
+      <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+    </span>
+  </div>
+</a>

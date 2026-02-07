@@ -1,0 +1,41 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SectionHeading from '../../components/ui/SectionHeading.astro';
+import ServiceCard from '../../components/cards/ServiceCard.astro';
+import CTABanner from '../../components/sections/CTABanner.astro';
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+---
+
+<PageLayout title="Services" description="Advanced, medically guided treatments designed to contour the body, rejuvenate the skin, and awaken confidence.">
+  <!-- Page Header -->
+  <section class="py-16 md:py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <SectionHeading
+        label="Signature Experiences"
+        title="Our Treatments"
+      />
+      <p class="text-center text-text-body max-w-lg mx-auto -mt-8 mb-16">
+        Advanced, medically guided treatments designed to contour, rejuvenate, and awaken your confidence. Every detail is tailored to you.
+      </p>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedServices.map((service) => (
+          <ServiceCard service={service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner
+    headline="Ready to Begin Your Transformation?"
+    body="Schedule a consultation to discover which treatments are right for you."
+    primaryCTA={{ text: "Book Consultation", href: "#" }}
+    secondaryCTA={{ text: "Call Us", href: "tel:+1234567890" }}
+    variant="dark"
+  />
+</PageLayout>

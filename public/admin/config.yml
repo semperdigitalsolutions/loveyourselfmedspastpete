@@ -1,0 +1,159 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Media files configuration
+media_folder: public/images/blog
+public_folder: /images/blog
+
+# Site configuration
+site_url: https://loveyourselfenoughspa.com
+display_url: https://loveyourselfenoughspa.com
+logo_url: /favicon.svg
+
+# Editorial workflow for draft/review/publish
+publish_mode: editorial_workflow
+
+collections:
+  # Blog Collection
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: src/content/blog
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - name: title
+        label: Title
+        widget: string
+        required: true
+
+      - name: excerpt
+        label: Excerpt
+        widget: text
+        required: true
+        hint: Short description for cards and SEO (max 300 characters)
+        pattern: ['.{1,300}', 'Must be 300 characters or less']
+
+      - name: author
+        label: Author
+        widget: string
+        default: Love Yourself Enough To Transform
+
+      - name: publishDate
+        label: Publish Date
+        widget: datetime
+        required: true
+        date_format: YYYY-MM-DD
+        time_format: false
+
+      - name: category
+        label: Category
+        widget: select
+        required: true
+        options:
+          - Faith
+          - Skincare
+          - Nutrition
+          - Treatments
+          - Wellness
+
+      - name: featuredImage
+        label: Featured Image
+        widget: image
+        required: false
+        allow_multiple: false
+
+      - name: featuredImageAlt
+        label: Featured Image Alt Text
+        widget: string
+        required: false
+        hint: Describe the image for accessibility
+
+      - name: readTime
+        label: Read Time (minutes)
+        widget: number
+        required: false
+        value_type: int
+        min: 1
+        max: 60
+
+      - name: featured
+        label: Featured Post
+        widget: boolean
+        default: false
+        hint: Show this post in the featured section on the blog listing
+
+      - name: draft
+        label: Draft
+        widget: boolean
+        default: false
+        hint: Draft posts are not published to the live site
+
+      - name: body
+        label: Content
+        widget: markdown
+
+  # Services Collection
+  - name: services
+    label: Services
+    label_singular: Service
+    folder: src/content/services
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - name: title
+        label: Title
+        widget: string
+        required: true
+
+      - name: shortDescription
+        label: Short Description
+        widget: text
+        required: true
+        hint: Brief description for service cards (max 200 characters)
+        pattern: ['.{1,200}', 'Must be 200 characters or less']
+
+      - name: image
+        label: Service Image
+        widget: image
+        required: false
+        allow_multiple: false
+
+      - name: icon
+        label: Icon Name
+        widget: string
+        required: false
+        hint: Material Symbols icon name (e.g., spa, science, favorite)
+
+      - name: order
+        label: Display Order
+        widget: number
+        default: 0
+        value_type: int
+        hint: Lower numbers appear first
+
+      - name: featured
+        label: Featured Service
+        widget: boolean
+        default: false
+
+      - name: duration
+        label: Duration
+        widget: string
+        required: false
+        hint: e.g., "60-90 minutes"
+
+      - name: priceRange
+        label: Price Range
+        widget: string
+        required: false
+        hint: e.g., "Starting at $200"
+
+      - name: body
+        label: Full Description
+        widget: markdown

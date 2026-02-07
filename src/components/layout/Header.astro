@@ -1,0 +1,167 @@
+---
+import { navItems, siteConfig } from '../../data/siteConfig';
+
+// Get current path for active state
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 group">
+      <span class="material-symbols-outlined text-3xl text-primary">spa</span>
+      <div class="flex flex-col">
+        <span class="font-display font-bold text-base sm:text-lg text-text-main leading-tight">
+          Love Yourself Enough
+        </span>
+        <span class="text-[10px] uppercase tracking-widest text-gold hidden sm:block">
+          To Transform
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-8">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`text-sm font-medium transition-colors hover:text-primary ${
+            currentPath === item.href || currentPath.startsWith(item.href + '/')
+              ? 'text-primary border-b-2 border-primary pb-1'
+              : 'text-text-body'
+          }`}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- CTA Button (Desktop) -->
+    <a
+      href={siteConfig.booking.url}
+      class="hidden sm:inline-flex btn-primary text-sm"
+    >
+      Book Consultation
+    </a>
+
+    <!-- Mobile Menu Button -->
+    <button
+      type="button"
+      class="md:hidden p-2 text-text-body hover:text-primary transition-colors"
+      aria-label="Open menu"
+      data-mobile-menu-toggle
+    >
+      <span class="material-symbols-outlined text-2xl">menu</span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Navigation Overlay -->
+<div
+  class="fixed inset-0 z-50 hidden"
+  data-mobile-menu
+>
+  <!-- Backdrop -->
+  <div
+    class="absolute inset-0 bg-black/50 backdrop-blur-sm"
+    data-mobile-menu-backdrop
+  ></div>
+
+  <!-- Drawer -->
+  <div
+    class="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl transform translate-x-full transition-transform duration-300"
+    data-mobile-menu-drawer
+  >
+    <!-- Drawer Header -->
+    <div class="flex items-center justify-between p-6 border-b border-gray-100">
+      <span class="font-display font-bold text-lg text-text-main">Menu</span>
+      <button
+        type="button"
+        class="p-2 text-text-body hover:text-primary transition-colors"
+        aria-label="Close menu"
+        data-mobile-menu-close
+      >
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+
+    <!-- Drawer Content -->
+    <nav class="p-6">
+      <ul class="space-y-4">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`block text-lg font-medium py-2 transition-colors hover:text-primary ${
+                currentPath === item.href || currentPath.startsWith(item.href + '/')
+                  ? 'text-primary'
+                  : 'text-text-body'
+              }`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile CTA -->
+      <div class="mt-8 pt-8 border-t border-gray-100">
+        <a
+          href={siteConfig.booking.url}
+          class="btn-primary w-full text-center block"
+        >
+          Book Consultation
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<script>
+  // Mobile menu functionality
+  function initMobileMenu() {
+    const toggleBtn = document.querySelector('[data-mobile-menu-toggle]') as HTMLElement | null;
+    const menu = document.querySelector('[data-mobile-menu]') as HTMLElement | null;
+    const drawer = document.querySelector('[data-mobile-menu-drawer]') as HTMLElement | null;
+    const backdrop = document.querySelector('[data-mobile-menu-backdrop]') as HTMLElement | null;
+    const closeBtn = document.querySelector('[data-mobile-menu-close]') as HTMLElement | null;
+
+    if (!toggleBtn || !menu || !drawer || !backdrop || !closeBtn) return;
+
+    function openMenu() {
+      menu!.classList.remove('hidden');
+      // Trigger reflow for animation
+      void drawer!.offsetHeight;
+      drawer!.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      drawer!.classList.add('translate-x-full');
+      setTimeout(() => {
+        menu!.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    toggleBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close on nav link click
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu!.classList.contains('hidden')) {
+        closeMenu();
+      }
+    });
+  }
+
+  // Initialize on page load and after Astro navigation
+  initMobileMenu();
+  document.addEventListener('astro:after-swap', initMobileMenu);
+</script>

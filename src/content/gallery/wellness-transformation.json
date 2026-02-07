@@ -1,0 +1,11 @@
+{
+  "title": "Wellness Transformation",
+  "category": "Holistic Wellness",
+  "beforeImage": "/images/gallery/wellness-before.jpg",
+  "afterImage": "/images/gallery/wellness-after.jpg",
+  "sessions": 8,
+  "description": "A complete mind-body wellness program combining IV therapy, treatments, and holistic care.",
+  "testimonial": "This journey changed not just how I look, but how I feel inside and out.",
+  "order": 4,
+  "featured": false
+}

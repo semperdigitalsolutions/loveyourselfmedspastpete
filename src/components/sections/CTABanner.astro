@@ -1,0 +1,83 @@
+---
+import Button from '../ui/Button.astro';
+
+interface Props {
+  headline: string;
+  body?: string;
+  primaryCTA: { text: string; href: string };
+  secondaryCTA?: { text: string; href: string };
+  variant?: 'dark' | 'primary';
+}
+
+const {
+  headline,
+  body,
+  primaryCTA,
+  secondaryCTA,
+  variant = 'dark'
+} = Astro.props;
+
+const bgClass = variant === 'dark' ? 'bg-background-dark' : 'bg-primary';
+const headlineClass = 'text-white';
+const bodyClass = variant === 'dark' ? 'text-primary' : 'text-white/90';
+---
+
+<section class="py-16 md:py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class={`${bgClass} rounded-3xl p-12 md:p-24 relative overflow-hidden`}>
+      <!-- Background decorative elements -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-primary to-transparent rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-gold to-transparent rounded-full translate-x-1/2 translate-y-1/2"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 text-center max-w-3xl mx-auto">
+        <h2 class={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold ${headlineClass} mb-6 leading-tight`}>
+          {headline}
+        </h2>
+
+        {body && (
+          <p class={`text-lg md:text-xl ${bodyClass} mb-10 max-w-2xl mx-auto`}>
+            {body}
+          </p>
+        )}
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          {variant === 'dark' ? (
+            <>
+              <Button href={primaryCTA.href} variant="primary" size="lg">
+                {primaryCTA.text}
+              </Button>
+              {secondaryCTA && (
+                <a
+                  href={secondaryCTA.href}
+                  class="inline-flex items-center justify-center font-bold rounded-xl transition-all px-8 py-4 text-lg border-2 border-white/30 text-white hover:bg-white/10"
+                >
+                  {secondaryCTA.text}
+                </a>
+              )}
+            </>
+          ) : (
+            <>
+              <a
+                href={primaryCTA.href}
+                class="inline-flex items-center justify-center font-bold rounded-xl transition-all px-8 py-4 text-lg bg-white text-primary hover:bg-white/90 shadow-lg"
+              >
+                {primaryCTA.text}
+              </a>
+              {secondaryCTA && (
+                <a
+                  href={secondaryCTA.href}
+                  class="inline-flex items-center justify-center font-bold rounded-xl transition-all px-8 py-4 text-lg border-2 border-white/30 text-white hover:bg-white/10"
+                >
+                  {secondaryCTA.text}
+                </a>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

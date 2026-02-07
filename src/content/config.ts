@@ -6,10 +6,10 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     excerpt: z.string().max(300),
-    author: z.string().default('Total Transformation'),
+    author: z.string().default('Love Yourself Enough To Transform'),
     publishDate: z.date(),
     updatedDate: z.date().optional(),
-    category: z.enum(['Faith', 'Skincare', 'Nutrition', 'Treatments', 'Wellness']),
+    category: z.enum(['Skincare', 'Nutrition', 'Treatments', 'Wellness']),
     featuredImage: z.string(),
     featuredImageAlt: z.string().optional(),
     readTime: z.number().optional(),

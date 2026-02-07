@@ -1,0 +1,118 @@
+---
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+
+interface Props {
+  badge?: string;
+  headline: string;
+  subheadline?: string;
+  body: string;
+  primaryCTA: { text: string; href: string };
+  secondaryCTA?: { text: string; href: string };
+  featuredCard?: { label: string; title: string };
+  socialProof?: string;
+}
+
+const {
+  badge,
+  headline,
+  subheadline,
+  body,
+  primaryCTA,
+  secondaryCTA,
+  featuredCard,
+  socialProof
+} = Astro.props;
+---
+
+<section class="py-16 md:py-24 px-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <!-- Text Column (Left) -->
+      <div class="lg:col-span-6 order-2 lg:order-1">
+        {badge && (
+          <div class="mb-6">
+            <Badge variant="gold">
+              <span class="material-symbols-outlined text-sm mr-1">verified</span>
+              {badge}
+            </Badge>
+          </div>
+        )}
+
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-text-main leading-tight mb-6"
+          set:html={headline}
+        />
+
+        {subheadline && (
+          <p class="text-lg md:text-xl font-bold text-text-main mb-4">
+            {subheadline}
+          </p>
+        )}
+
+        <p class="text-text-body text-lg leading-relaxed mb-8 max-w-lg">
+          {body}
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+          <Button href={primaryCTA.href} variant="primary" size="lg">
+            {primaryCTA.text}
+            <span class="material-symbols-outlined ml-2 text-xl">arrow_right_alt</span>
+          </Button>
+          {secondaryCTA && (
+            <Button href={secondaryCTA.href} variant="secondary" size="lg">
+              {secondaryCTA.text}
+            </Button>
+          )}
+        </div>
+
+        {socialProof && (
+          <div class="flex items-center gap-3">
+            <!-- Avatar stack placeholder -->
+            <div class="flex -space-x-2">
+              <div class="w-8 h-8 rounded-full bg-rose-soft border-2 border-white"></div>
+              <div class="w-8 h-8 rounded-full bg-primary-light border-2 border-white"></div>
+              <div class="w-8 h-8 rounded-full bg-gold-light border-2 border-white"></div>
+              <div class="w-8 h-8 rounded-full bg-rose border-2 border-white"></div>
+            </div>
+            <p class="text-sm text-text-body">{socialProof}</p>
+          </div>
+        )}
+      </div>
+
+      <!-- Image Column (Right) -->
+      <div class="lg:col-span-6 order-1 lg:order-2 relative">
+        <!-- Hero treatment image -->
+        <div class="relative">
+          <!-- Main image -->
+          <div class="aspect-[4/5] bg-gradient-to-br from-primary-light via-rose-soft to-gold-light rounded-2xl overflow-hidden shadow-soft">
+            <img
+              src="/images/general/hero-treatment.png"
+              alt="Luxury med spa treatments — body contouring and peptide therapy at Love Yourself Enough To Transform"
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/20 to-transparent"></div>
+          </div>
+
+          <!-- Featured Ritual Card -->
+          {featuredCard && (
+            <div class="absolute bottom-8 right-0 translate-x-4 bg-white rounded-xl shadow-xl p-4 max-w-[200px]">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-primary mb-1 block">
+                {featuredCard.label}
+              </span>
+              <h3 class="font-display font-bold text-text-main text-sm leading-tight">
+                {featuredCard.title}
+              </h3>
+            </div>
+          )}
+
+          <!-- Decorative gold flare -->
+          <div class="absolute -top-4 -right-4 w-16 h-16 text-gold opacity-60">
+            <span class="material-symbols-outlined text-5xl">auto_awesome</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

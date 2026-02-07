@@ -1,0 +1,112 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((service) => ({
+    params: { slug: service.id.replace(/\.md$/, '') },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { Content } = await service.render();
+const { title, shortDescription, image, duration, priceRange } = service.data;
+---
+
+<PageLayout title={title} description={shortDescription}>
+  <article class="max-w-7xl mx-auto px-6 py-16">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 text-sm">
+      <a href="/" class="text-text-body hover:text-primary transition-colors">Home</a>
+      <span class="mx-2 text-gray-400">/</span>
+      <a href="/services" class="text-text-body hover:text-primary transition-colors">Services</a>
+      <span class="mx-2 text-gray-400">/</span>
+      <span class="text-primary">{title}</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-12 gap-12">
+      <!-- Main Content -->
+      <div class="lg:col-span-8">
+        <h1 class="text-4xl md:text-5xl font-bold font-display text-text-main mb-6">
+          {title}
+        </h1>
+
+        {(duration || priceRange) && (
+          <div class="flex flex-wrap gap-4 mb-8">
+            {duration && (
+              <span class="inline-flex items-center gap-2 bg-rose-soft text-text-body px-4 py-2 rounded-full text-sm">
+                <span class="material-symbols-outlined text-gold text-lg">schedule</span>
+                {duration}
+              </span>
+            )}
+            {priceRange && (
+              <span class="inline-flex items-center gap-2 bg-rose-soft text-text-body px-4 py-2 rounded-full text-sm">
+                <span class="material-symbols-outlined text-gold text-lg">payments</span>
+                {priceRange}
+              </span>
+            )}
+          </div>
+        )}
+
+        <!-- Featured Image -->
+        <div class="aspect-video rounded-2xl overflow-hidden mb-12 bg-rose-soft">
+          {image ? (
+            <img src={image} alt={title} class="w-full h-full object-cover" />
+          ) : (
+            <div class="w-full h-full flex items-center justify-center">
+              <span class="material-symbols-outlined text-8xl text-primary/30">spa</span>
+            </div>
+          )}
+        </div>
+
+        <!-- Markdown Content -->
+        <div class="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-text-main prose-p:text-text-body prose-a:text-primary prose-strong:text-text-main">
+          <Content />
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="lg:col-span-4">
+        <div class="sticky top-32 bg-background-offwhite rounded-2xl p-8 border border-gray-100">
+          <h3 class="font-display text-xl font-bold text-text-main mb-4">
+            Book This Service
+          </h3>
+          <p class="text-text-body text-sm mb-6">
+            Ready to experience {title}? Schedule your consultation today.
+          </p>
+
+          {duration && (
+            <div class="flex items-center gap-3 mb-4 pb-4 border-b border-gray-200">
+              <span class="material-symbols-outlined text-primary">schedule</span>
+              <div>
+                <p class="text-xs text-text-body uppercase tracking-wide">Duration</p>
+                <p class="text-text-main font-medium">{duration}</p>
+              </div>
+            </div>
+          )}
+
+          {priceRange && (
+            <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gray-200">
+              <span class="material-symbols-outlined text-primary">payments</span>
+              <div>
+                <p class="text-xs text-text-body uppercase tracking-wide">Investment</p>
+                <p class="text-text-main font-medium">{priceRange}</p>
+              </div>
+            </div>
+          )}
+
+          <Button href="#" variant="primary" class="w-full justify-center">
+            Book Consultation
+          </Button>
+
+          <p class="text-xs text-text-body text-center mt-4">
+            Free consultation included
+          </p>
+        </div>
+      </aside>
+    </div>
+  </article>
+</PageLayout>

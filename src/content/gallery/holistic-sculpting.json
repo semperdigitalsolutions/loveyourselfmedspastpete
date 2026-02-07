@@ -1,0 +1,11 @@
+{
+  "title": "Holistic Body Sculpting",
+  "category": "Body Contouring",
+  "beforeImage": "/images/gallery/sculpting-before.jpg",
+  "afterImage": "/images/gallery/sculpting-after.jpg",
+  "sessions": 6,
+  "description": "Non-invasive body contouring targeting stubborn areas for a more defined silhouette.",
+  "testimonial": "The results exceeded my expectations. I feel confident and renewed.",
+  "order": 2,
+  "featured": false
+}

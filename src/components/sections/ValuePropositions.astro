@@ -1,0 +1,61 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+
+const values = [
+  {
+    icon: 'science',
+    title: 'Physician-Guided Care',
+    body: 'All medical aesthetic services are provided by or under the supervision of licensed medical professionals using advanced, non-invasive technology and research-driven practices.',
+    detail: 'Medical Excellence',
+  },
+  {
+    icon: 'favorite',
+    title: 'Holistic Integrity',
+    body: 'We treat the whole person — not just a symptom or surface concern. Our approach honors the body\'s natural ability to renew and restore, combining organic modalities with clinical precision.',
+    detail: 'Inside-Out Beauty',
+  },
+  {
+    icon: 'auto_awesome',
+    title: 'Natural Enhancement',
+    body: 'Our philosophy is refinement, not reinvention. Each experience is personalized to help you reconnect with your confidence, embrace self-love, and leave feeling aligned and empowered.',
+    detail: 'Tailored to You',
+  },
+];
+---
+
+<section class="py-24 px-6 bg-background-offwhite">
+  <div class="max-w-7xl mx-auto">
+    <SectionHeading
+      label="Our Philosophy"
+      title="Why Choose Us?"
+    />
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {values.map((value) => (
+        <article class="bg-white rounded-2xl p-8 md:p-10 border border-gray-100 shadow-soft hover:shadow-card transition-all duration-500 group text-center">
+          <!-- Icon -->
+          <div class="size-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors mx-auto">
+            <span class="material-symbols-outlined text-3xl text-primary">
+              {value.icon}
+            </span>
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-xl font-bold font-display text-text-main mb-4">
+            {value.title}
+          </h3>
+
+          <!-- Body -->
+          <p class="text-text-body leading-relaxed mb-6">
+            {value.body}
+          </p>
+
+          <!-- Detail -->
+          <span class="text-sm font-medium text-primary">
+            {value.detail}
+          </span>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

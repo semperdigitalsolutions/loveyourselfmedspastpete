@@ -1,0 +1,67 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+
+interface Pillar {
+  icon: string;
+  title: string;
+  body: string;
+  tagline: string;
+}
+
+const pillars: Pillar[] = [
+  {
+    icon: 'science',
+    title: 'Medical Excellence',
+    body: 'Physician-guided treatments using advanced, non-invasive technology and research-driven practices. We uphold the highest standards of safety and care.',
+    tagline: 'Precision & Innovation',
+  },
+  {
+    icon: 'spa',
+    title: 'Natural Enhancement',
+    body: 'Our philosophy is refinement, not reinvention — elevating what already makes you beautiful through organic, skin-supportive modalities and holistic care.',
+    tagline: 'Inside-Out Transformation',
+  },
+  {
+    icon: 'favorite',
+    title: 'Empowerment Through Education',
+    body: 'Knowledge builds confidence. We guide, never pressure — personalizing each experience to help you reconnect with your confidence and embrace self-love.',
+    tagline: 'Your Transformation, Your Way',
+  },
+];
+---
+
+<section class="py-24 px-6 bg-gradient-to-b from-white via-rose-soft/30 to-white">
+  <div class="max-w-7xl mx-auto">
+    <SectionHeading
+      label="Our Philosophy"
+      title="Our Promise to You"
+      subtitle="A holistic, patient-centered approach that honors the body's natural ability to renew and restore — where medical science meets intentional self-care."
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {pillars.map((pillar) => (
+        <article class="bg-white rounded-2xl p-8 md:p-10 shadow-card hover:shadow-hover hover:-translate-y-2 transition-all duration-500">
+          <!-- Icon Container -->
+          <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-3xl text-gold">{pillar.icon}</span>
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-xl font-display font-bold text-text-main mb-4">
+            {pillar.title}
+          </h3>
+
+          <!-- Body -->
+          <p class="text-text-body text-sm leading-relaxed mb-6">
+            {pillar.body}
+          </p>
+
+          <!-- Tagline -->
+          <p class="text-gold italic font-display text-sm">
+            {pillar.tagline}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  subtitle?: string;
+  showDivider?: boolean;
+  align?: 'left' | 'center';
+  class?: string;
+}
+
+const {
+  label,
+  title,
+  subtitle,
+  showDivider = true,
+  align = 'center',
+  class: className
+} = Astro.props;
+
+const alignClass = align === 'center' ? 'text-center items-center' : 'text-left items-start';
+---
+
+<div class={`flex flex-col mb-16 ${alignClass} ${className || ''}`}>
+  {label && (
+    <span class="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-4">
+      {label}
+    </span>
+  )}
+  <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-text-main font-display">
+    {title}
+  </h2>
+  {subtitle && (
+    <p class="mt-4 text-text-body text-lg max-w-2xl">
+      {subtitle}
+    </p>
+  )}
+  {showDivider && (
+    <div class={`h-1 w-24 bg-gold rounded-full mt-6 ${align === 'center' ? 'mx-auto' : ''}`}></div>
+  )}
+</div>

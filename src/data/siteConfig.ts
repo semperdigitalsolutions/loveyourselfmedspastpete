@@ -2,32 +2,33 @@
 // Update these values with actual business information
 
 export const siteConfig = {
-  name: 'Total Transformation',
-  tagline: 'A sanctuary for faith-led wellness and clinical anti-aging excellence.',
-  description: 'Holistic medical spa combining clinical excellence with spiritual wellness in North Carolina.',
-  
-  // Contact Information (UPDATE WITH REAL INFO)
+  name: 'Love Yourself Enough To Transform',
+  shortName: 'LYETT', // Short version for tight spaces
+  tagline: 'A luxury physician-guided med spa devoted to holistic beauty, natural renewal, and total transformation.',
+  description: 'Luxury med spa in Tierra Verde, FL — advanced medically guided treatments for body contouring, skin rejuvenation, and total wellness transformation.',
+
+  // Contact Information
   address: {
-    street: '123 Wellness Way',
-    suite: 'Suite 100',
-    city: 'City',
-    state: 'NC',
-    zip: '12345',
+    street: '1120 Pinellas Bayway S.',
+    suite: 'Suite 208',
+    city: 'Tierra Verde',
+    state: 'FL',
+    zip: '33715',
   },
   phone: '(555) 012-3456',
-  email: 'hello@totaltransformation.com',
-  
+  email: 'info@loveyourselfenoughspa.com',
+
   // Social Media
   social: {
-    instagram: 'https://instagram.com/totaltransformation',
-    facebook: 'https://facebook.com/totaltransformation',
+    instagram: 'https://instagram.com/loveyourselfenoughspa',
+    facebook: 'https://facebook.com/loveyourselfenoughspa',
   },
-  
-  // Booking (Mangomint - UPDATE WHEN READY)
+
+  // Booking (UPDATE WHEN READY)
   booking: {
-    url: '#', // Replace with Mangomint booking URL
+    url: '#', // Replace with booking URL
   },
-  
+
   // Business Hours
   hours: {
     weekdays: '9:00 AM - 6:00 PM',

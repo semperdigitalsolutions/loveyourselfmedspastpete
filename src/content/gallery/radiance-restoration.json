@@ -1,0 +1,11 @@
+{
+  "title": "Radiance Restoration",
+  "category": "Facials",
+  "beforeImage": "/images/gallery/radiance-before.jpg",
+  "afterImage": "/images/gallery/radiance-after.jpg",
+  "sessions": 4,
+  "description": "A comprehensive facial rejuvenation journey combining advanced treatments for dramatic skin transformation.",
+  "testimonial": "I cannot believe the difference! My skin hasn't looked this radiant in years.",
+  "order": 1,
+  "featured": true
+}

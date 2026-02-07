@@ -1,107 +1,126 @@
-# Total Transformation Med Spa - Project Instructions
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
-This is a faith-based medical spa website built with Astro.js and Tailwind CSS. The brand combines clinical anti-aging excellence with spiritual wellness.
-
-## Tech Stack
-
-- **Framework:** Astro 4.x
-- **Styling:** Tailwind CSS 3.x with custom design tokens
-- **Content:** Astro Content Collections (Markdown)
-- **Hosting:** Netlify
-- **Booking:** Mangomint (external, placeholder buttons for now)
-
-## Brand Guidelines
-
-### Colors (defined in tailwind.config.mjs)
-- Primary (Turquoise): `#00c2a2`
-- Gold: `#C9A961`
-- Rose Soft: `#FFF0F2`
-- Background Dark: `#0f2320`
-
-### Typography
-- Display/Headings: Playfair Display (serif)
-- Body: Manrope (sans-serif)
-
-### Voice
-- Warm, nurturing, professional
-- Faith-forward but not preachy
-- Clinical expertise with spiritual wellness
-
-## Project Structure
-
-```
-/src
-├── /components
-│   ├── /ui          # Button, Badge, SectionHeading, Card
-│   ├── /layout      # Header, Footer, MobileNav
-│   ├── /sections    # Hero, CTABanner, PhilosophyPillars, etc.
-│   ├── /cards       # ServiceCard, BlogCard, ResultCard, TestimonialCard
-│   ├── /blog        # BlogSidebar, ShareButtons
-│   └── /gallery     # CategoryFilter
-├── /layouts         # BaseLayout, PageLayout, BlogPostLayout
-├── /pages           # index, services/, blog/, gallery, about
-├── /content         # blog/, services/, gallery/ (markdown/data)
-├── /data            # siteConfig.ts, navigation
-└── /styles          # global.css
-```
-
-## Documentation
-
-All PRDs are in `/docs/prd/`:
-- `00-project-overview.md` - Project goals, architecture, timeline
-- `01-foundation.md` - Design tokens, layouts, header, footer
-- `02-homepage.md` - Hero, Philosophy Pillars, CTA
-- `03-services.md` - Services listing and detail pages
-- `04-gallery.md` - Before/After gallery with filtering
-- `05-blog.md` - Blog listing and post pages
-- `06-about.md` - About/Philosophy page
-
-**IMPORTANT:** Read the relevant PRD before implementing each section. PRDs contain:
-- Component specs and props
-- Visual specifications
-- Acceptance criteria
-- Content requirements
+Luxury physician-guided med spa website built with Astro 5.x and Tailwind CSS 4.x. Uses Astro Content Collections for blog, services, and gallery content. Hosted on Netlify.
 
 ## Development Commands
 
 ```bash
-npm run dev      # Start dev server
-npm run build    # Build for production
-npm run preview  # Preview production build
+pnpm install       # Install dependencies
+pnpm dev           # Start dev server at localhost:4321
+pnpm build         # TypeScript check + production build
+pnpm preview       # Preview production build
 ```
+
+## Design & Documentation
+
+**Before implementing any page:**
+1. Open the mockup image in `/docs/mockups/` (e.g., `mockup-01-homepage.webp`)
+2. Read the corresponding PRD in `/docs/prd/` for specs and acceptance criteria
+3. Match the mockup's layout, spacing, and visual hierarchy
+
+| Mockup | PRD |
+|--------|-----|
+| `mockup-01-homepage.webp` | `02-homepage.md` |
+| `mockup-02-services.webp` | `03-services.md` |
+| `mockup-03-philosophy.webp` | `06-about.md` |
+| `mockup-04-blog-listing.webp` | `05-blog.md` |
+| `mockup-05-gallery.webp` | `04-gallery.md` |
+| `mockup-06-blog-post.webp` | `05-blog.md` |
+
+## Brand Guidelines
+
+### Brand Voice & Tone
+- **Luxurious, reassuring, empowering** — never clinical-heavy
+- Language pillars: Enhance, restore, renew, align, refine; Holistic, medically-guided, personalized; Natural results, inside-out transformation
+- Lead with: Med spa services, transformation, wellness, anti-aging, results
+- Subtle hints: "Holistic approach," "nurturing environment," "whole-person wellness"
+- Tagline: "Love Yourself Enough to Transform"
+
+### Core Values
+1. Self-Love First
+2. Holistic Integrity
+3. Medical Excellence
+4. Natural Enhancement
+5. Empowerment Through Education
+
+### Colors (defined in @theme block in src/styles/global.css)
+- `text-primary` / `bg-primary` - Turquoise (#00c2a2) for CTAs, links
+- `text-gold` / `bg-gold` - Gold (#C9A961) for premium accents
+- `bg-rose-soft` - Soft pink (#FFF0F2) for section backgrounds
+- `bg-background-dark` - Dark (#0f2320) for CTA banners
+
+### Typography
+- `font-display` - Playfair Display (headings)
+- `font-body` - Manrope (body text, default)
 
 ## Key Conventions
 
-1. **Components:** Use `.astro` files, typed props with interfaces
-2. **Styling:** Tailwind utility classes, custom classes in global.css
-3. **Images:** Use Astro's Image component for optimization
-4. **Icons:** Material Symbols Outlined via Google Fonts
-5. **Links:** Use Astro's `<a>` or custom Button component
+### Components
+- Use `.astro` files with typed Props interface at top of frontmatter
+- Custom component classes in `/src/styles/global.css`
+- Shared `CategoryFilter` component in `/src/components/ui/CategoryFilter.astro` — used by both blog and gallery pages
+
+### Icons (Material Symbols Outlined)
+```astro
+<span class="material-symbols-outlined">spa</span>
+```
+Common: `spa`, `favorite`, `science`, `auto_awesome`, `arrow_right_alt`
+
+### Links
+- Booking buttons: use `href="#"` until Mangomint is configured
+- External links: include `target="_blank" rel="noopener"`
 
 ## Content Collections
 
-### Blog Posts (`/src/content/blog/*.md`)
-Required frontmatter: title, excerpt, publishDate, category, featuredImage
+Content lives in `/src/content/`. See existing files for frontmatter schema.
 
-### Services (`/src/content/services/*.md`)
-Required frontmatter: title, shortDescription, image, order
+| Collection | Location | Format |
+|------------|----------|--------|
+| Blog | `/src/content/blog/*.md` | Markdown with frontmatter |
+| Services | `/src/content/services/*.md` | Markdown with frontmatter (16 services) |
+| Gallery | `/src/content/gallery/*.json` | JSON |
 
-### Gallery (`/src/content/gallery/*.json`)
-Required fields: title, category, beforeImage, afterImage, sessions, description
+Blog categories: Skincare, Nutrition, Treatments, Wellness
 
-## Placeholder Content
+### Service Content Guidelines
+When writing service descriptions, follow the brand voice:
+- Instead of "Injectable wrinkle reduction" → use "injectable treatments designed to softly restore balance, smooth expression lines, and support a naturally refreshed appearance"
+- Instead of "Skin tightening procedure" → use "Advanced non-invasive skin renewal that supports collagen, firmness, and long-term skin elasticity"
+- Always include "Results may vary" disclaimer for medical services
+- Include "Consultations are required prior to all medical aesthetic procedures" where applicable
 
-- Use `/images/placeholder.jpg` for missing images
-- Booking links use `href="#"` until Mangomint is configured
-- Contact info in `siteConfig.ts` needs real values
+## Medical Compliance
 
-## Testing Checklist (per component)
+The footer includes required medical disclaimer language:
+- Physician-guided medical spa disclosure
+- Licensed medical professional supervision statement
+- Results may vary disclaimer
+- Consultation requirement notice
 
-- [ ] Renders without errors
-- [ ] Props are typed correctly
-- [ ] Responsive on mobile/tablet/desktop
-- [ ] Hover states work
-- [ ] Links are functional
-- [ ] Accessible (alt text, aria labels)
+## Placeholders
+
+- Use descriptive placeholder text (not lorem ipsum)
+- Images: solid color div with aspect ratio until real photos available
+- Contact info: values in `/src/data/siteConfig.ts`
+
+## Common Patterns
+
+```astro
+<!-- Section wrapper -->
+<section class="py-16 md:py-24 px-6">
+  <div class="max-w-7xl mx-auto">...</div>
+</section>
+
+<!-- Card hover -->
+<article class="hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+
+<!-- Tagline accent -->
+<span class="text-gold italic font-display text-sm">Inside-Out Beauty</span>
+
+<!-- CTA button (uses class from global.css) -->
+<a href="#" class="btn-primary">Book a Consultation</a>
+```

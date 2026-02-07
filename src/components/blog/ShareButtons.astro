@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="flex items-center gap-4">
+  <span class="text-sm font-bold text-text-main">Share:</span>
+
+  <!-- Facebook -->
+  <button
+    data-share="facebook"
+    class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary hover:text-white text-text-body flex items-center justify-center transition-all duration-300"
+    aria-label="Share on Facebook"
+  >
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+    </svg>
+  </button>
+
+  <!-- Twitter/X -->
+  <button
+    data-share="twitter"
+    class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary hover:text-white text-text-body flex items-center justify-center transition-all duration-300"
+    aria-label="Share on X"
+  >
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </svg>
+  </button>
+
+  <!-- Copy Link -->
+  <button
+    data-share="copy"
+    class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary hover:text-white text-text-body flex items-center justify-center transition-all duration-300 relative"
+    aria-label="Copy link"
+  >
+    <span class="material-symbols-outlined text-xl copy-icon">link</span>
+    <span class="material-symbols-outlined text-xl check-icon hidden">check</span>
+  </button>
+</div>
+
+<script define:vars={{ title }}>
+  const url = window.location.href;
+
+  document.querySelector('[data-share="facebook"]')?.addEventListener('click', () => {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'width=600,height=400');
+  });
+
+  document.querySelector('[data-share="twitter"]')?.addEventListener('click', () => {
+    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank', 'width=600,height=400');
+  });
+
+  const copyButton = document.querySelector('[data-share="copy"]');
+  copyButton?.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(url);
+
+    // Show feedback
+    const copyIcon = copyButton.querySelector('.copy-icon');
+    const checkIcon = copyButton.querySelector('.check-icon');
+
+    if (copyIcon && checkIcon) {
+      copyIcon.classList.add('hidden');
+      checkIcon.classList.remove('hidden');
+
+      setTimeout(() => {
+        copyIcon.classList.remove('hidden');
+        checkIcon.classList.add('hidden');
+      }, 2000);
+    }
+  });
+</script>

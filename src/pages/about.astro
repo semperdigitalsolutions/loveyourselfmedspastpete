@@ -1,0 +1,37 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import ValuePropositions from '../components/sections/ValuePropositions.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
+---
+
+<PageLayout
+  title="About Us"
+  description="Discover our holistic approach to luxury med spa care — where medical science meets intentional self-love."
+>
+  <!-- Hero Section -->
+  <section class="py-16 md:py-24 px-6 text-center bg-gradient-to-b from-rose-soft/30 to-transparent">
+    <div class="max-w-3xl mx-auto">
+      <span class="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+        About Us
+      </span>
+      <h1 class="text-4xl md:text-6xl font-bold font-display text-text-main mb-8 leading-tight">
+        Where Self-Love Meets <span class="text-primary italic">Transformation</span>
+      </h1>
+      <p class="text-lg md:text-xl text-text-body leading-relaxed">
+        More than aesthetic care — a journey of total transformation. We are a sanctuary where science,
+        nature, and self-love meet, guiding you to become the most radiant version of yourself.
+      </p>
+    </div>
+  </section>
+
+  <!-- Value Propositions -->
+  <ValuePropositions />
+
+  <!-- CTA Banner -->
+  <CTABanner
+    headline="Become Who You Always Knew You Could Be"
+    body="Step into a serene, nurturing environment where every detail is designed to help you reconnect with your confidence and leave feeling beautifully transformed."
+    primaryCTA={{ text: "Book a Consultation", href: "#" }}
+    variant="primary"
+  />
+</PageLayout>

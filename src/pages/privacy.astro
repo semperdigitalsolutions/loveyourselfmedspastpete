@@ -1,0 +1,95 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<PageLayout
+  title="Privacy Policy"
+  description="Privacy Policy for Love Yourself Enough To Transform medical spa."
+>
+  <section class="py-16 md:py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold font-display text-text-main mb-4">
+        Privacy Policy
+      </h1>
+      <p class="text-text-body mb-12">
+        <strong>Effective Date:</strong> January 1, 2026
+      </p>
+
+      <div class="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-text-main prose-p:text-text-body prose-a:text-primary">
+        <h2>Introduction</h2>
+        <p>
+          {siteConfig.name} ("we," "our," or "us") is committed to protecting your privacy.
+          This Privacy Policy explains how we collect, use, disclose, and safeguard your
+          information when you visit our website or use our services.
+        </p>
+
+        <h2>Information We Collect</h2>
+        <p>We may collect information about you in a variety of ways, including:</p>
+        <ul>
+          <li>
+            <strong>Personal Data:</strong> Name, email address, phone number, and mailing
+            address when you book appointments or contact us.
+          </li>
+          <li>
+            <strong>Health Information:</strong> Medical history and treatment preferences
+            necessary to provide our spa services safely.
+          </li>
+          <li>
+            <strong>Usage Data:</strong> Information about how you access and use our website,
+            including your IP address, browser type, and pages visited.
+          </li>
+        </ul>
+
+        <h2>Use of Your Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+          <li>Process and manage your appointments</li>
+          <li>Provide personalized treatment recommendations</li>
+          <li>Send appointment reminders and follow-up communications</li>
+          <li>Improve our website and services</li>
+          <li>Respond to your inquiries and customer service requests</li>
+        </ul>
+
+        <h2>Data Protection</h2>
+        <p>
+          We implement appropriate technical and organizational security measures to protect
+          your personal information from unauthorized access, alteration, disclosure, or
+          destruction. However, no method of transmission over the Internet is 100% secure.
+        </p>
+
+        <h2>Third-Party Disclosure</h2>
+        <p>
+          We do not sell, trade, or otherwise transfer your personal information to outside
+          parties except as necessary to provide our services (such as payment processing)
+          or as required by law.
+        </p>
+
+        <h2>Your Rights</h2>
+        <p>
+          You have the right to access, correct, or delete your personal information.
+          To exercise these rights, please contact us using the information below.
+        </p>
+
+        <h2>Contact Us</h2>
+        <p>
+          If you have questions about this Privacy Policy, please contact us at:
+        </p>
+        <p>
+          <strong>{siteConfig.name}</strong><br />
+          {siteConfig.address.street}<br />
+          {siteConfig.address.suite}<br />
+          {siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zip}<br />
+          Email: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        </p>
+
+        <h2>Changes to This Policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time. We will notify you of any
+          changes by posting the new Privacy Policy on this page and updating the
+          "Effective Date" above.
+        </p>
+      </div>
+    </div>
+  </section>
+</PageLayout>
