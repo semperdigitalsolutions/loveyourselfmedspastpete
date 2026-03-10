@@ -24,9 +24,9 @@ export const siteConfig = {
     facebook: 'https://facebook.com/loveyourselfenoughspa',
   },
 
-  // Booking (UPDATE WHEN READY)
+  // Booking — Mangomint overlay integration (CompanyId 912584)
   booking: {
-    url: '#', // Replace with booking URL
+    url: 'https://booking.mangomint.com/912584',
   },
 
   // Business Hours

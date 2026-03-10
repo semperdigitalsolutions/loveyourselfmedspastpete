@@ -46,6 +46,10 @@ const fullTitle = `${title} | Love Yourself Enough To Transform`;
   <meta name="twitter:title" content={fullTitle}>
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={ogImage}>
+
+  <!-- Mangomint Online Booking Integration -->
+  <script is:inline>window.Mangomint = window.Mangomint || {}; window.Mangomint.CompanyId = 912584;</script>
+  <script src="https://booking.mangomint.com/app.js" async></script>
 </head>
 <body class="bg-background-light font-body text-text-body antialiased min-h-screen flex flex-col">
   <slot />
