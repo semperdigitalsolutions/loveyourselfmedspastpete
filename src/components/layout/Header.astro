@@ -1,49 +1,109 @@
 ---
-import { navItems, siteConfig } from '../../data/siteConfig';
+import { siteConfig } from '../../data/siteConfig';
 
-// Get current path for active state
+interface Props {
+  isHomepage?: boolean;
+}
+
+// Auto-detect homepage from URL if prop not explicitly passed
 const currentPath = Astro.url.pathname;
+const { isHomepage = currentPath === '/' } = Astro.props;
+
+// Split navigation: left and right groups
+const leftNav = [
+  { label: 'Services', href: '/services' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'About', href: '/about' },
+];
+const rightNav = [
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/#contact' },
+];
 ---
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
-  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/" class="flex items-center group">
-      <img
-        src={siteConfig.logo}
-        alt={siteConfig.name}
-        class="h-16 sm:h-20 w-auto"
-      />
-    </a>
+<header
+  id="site-header"
+  class:list={[
+    'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+    isHomepage ? 'bg-transparent' : 'bg-background-dark',
+  ]}
+  style={isHomepage ? '' : 'border-bottom: 1px solid rgba(201, 152, 106, 0.3);'}
+  data-is-homepage={isHomepage ? 'true' : 'false'}
+>
+  <div
+    class="max-w-7xl mx-auto px-6 h-24 md:h-28 flex items-center justify-between"
+  >
+    <!-- Mobile: hamburger left spacer (keeps logo centered) -->
+    <div class="w-10 md:hidden"></div>
 
-    <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center gap-8">
-      {navItems.map((item) => (
-        <a
-          href={item.href}
-          class={`text-sm font-medium transition-colors hover:text-primary ${
-            currentPath === item.href || currentPath.startsWith(item.href + '/')
-              ? 'text-primary border-b-2 border-primary pb-1'
-              : 'text-text-body'
-          }`}
-        >
-          {item.label}
-        </a>
-      ))}
+    <!-- Desktop: Left Nav Links -->
+    <nav class="hidden md:flex items-center gap-8 flex-1 justify-end pr-8">
+      {
+        leftNav.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:text-primary ${
+              currentPath === item.href ||
+              currentPath.startsWith(item.href + '/')
+                ? 'text-primary'
+                : 'text-white'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
     </nav>
 
-    <!-- CTA Button (Desktop) -->
-    <a
-      href={siteConfig.booking.url}
-      class="hidden sm:inline-flex btn-primary text-sm"
-    >
-      Book Consultation
+    <!-- Center: Logo -->
+    <a href="/" class="flex items-center gap-3 shrink-0 group">
+      <!-- Icon (always visible) -->
+      <img
+        src="/images/general/logo-icon.png"
+        alt=""
+        class="h-[50px] md:h-[100px] w-auto transition-transform duration-300 group-hover:scale-105"
+      />
+      <!-- Wordmark (desktop only) -->
+      <img
+        src="/images/general/logo-text.png"
+        alt={siteConfig.name}
+        class="hidden lg:block h-[70px] w-auto transition-opacity duration-300"
+      />
+      <!-- SR-only fallback for mobile -->
+      <span class="sr-only lg:hidden">{siteConfig.name}</span>
     </a>
 
-    <!-- Mobile Menu Button -->
+    <!-- Desktop: Right Nav Links + Book Now -->
+    <nav class="hidden md:flex items-center gap-8 flex-1 pl-8">
+      {
+        rightNav.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:text-primary ${
+              currentPath === item.href ||
+              currentPath.startsWith(item.href + '/')
+                ? 'text-primary'
+                : 'text-white'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href={siteConfig.booking.url}
+        target="_blank"
+        rel="noopener"
+        class="text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:text-primary text-white"
+      >
+        Book Now
+      </a>
+    </nav>
+
+    <!-- Mobile: Hamburger Button -->
     <button
       type="button"
-      class="md:hidden p-2 text-text-body hover:text-primary transition-colors"
+      class="md:hidden p-2 text-white hover:text-primary transition-colors"
       aria-label="Open menu"
       data-mobile-menu-toggle
     >
@@ -52,88 +112,153 @@ const currentPath = Astro.url.pathname;
   </div>
 </header>
 
+<!-- Header spacer to prevent content from hiding behind fixed header -->
+<div class={isHomepage ? '' : 'h-24 md:h-28'}></div>
+
 <!-- Mobile Navigation Overlay -->
-<div
-  class="fixed inset-0 z-50 hidden"
-  data-mobile-menu
->
+<div class="fixed inset-0 z-[60] hidden" data-mobile-menu>
   <!-- Backdrop -->
   <div
-    class="absolute inset-0 bg-black/50 backdrop-blur-sm"
+    class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"
     data-mobile-menu-backdrop
-  ></div>
-
-  <!-- Drawer -->
-  <div
-    class="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl transform translate-x-full transition-transform duration-300"
-    data-mobile-menu-drawer
   >
-    <!-- Drawer Header -->
-    <div class="flex items-center justify-between p-6 border-b border-gray-100">
-      <span class="font-display font-bold text-lg text-text-main">Menu</span>
-      <button
-        type="button"
-        class="p-2 text-text-body hover:text-primary transition-colors"
-        aria-label="Close menu"
-        data-mobile-menu-close
-      >
-        <span class="material-symbols-outlined text-2xl">close</span>
-      </button>
+  </div>
+
+  <!-- Full-screen Overlay -->
+  <div
+    class="absolute inset-0 flex flex-col items-center justify-center opacity-0 translate-y-4 transition-all duration-300"
+    style="background-color: rgba(61, 43, 53, 0.98);"
+    data-mobile-menu-panel
+  >
+    <!-- Close Button -->
+    <button
+      type="button"
+      class="absolute top-6 right-6 p-2 text-white hover:text-primary transition-colors"
+      aria-label="Close menu"
+      data-mobile-menu-close
+    >
+      <span class="material-symbols-outlined text-3xl">close</span>
+    </button>
+
+    <!-- Logo -->
+    <a href="/" class="mb-12">
+      <img
+        src="/images/general/logo-icon.png"
+        alt={siteConfig.name}
+        class="h-16 w-auto"
+      />
+    </a>
+
+    <!-- Nav Links -->
+    <nav class="flex flex-col items-center gap-6">
+      {
+        [...leftNav, ...rightNav].map((item) => (
+          <a
+            href={item.href}
+            class={`text-2xl font-display font-medium tracking-wider transition-colors duration-200 hover:text-primary ${
+              currentPath === item.href ||
+              currentPath.startsWith(item.href + '/')
+                ? 'text-primary'
+                : 'text-white'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Mobile CTA -->
+    <div class="mt-12">
+      <a href={siteConfig.booking.url} class="btn-primary text-base px-10 py-4">
+        Book Now
+      </a>
     </div>
 
-    <!-- Drawer Content -->
-    <nav class="p-6">
-      <ul class="space-y-4">
-        {navItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class={`block text-lg font-medium py-2 transition-colors hover:text-primary ${
-                currentPath === item.href || currentPath.startsWith(item.href + '/')
-                  ? 'text-primary'
-                  : 'text-text-body'
-              }`}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-
-      <!-- Mobile CTA -->
-      <div class="mt-8 pt-8 border-t border-gray-100">
-        <a
-          href={siteConfig.booking.url}
-          class="btn-primary w-full text-center block"
-        >
-          Book Consultation
-        </a>
-      </div>
-    </nav>
+    <!-- Contact Info -->
+    <div class="mt-10 text-center">
+      <a
+        href={`tel:${siteConfig.phone.replace(/[^+\d]/g, '')}`}
+        class="text-sm text-white/60 hover:text-primary transition-colors"
+      >
+        {siteConfig.phone}
+      </a>
+    </div>
   </div>
 </div>
 
 <script>
+  // Scroll behavior: transparent -> solid on scroll
+  function initHeaderScroll() {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+
+    const isHomepage = header.dataset.isHomepage === 'true';
+
+    function setBlur(el: HTMLElement, value: string) {
+      el.style.backdropFilter = value;
+      // Webkit prefix for Safari — bracket notation avoids TS error
+      (el.style as any)['-webkit-backdrop-filter'] = value;
+    }
+
+    function updateHeader() {
+      const scrolled = window.scrollY > 50;
+
+      if (scrolled) {
+        header!.style.backgroundColor = 'rgba(61, 43, 53, 0.95)';
+        setBlur(header!, 'blur(12px)');
+      } else if (isHomepage) {
+        header!.style.backgroundColor = 'transparent';
+        setBlur(header!, 'none');
+      } else {
+        // Non-homepage: always solid
+        header!.style.backgroundColor = '';
+        setBlur(header!, '');
+      }
+    }
+
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader(); // Run once on load
+  }
+
   // Mobile menu functionality
   function initMobileMenu() {
-    const toggleBtn = document.querySelector('[data-mobile-menu-toggle]') as HTMLElement | null;
-    const menu = document.querySelector('[data-mobile-menu]') as HTMLElement | null;
-    const drawer = document.querySelector('[data-mobile-menu-drawer]') as HTMLElement | null;
-    const backdrop = document.querySelector('[data-mobile-menu-backdrop]') as HTMLElement | null;
-    const closeBtn = document.querySelector('[data-mobile-menu-close]') as HTMLElement | null;
+    const toggleBtn = document.querySelector(
+      '[data-mobile-menu-toggle]',
+    ) as HTMLElement | null;
+    const menu = document.querySelector(
+      '[data-mobile-menu]',
+    ) as HTMLElement | null;
+    const panel = document.querySelector(
+      '[data-mobile-menu-panel]',
+    ) as HTMLElement | null;
+    const backdrop = document.querySelector(
+      '[data-mobile-menu-backdrop]',
+    ) as HTMLElement | null;
+    const closeBtn = document.querySelector(
+      '[data-mobile-menu-close]',
+    ) as HTMLElement | null;
 
-    if (!toggleBtn || !menu || !drawer || !backdrop || !closeBtn) return;
+    if (!toggleBtn || !menu || !panel || !backdrop || !closeBtn) return;
 
     function openMenu() {
       menu!.classList.remove('hidden');
       // Trigger reflow for animation
-      void drawer!.offsetHeight;
-      drawer!.classList.remove('translate-x-full');
+      void panel!.offsetHeight;
+      requestAnimationFrame(() => {
+        backdrop!.classList.remove('opacity-0');
+        backdrop!.classList.add('opacity-100');
+        panel!.classList.remove('opacity-0', 'translate-y-4');
+        panel!.classList.add('opacity-100', 'translate-y-0');
+      });
       document.body.style.overflow = 'hidden';
     }
 
     function closeMenu() {
-      drawer!.classList.add('translate-x-full');
+      backdrop!.classList.remove('opacity-100');
+      backdrop!.classList.add('opacity-0');
+      panel!.classList.remove('opacity-100', 'translate-y-0');
+      panel!.classList.add('opacity-0', 'translate-y-4');
       setTimeout(() => {
         menu!.classList.add('hidden');
         document.body.style.overflow = '';
@@ -158,6 +283,10 @@ const currentPath = Astro.url.pathname;
   }
 
   // Initialize on page load and after Astro navigation
+  initHeaderScroll();
   initMobileMenu();
-  document.addEventListener('astro:after-swap', initMobileMenu);
+  document.addEventListener('astro:after-swap', () => {
+    initHeaderScroll();
+    initMobileMenu();
+  });
 </script>

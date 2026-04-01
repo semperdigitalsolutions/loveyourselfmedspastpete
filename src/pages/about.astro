@@ -1,42 +1,276 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import ValuePropositions from '../components/sections/ValuePropositions.astro';
-import CTABanner from '../components/sections/CTABanner.astro';
-import LocationMap from '../components/sections/LocationMap.astro';
 import { siteConfig } from '../data/siteConfig';
+
+const coreValues = [
+  {
+    icon: 'favorite',
+    title: 'Self-Love First',
+    description:
+      'Every treatment begins with honoring who you are. We create space for you to reconnect with your confidence and embrace your unique beauty.',
+  },
+  {
+    icon: 'spa',
+    title: 'Holistic Integrity',
+    description:
+      'True transformation goes beyond the surface. We nurture your whole self — body, mind, and spirit — through integrative care.',
+  },
+  {
+    icon: 'science',
+    title: 'Medical Excellence',
+    description:
+      'Physician-guided protocols, premium-grade products, and evidence-based treatments ensure your safety and results.',
+  },
+  {
+    icon: 'eco',
+    title: 'Natural Enhancement',
+    description:
+      'We enhance what nature gave you — never mask it. Our goal is a refreshed, naturally radiant version of you.',
+  },
+  {
+    icon: 'school',
+    title: 'Empowerment Through Education',
+    description:
+      'Knowledge is beauty. We equip you with understanding so you can make informed decisions about your wellness journey.',
+  },
+];
 ---
 
 <PageLayout
-  title="About Us"
-  description="Discover our holistic approach to luxury med spa care — where medical science meets intentional self-love."
+  title="About"
+  description="Meet Shari and discover the philosophy behind Love Yourself Med Spa — where medical science meets intentional self-love."
 >
-  <!-- Hero Section -->
-  <section class="py-16 md:py-24 px-6 text-center bg-gradient-to-b from-rose-soft/30 to-transparent">
-    <div class="max-w-3xl mx-auto">
-      <span class="text-gold font-bold tracking-widest text-xs uppercase mb-4 block">
-        About Us
-      </span>
-      <h1 class="text-4xl md:text-6xl font-bold font-display text-text-main mb-8 leading-tight">
-        Where Self-Love Meets <span class="text-primary italic">Transformation</span>
-      </h1>
-      <p class="text-lg md:text-xl text-text-body leading-relaxed">
-        More than aesthetic care — a journey of total transformation. We are a sanctuary where science,
-        nature, and self-love meet, guiding you to become the most radiant version of yourself.
-      </p>
+  <!-- Faith & Mission Section with Shari's Photo -->
+  <section class="py-16 md:py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center"
+      >
+        <!-- Left: Shari's Photo -->
+        <div class="flex justify-center">
+          <img
+            src="/images/general/shari.png"
+            alt="Shari — Owner and CEO of Love Yourself Med Spa"
+            class="w-full max-w-md rounded-2xl shadow-hover object-cover"
+          />
+        </div>
+
+        <!-- Right: Our Purpose -->
+        <div>
+          <span
+            class="text-primary font-display italic text-sm tracking-widest uppercase mb-4 block"
+            >Our Purpose</span
+          >
+          <h1
+            class="text-3xl md:text-5xl font-bold font-display text-text-main mb-8 leading-tight"
+          >
+            A Spa Rooted <span class="text-primary italic">in Faith</span>
+          </h1>
+          <div class="space-y-5 text-text-body text-lg leading-relaxed">
+            <p>
+              At the heart of our spa is a deeper purpose — one rooted in faith,
+              love, and transformation. We believe true beauty and wellness
+              begin from within, and our mission is to create a space where you
+              can reconnect with both your inner peace and outer radiance.
+            </p>
+            <p>
+              Guided by faith, we approach every service with intention,
+              compassion, and care. Love is woven into every detail — from the
+              atmosphere we create to the personalized treatments we provide —
+              ensuring each guest feels seen, valued, and restored.
+              Transformation is at the core of what we do, not just in how you
+              look, but in how you feel when you leave: renewed, confident, and
+              uplifted.
+            </p>
+            <p>
+              This is more than a spa — it's a sanctuary where mind, body, and
+              spirit are nurtured, and where your journey to wellness is
+              supported with grace and purpose.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Value Propositions -->
-  <ValuePropositions />
+  <!-- Bio Section: Two-Column with Second Photo -->
+  <section class="py-16 md:py-24 px-6 bg-rose-soft">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <span
+          class="text-primary font-display italic text-sm tracking-widest uppercase mb-4 block"
+          >Meet Shari</span
+        >
+        <h2
+          class="text-3xl md:text-4xl font-bold font-display text-text-main leading-tight"
+        >
+          The Heart Behind <span class="text-primary italic">the Vision</span>
+        </h2>
+      </div>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center"
+      >
+        <!-- Left: Bio Text -->
+        <div class="space-y-5 text-text-body text-lg leading-relaxed">
+          <p>
+            From as far back as she can remember, Shari has always been drawn to
+            the stage — singing, performing, and captivating audiences with her
+            presence. What began as a childhood passion quickly evolved into a
+            dynamic career in entertainment, modeling and the beauty pageant
+            industry, something unheard of from a small-town girl in the 80s.
+          </p>
+          <p>
+            Family was the foundation of it all. Her mother coached and guided
+            her every step of the way, while her father worked tirelessly to
+            support her dreams. Her little sister, who always stepped back so
+            she could shine, was her biggest cheerleader. That unwavering
+            support shaped not only her success, but her deep appreciation for
+            dedication, discipline, and love.
+          </p>
+          <p>
+            She went on to grace stages across the eastern part of the country,
+            opening for legendary country artists such as Donna Fargo and Tammy
+            Wynette, and even performing duets with icons like Neil Diamond. Her
+            talent, poise, and commitment led her to win over 13 beauty pageant
+            titles, becoming the youngest contestant to ever represent the state
+            of West Virginia in the Cinderella pageant circuit. In 1996, she
+            expanded her influence as a spokesmodel for the Miss America
+            Pageant, long before the term "influencer" existed.
+          </p>
+        </div>
 
-  <!-- Location Map -->
-  <LocationMap />
+        <!-- Right: Second Photo -->
+        <div class="flex justify-center">
+          <img
+            src="/images/general/shari2.png"
+            alt="Shari walking on the beach"
+            class="w-full max-w-md rounded-2xl shadow-hover object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- CTA Banner -->
-  <CTABanner
-    headline="Become Who You Always Knew You Could Be"
-    body="Step into a serene, nurturing environment where every detail is designed to help you reconnect with your confidence and leave feeling beautifully transformed."
-    primaryCTA={{ text: "Book a Consultation", href: siteConfig.booking.url }}
-    variant="primary"
-  />
+  <!-- Bio Continued: Full Width -->
+  <section class="py-16 md:py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="space-y-6 text-text-body text-lg leading-relaxed">
+        <p>
+          After becoming a mother, her focus began to shift. She made the
+          intentional decision to step back from the spotlight to fully embrace
+          her role as a present and involved mother — because her children were
+          and are her universe. While she cherished her time on stage, and her
+          children are now grown and successful, she felt God has called her to
+          something deeper, something rooted in faith, purpose, care, and
+          transformation.
+        </p>
+        <p>
+          With a background in nursing, she began pursuing advanced education in
+          aesthetics, graduating from the Institute in Laser Medicine and
+          continuing her education extensively in the field. Today, she holds
+          over 15 aesthetic certifications, including advanced training with
+          Cynosure and Cryo technologies, and serves as a trainer for
+          InstaSculpting.
+        </p>
+        <p>
+          Her passion for growth and innovation has since led her into the
+          evolving world of longevity and regenerative medicine. She is
+          currently working toward a master certification in peptides and
+          functional nutrition, continuing her commitment to helping others
+          achieve beauty, health, and vitality from the inside out.
+        </p>
+        <p class="text-text-main font-display italic text-xl">
+          As the Owner and CEO, Shari brings together her lifelong experiences,
+          faith-driven purpose, and passion for transformation to create more
+          than just a spa — she has created a sanctuary where beauty, wellness,
+          and renewal come together... where you leave feeling better than when
+          you arrived.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values / Philosophy Section -->
+  <section class="py-16 md:py-24 px-6 bg-rose-soft">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <span
+          class="text-primary font-display italic text-sm tracking-widest uppercase mb-4 block"
+        >
+          What Guides Us
+        </span>
+        <h2
+          class="text-3xl md:text-5xl font-bold font-display text-text-main mb-4 leading-tight"
+        >
+          Our Core Values
+        </h2>
+        <p class="text-text-body text-lg max-w-2xl mx-auto">
+          Five guiding principles that shape every treatment, every interaction,
+          and every transformation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          coreValues.map((value) => (
+            <article class="bg-white rounded-2xl p-8 border border-primary/15 hover:shadow-hover hover:-translate-y-1 transition-all duration-500">
+              <span class="material-symbols-outlined text-primary text-3xl mb-4 block">
+                {value.icon}
+              </span>
+              <h3 class="font-display font-bold text-text-main text-lg mb-3">
+                {value.title}
+              </h3>
+              <p class="text-text-body text-sm leading-relaxed">
+                {value.description}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Section -->
+  <section class="py-16 md:py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="bg-background-dark rounded-3xl p-12 md:p-24 relative overflow-hidden"
+      >
+        <!-- Decorative background elements -->
+        <div class="absolute inset-0 opacity-10">
+          <div
+            class="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-primary to-transparent rounded-full -translate-x-1/2 -translate-y-1/2"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-gold to-transparent rounded-full translate-x-1/2 translate-y-1/2"
+          >
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center max-w-3xl mx-auto">
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight"
+          >
+            Ready to Begin Your Transformation?
+          </h2>
+          <p
+            class="text-lg md:text-xl mb-10 max-w-2xl mx-auto"
+            style="color: #F5E6E0;"
+          >
+            Step into a serene, nurturing environment where every detail is
+            designed to help you reconnect with your confidence and leave
+            feeling beautifully transformed.
+          </p>
+          <a
+            href={siteConfig.booking.url}
+            class="btn-primary inline-block text-lg px-10 py-4"
+          >
+            Book a Consultation
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </PageLayout>

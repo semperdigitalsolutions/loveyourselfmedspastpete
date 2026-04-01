@@ -1,113 +1,87 @@
 ---
-import Badge from '../ui/Badge.astro';
-import Button from '../ui/Button.astro';
-
 interface Props {
-  badge?: string;
-  headline: string;
-  spaName?: string;
-  subheadline?: string;
-  body: string;
-  primaryCTA: { text: string; href: string };
-  secondaryCTA?: { text: string; href: string };
-  featuredCard?: { label: string; title: string };
+  title: string;
+  subtitle?: string;
+  isHomepage?: boolean;
+  showCtas?: boolean;
 }
 
 const {
-  badge,
-  headline,
-  spaName,
-  subheadline,
-  body,
-  primaryCTA,
-  secondaryCTA,
-  featuredCard,
+  title,
+  subtitle,
+  isHomepage = false,
+  showCtas = false,
 } = Astro.props;
 ---
 
-<section class="py-16 md:py-24 px-6 overflow-hidden">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-      <!-- Text Column (Left) -->
-      <div class="lg:col-span-6 order-2 lg:order-1">
-        {badge && (
-          <div class="mb-6">
-            <Badge variant="gold">
-              <span class="material-symbols-outlined text-sm mr-1">verified</span>
-              {badge}
-            </Badge>
-          </div>
-        )}
+{isHomepage ? (
+  <!-- Homepage Video Hero -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Video Background -->
+    <video
+      class="absolute inset-0 w-full h-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster=""
+    >
+      <source
+        src="https://videos.pexels.com/video-files/4264879/4264879-hd_1920_1080_30fps.mp4"
+        type="video/mp4"
+        media="(min-width: 768px)"
+      />
+      <source
+        src="https://videos.pexels.com/video-files/4264879/4264879-sd_640_360_30fps.mp4"
+        type="video/mp4"
+      />
+    </video>
 
-        <h1
-          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-text-main leading-tight mb-4"
-          set:html={headline}
-        />
+    <!-- Gradient Overlay -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(to bottom, rgba(61,43,53,0.7) 0%, rgba(61,43,53,0.5) 50%, rgba(61,43,53,0.8) 100%);"
+    ></div>
 
-        {spaName && (
-          <p class="text-xl md:text-2xl font-display font-semibold text-gold tracking-wide mb-6">
-            {spaName}
-          </p>
-        )}
+    <!-- Content -->
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <h1
+        class="font-display text-white text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-[3px] leading-tight mb-6"
+      >
+        {title}
+      </h1>
 
-        {subheadline && (
-          <p class="text-lg md:text-xl font-bold text-text-main mb-4 tracking-[0.15em]">
-            {subheadline}
-          </p>
-        )}
-
-        <p class="text-text-body text-lg leading-relaxed mb-8 max-w-lg">
-          {body}
+      {subtitle && (
+        <p class="font-display italic text-primary text-lg sm:text-xl md:text-[1.6rem] mb-10">
+          {subtitle}
         </p>
+      )}
 
-        <div class="flex flex-col sm:flex-row gap-4 mb-8">
-          <Button href={primaryCTA.href} variant="primary" size="lg">
-            {primaryCTA.text}
-            <span class="material-symbols-outlined ml-2 text-xl">arrow_right_alt</span>
-          </Button>
-          {secondaryCTA && (
-            <Button href={secondaryCTA.href} variant="secondary" size="lg">
-              {secondaryCTA.text}
-            </Button>
-          )}
+      {showCtas && (
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <slot />
         </div>
-
-      </div>
-
-      <!-- Image Column (Right) -->
-      <div class="lg:col-span-6 order-1 lg:order-2 relative">
-        <!-- Hero treatment image -->
-        <div class="relative">
-          <!-- Main image -->
-          <div class="aspect-[4/5] bg-gradient-to-br from-primary-light via-rose-soft to-gold-light rounded-2xl overflow-hidden shadow-soft">
-            <!-- TODO: Replace with Shari's personal photo + generalized aesthetic stock photo combo -->
-            <img
-              src="/images/general/hero-treatment.webp"
-              alt="Non-invasive body contouring treatment at Love Yourself Med Spa"
-              class="w-full h-full object-cover"
-              loading="eager"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/20 to-transparent"></div>
-          </div>
-
-          <!-- Featured Ritual Card -->
-          {featuredCard && (
-            <div class="absolute bottom-8 right-0 translate-x-4 bg-white rounded-xl shadow-xl p-4 max-w-[200px]">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-primary mb-1 block">
-                {featuredCard.label}
-              </span>
-              <h3 class="font-display font-bold text-text-main text-sm leading-tight">
-                {featuredCard.title}
-              </h3>
-            </div>
-          )}
-
-          <!-- Decorative gold flare -->
-          <div class="absolute -top-4 -right-4 w-16 h-16 text-gold opacity-60">
-            <span class="material-symbols-outlined text-5xl">auto_awesome</span>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
-  </div>
-</section>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <span class="material-symbols-outlined text-white/60 text-3xl">expand_more</span>
+    </div>
+  </section>
+) : (
+  <!-- Interior Page Hero -->
+  <section class="bg-background-dark py-20 md:py-28 px-6">
+    <div class="max-w-7xl mx-auto text-center">
+      <h1 class="font-display text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+        {title}
+      </h1>
+      {subtitle && (
+        <p class="font-display italic text-primary text-lg md:text-xl max-w-2xl mx-auto">
+          {subtitle}
+        </p>
+      )}
+    </div>
+  </section>
+)}

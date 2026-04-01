@@ -1,38 +1,48 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
-/* Theme configuration (replaces tailwind.config.mjs) */
+/* Theme configuration — Rose Gold Glam palette */
 @theme {
-  /* Colors - Primary (Turquoise) */
-  --color-primary: #00c2a2;
-  --color-primary-dark: #00a68a;
-  --color-primary-light: #e6f9f6;
+  /* Colors - Primary (Rose Gold) */
+  --color-primary: #c9986a;
+  --color-primary-dark: #a67b50;
+  --color-primary-light: #fff8f6;
 
-  /* Colors - Gold */
-  --color-gold: #C9A961;
-  --color-gold-light: #E5C889;
+  /* Colors - Gold (Light Rose Gold) */
+  --color-gold: #e8c4a0;
+  --color-gold-light: #f0d4b8;
 
   /* Colors - Rose */
-  --color-rose-soft: #FFF0F2;
-  --color-rose: #E8B4C0;
+  --color-rose-soft: #fff0ec;
+  --color-rose: #e8b4c0;
 
   /* Colors - Background */
   --color-background-light: #ffffff;
-  --color-background-offwhite: #f5f8f8;
-  --color-background-dark: #0f2320;
+  --color-background-offwhite: #fdf7f4;
+  --color-background-dark: #3d2b35;
 
   /* Colors - Text */
-  --color-text-main: #1A1A1A;
-  --color-text-body: #4A4A4A;
+  --color-text-main: #3d2b35;
+  --color-text-body: #6b5660;
 
   /* Fonts */
   --font-display: 'Playfair Display', serif;
   --font-body: 'Manrope', sans-serif;
 
   /* Shadows */
-  --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.05);
-  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  --shadow-hover: 0 20px 50px -12px rgba(0, 194, 162, 0.25);
+  --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 4px 6px -1px rgba(201, 152, 106, 0.1);
+  --shadow-hover: 0 20px 50px -12px rgba(201, 152, 106, 0.25);
+}
+
+/* Shimmer animation for primary CTAs */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
 }
 
 /* Custom base styles */
@@ -45,26 +55,36 @@
     @apply bg-background-light text-text-body antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display text-text-main;
   }
 }
 
 /* Custom utility classes - using @utility syntax for Tailwind v4 */
 @utility btn-primary {
-  @apply bg-primary hover:bg-primary-dark text-white font-bold px-6 py-3 rounded-xl
-         shadow-lg shadow-primary/20 transition-all hover:shadow-primary/30;
+  background: linear-gradient(135deg, #c9986a, #e8c4a0, #c9986a);
+  background-size: 200% 200%;
+  animation: shimmer 3s infinite;
+  @apply text-white font-bold px-8 py-3 rounded-full
+         shadow-lg transition-all hover:-translate-y-0.5;
+  &:hover {
+    box-shadow: 0 8px 20px rgba(201, 152, 106, 0.3);
+  }
 }
 
 @utility btn-secondary {
-  @apply border-2 border-gray-200 hover:border-primary text-text-main
-         font-bold px-6 py-3 rounded-xl transition-all hover:text-primary;
+  @apply border-2 border-primary bg-transparent text-text-main
+         font-bold px-8 py-3 rounded-full transition-all hover:bg-primary hover:text-white;
 }
 
 @utility btn-ghost {
-  @apply text-primary hover:bg-primary/10 font-bold px-6 py-3 rounded-xl transition-all;
+  @apply text-primary hover:bg-primary/10 font-bold px-6 py-3 rounded-full transition-all;
 }
-
 
 @utility text-balance {
   text-wrap: balance;

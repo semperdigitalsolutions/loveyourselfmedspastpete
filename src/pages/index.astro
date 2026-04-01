@@ -1,65 +1,386 @@
 ---
-import PageLayout from "../layouts/PageLayout.astro";
-import Hero from "../components/sections/Hero.astro";
-import PhilosophyPillars from "../components/sections/PhilosophyPillars.astro";
-import CTABanner from "../components/sections/CTABanner.astro";
-import LocationMap from "../components/sections/LocationMap.astro";
-import { siteConfig } from "../data/siteConfig";
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import { siteConfig } from '../data/siteConfig';
+
+const bookingUrl = siteConfig.booking.url;
+
+const testimonials = [
+  {
+    quote:
+      'From the moment I walked in, I felt like royalty. The staff truly cares about your well-being, and the results speak for themselves.',
+    author: 'Jessica M.',
+  },
+  {
+    quote:
+      "I've never felt more confident in my own skin. The personalized approach made all the difference in my transformation journey.",
+    author: 'Rachel T.',
+  },
+  {
+    quote:
+      'A truly luxurious experience from start to finish. The attention to detail and medical expertise is unmatched in the area.',
+    author: 'Amanda K.',
+  },
+  {
+    quote:
+      "The team helped me find treatments I didn't even know existed. My skin has never looked better, and I feel amazing inside and out.",
+    author: 'Lauren S.',
+  },
+  {
+    quote:
+      "This is not just a med spa — it's a sanctuary. Every visit leaves me feeling renewed, restored, and deeply cared for.",
+    author: 'Michelle D.',
+  },
+];
+
+const treatments = [
+  {
+    title: 'Advanced Facial Sculpting',
+    icon: 'auto_awesome',
+    description:
+      'Precision treatments that contour, lift, and restore youthful definition — blending artistry with medical-grade technology for naturally stunning results.',
+    href: '/services',
+  },
+  {
+    title: 'Body Contouring',
+    icon: 'diamond',
+    description:
+      'Non-invasive sculpting and contouring designed to refine your silhouette, smooth texture, and reveal the confident shape you deserve.',
+    href: '/services',
+  },
+  {
+    title: 'Skin Renewal & Care',
+    icon: 'spa',
+    description:
+      'From medical-grade facials to advanced peels and laser therapy — restore luminosity, even tone, and long-lasting skin health from the inside out.',
+    href: '/services',
+  },
+];
+
+const packages = [
+  {
+    name: 'Radiance Package',
+    price: '$299',
+    period: '',
+    description:
+      'A curated introduction to our most popular treatments. Includes a signature facial, LED therapy session, and personalized skincare consultation.',
+    features: [
+      'Signature facial treatment',
+      'LED light therapy session',
+      'Personalized skincare plan',
+    ],
+  },
+  {
+    name: 'Luxe Membership',
+    price: '$199',
+    period: '/mo',
+    description:
+      'Monthly access to premium treatments with exclusive member pricing. Elevate your routine with consistent, results-driven care.',
+    features: [
+      'One premium treatment monthly',
+      '15% off additional services',
+      'Priority booking access',
+    ],
+  },
+  {
+    name: 'Transformation Bundle',
+    price: '$899',
+    period: '',
+    description:
+      'Our most comprehensive offering — a multi-session journey designed for total renewal of face, body, and spirit.',
+    features: [
+      'Multi-session treatment plan',
+      'Body contouring included',
+      'Quarterly skin analysis',
+    ],
+  },
+];
 ---
 
 <PageLayout
-    title="Luxury Med Spa in Tierra Verde, FL"
-    description="Love Yourself Med Spa — A luxury physician-guided med spa devoted to holistic beauty, natural renewal, and total transformation."
+  title="Luxury Med Spa in Tierra Verde, FL"
+  description="Love Yourself Med Spa — A luxury physician-guided med spa devoted to holistic beauty, natural renewal, and total transformation."
 >
-    <Hero
-        badge="Luxury Med Spa"
-        headline="Love Yourself Enough to <em class='text-primary not-italic'>Transform</em>"
-        spaName="Love Yourself Med Spa"
-        subheadline="Restore.Sculpt.Elevate.Transform."
-        body="At Love Yourself, it's about taking time for you. The Spa is a sanctuary where beauty, science and wellness come together to Transform. We specialize in refined aesthetic treatments, thoughtfully designed to enhance natural beauty, restore confidence, and promote overall wellness. Every membership, package and service is intentionally designed to elevate your natural radiance. Where self-love becomes Total Transformation."
-        primaryCTA={{
-            text: "Book a Consultation",
-            href: siteConfig.booking.url,
-        }}
-        secondaryCTA={{ text: "View Treatments", href: "/services" }}
-        featuredCard={{
-            label: "Signature Experience",
-            title: "Non-Invasive Body Contouring",
-        }}
-    />
+  <!-- 1. Video Hero -->
+  <Hero
+    title="RESTORE · SCULPT · ELEVATE · TRANSFORM"
+    subtitle="Love yourself enough to transform."
+    isHomepage={true}
+    showCtas={true}
+  >
+    <a
+      href={bookingUrl}
+      class="btn-primary text-lg px-10 py-4 uppercase tracking-widest"
+    >
+      Book Consultation
+    </a>
+    <a
+      href="/services"
+      class="btn-secondary text-lg px-10 py-4 uppercase tracking-widest border-primary text-white hover:bg-primary hover:text-white"
+    >
+      Explore Treatments
+    </a>
+  </Hero>
 
-    <!-- Scripture Quote -->
-    <section class="py-16 md:py-24 px-6 bg-white text-center">
-        <div class="max-w-3xl mx-auto">
-            <div class="w-12 h-px bg-gold mx-auto mb-8"></div>
-            <p
-                class="font-display italic text-3xl md:text-4xl text-gray-800 leading-relaxed"
-            >
-                &ldquo;Let <span
-                    class="text-[1.15em] font-semibold tracking-wide">ALL</span
-                > you do be done in love&rdquo;
-            </p>
-            <p
-                class="font-body text-sm text-gray-500 mt-6 tracking-wider uppercase"
-            >
-                1 Corinthians 16:14
-            </p>
-            <div class="w-12 h-px bg-gold mx-auto mt-8"></div>
+  <!-- 2. Elevate Your Beauty — Welcome Section -->
+  <section class="py-20 md:py-28 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+        <!-- Vertical Rose Gold Accent Bar -->
+        <div
+          class="hidden md:block flex-shrink-0 w-1 self-stretch rounded-full"
+          style="background: linear-gradient(to bottom, #c9986a, #e8c4a0, #c9986a);"
+        >
         </div>
-    </section>
 
-    <PhilosophyPillars />
+        <!-- Content -->
+        <div class="flex-1">
+          <span
+            class="text-primary font-bold tracking-[0.2em] text-xs uppercase mb-4 block"
+          >
+            Welcome
+          </span>
+          <h2
+            class="font-display text-4xl md:text-5xl font-bold text-text-main mb-8 leading-tight"
+          >
+            Elevate Your Beauty
+          </h2>
+          <div
+            class="space-y-5 text-text-body text-lg leading-relaxed max-w-3xl"
+          >
+            <p>
+              True beauty is not about changing who you are — it is about
+              revealing the confidence, radiance, and vitality that already live
+              within you. At Love Yourself Med Spa, we believe every person
+              deserves to feel extraordinary in their own skin.
+            </p>
+            <p>
+              Our team of certified professionals combines medical expertise
+              with an artist's eye, delivering personalized treatments that
+              honor your unique features. From advanced facial sculpting to
+              total body transformation, every service is designed to enhance —
+              never alter — your natural essence.
+            </p>
+            <p>
+              We use only premium-grade products and the latest in medical
+              aesthetic technology, ensuring safe, effective results in a warm
+              and nurturing environment. This is more than a med spa. This is
+              where self-love becomes transformation.
+            </p>
+          </div>
+          <div class="mt-8">
+            <a
+              href="/about"
+              class="inline-flex items-center text-primary font-bold tracking-wide hover:text-primary-dark transition-colors"
+            >
+              Learn Our Story
+              <span class="material-symbols-outlined ml-2 text-xl"
+                >arrow_right_alt</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <LocationMap />
+  <!-- 3. Loved by Clients — Testimonials -->
+  <section class="py-20 md:py-28 px-6 bg-rose-soft">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span
+          class="text-primary font-bold tracking-[0.2em] text-xs uppercase mb-4 block"
+        >
+          Testimonials
+        </span>
+        <h2
+          class="font-display text-4xl md:text-5xl font-bold text-text-main mb-4"
+        >
+          Loved by Clients
+        </h2>
+        <div class="h-1 w-24 bg-primary rounded-full mx-auto mt-6"></div>
+      </div>
 
-    <CTABanner
-        headline="Ready to Begin Your Transformation?"
-        body="Every detail is tailored — from our expert medical team and cutting-edge technology to our serene, coastal-luxury atmosphere."
-        primaryCTA={{
-            text: "Book a Consultation",
-            href: siteConfig.booking.url,
-        }}
-        secondaryCTA={{ text: "Explore Services", href: "/services" }}
-        variant="dark"
-    />
+      <!-- Top Row: 3 cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        {
+          testimonials.slice(0, 3).map((t) => (
+            <article class="bg-white rounded-2xl p-8 border-2 border-primary/20 hover:border-primary/50 hover:-translate-y-2 hover:shadow-hover transition-all duration-500">
+              <div class="flex gap-1 mb-4">
+                {[...Array(5)].map(() => (
+                  <span class="text-primary text-lg">&#9733;</span>
+                ))}
+              </div>
+              <p class="font-display italic text-text-main text-base leading-relaxed mb-6">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <p class="text-primary font-bold text-sm tracking-wide uppercase">
+                {t.author}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- Bottom Row: 2 cards centered -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[calc(66.666%+0.75rem)] mx-auto"
+      >
+        {
+          testimonials.slice(3, 5).map((t) => (
+            <article class="bg-white rounded-2xl p-8 border-2 border-primary/20 hover:border-primary/50 hover:-translate-y-2 hover:shadow-hover transition-all duration-500">
+              <div class="flex gap-1 mb-4">
+                {[...Array(5)].map(() => (
+                  <span class="text-primary text-lg">&#9733;</span>
+                ))}
+              </div>
+              <p class="font-display italic text-text-main text-base leading-relaxed mb-6">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <p class="text-primary font-bold text-sm tracking-wide uppercase">
+                {t.author}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Our Signature Treatments -->
+  <section class="py-20 md:py-28 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span
+          class="text-primary font-bold tracking-[0.2em] text-xs uppercase mb-4 block"
+        >
+          What We Offer
+        </span>
+        <h2
+          class="font-display text-4xl md:text-5xl font-bold text-text-main mb-4"
+        >
+          Our Signature Treatments
+        </h2>
+        <div class="h-1 w-24 bg-primary rounded-full mx-auto mt-6"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {
+          treatments.map((t) => (
+            <a
+              href={t.href}
+              class="group block rounded-2xl p-8 border border-primary/10 hover:-translate-y-2 hover:shadow-hover transition-all duration-500"
+              style="background: linear-gradient(180deg, #FFF8F6 0%, #FFF0EC 100%);"
+            >
+              <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                <span class="material-symbols-outlined text-primary text-3xl">
+                  {t.icon}
+                </span>
+              </div>
+              <h3 class="font-display italic text-2xl text-text-main font-semibold mb-4">
+                {t.title}
+              </h3>
+              <p class="text-text-body leading-relaxed mb-6">{t.description}</p>
+              <span class="inline-flex items-center text-primary font-bold text-sm tracking-wider uppercase group-hover:translate-x-1 transition-transform">
+                Learn More
+                <span class="material-symbols-outlined ml-1 text-lg">
+                  arrow_right_alt
+                </span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Scripture Quote Banner -->
+  <section class="py-20 md:py-28 px-6 bg-background-dark text-center">
+    <div class="max-w-3xl mx-auto">
+      <!-- Top decorative line -->
+      <div
+        class="w-24 h-px mx-auto mb-10"
+        style="background: linear-gradient(to right, transparent, #c9986a, transparent);"
+      >
+      </div>
+
+      <p
+        class="font-display italic text-[1.5rem] md:text-[1.8rem] leading-relaxed"
+        style="color: #F5E6E0;"
+      >
+        &ldquo;Charm is deceptive, and beauty is fleeting; but a woman who fears
+        the Lord is to be praised. Honor her for all that her hands have done,
+        and let her works bring her praise at the city gate.&rdquo;
+      </p>
+
+      <p class="text-primary font-body text-sm tracking-[0.2em] uppercase mt-8">
+        Proverbs 31:30-31
+      </p>
+
+      <!-- Bottom decorative line -->
+      <div
+        class="w-24 h-px mx-auto mt-10"
+        style="background: linear-gradient(to right, transparent, #c9986a, transparent);"
+      >
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Packages & Memberships -->
+  <section class="py-20 md:py-28 px-6 bg-rose-soft">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span
+          class="text-primary font-bold tracking-[0.2em] text-xs uppercase mb-4 block"
+        >
+          Invest in Yourself
+        </span>
+        <h2
+          class="font-display text-4xl md:text-5xl font-bold text-text-main mb-4"
+        >
+          Packages &amp; Memberships
+        </h2>
+        <div class="h-1 w-24 bg-primary rounded-full mx-auto mt-6"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {
+          packages.map((pkg) => (
+            <article class="bg-white rounded-2xl border-[3px] border-primary/20 p-8 text-center hover:scale-105 hover:shadow-hover hover:border-primary/50 transition-all duration-500">
+              <h3 class="font-display text-2xl font-bold text-text-main mb-2">
+                {pkg.name}
+              </h3>
+              <div class="mb-6">
+                <span class="font-display text-5xl font-bold text-primary">
+                  {pkg.price}
+                </span>
+                {pkg.period && (
+                  <span class="text-text-body text-lg">{pkg.period}</span>
+                )}
+              </div>
+              <p class="text-text-body leading-relaxed mb-6">
+                {pkg.description}
+              </p>
+              <ul class="text-text-body text-sm space-y-3 mb-8 text-left">
+                {pkg.features.map((f) => (
+                  <li class="flex items-start gap-2">
+                    <span class="material-symbols-outlined text-primary text-lg flex-shrink-0 mt-0.5">
+                      check_circle
+                    </span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={bookingUrl}
+                class="btn-primary block w-full text-center text-sm uppercase tracking-widest py-3"
+              >
+                Book Now
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </PageLayout>
