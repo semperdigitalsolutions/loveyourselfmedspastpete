@@ -4,6 +4,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import BlogCard from '../../components/cards/BlogCard.astro';
 import ShareButtons from '../../components/blog/ShareButtons.astro';
+import { siteConfig } from '../../data/siteConfig';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -32,7 +33,8 @@ const relatedPosts = allPosts
 ---
 
 <PageLayout title={title} description={excerpt}>
-  <article class="max-w-7xl mx-auto px-6 py-16">
+  <section class="py-16 md:py-24 px-6">
+  <article class="max-w-7xl mx-auto">
     <!-- Breadcrumb -->
     <nav class="mb-8 text-sm">
       <a href="/" class="text-text-body hover:text-primary transition-colors">Home</a>
@@ -105,7 +107,7 @@ const relatedPosts = allPosts
             <p class="text-text-body text-sm mb-6">
               Ready to begin your transformation journey? Schedule your personalized consultation today.
             </p>
-            <Button href="https://booking.mangomint.com/912584" variant="primary" class="w-full justify-center">
+            <Button href={siteConfig.booking.url} variant="primary" class="w-full justify-center">
               Book Now
             </Button>
           </div>
@@ -157,11 +159,12 @@ const relatedPosts = allPosts
       </aside>
     </div>
   </article>
+  </section>
 
   <!-- Continue Reading Section -->
   {relatedPosts.length > 0 && (
-    <section class="bg-background-offwhite py-16">
-      <div class="max-w-7xl mx-auto px-6">
+    <section class="bg-background-offwhite py-16 md:py-24 px-6">
+      <div class="max-w-7xl mx-auto">
         <h2 class="text-2xl font-bold font-display text-text-main mb-8">
           Continue Reading
         </h2>

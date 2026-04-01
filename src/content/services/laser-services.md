@@ -2,11 +2,12 @@
 title: "Laser Services"
 shortDescription: "Laser skin tightening, tattoo removal, and hair removal for total beauty rejuvenation."
 image: "/images/services/laser-services.jpg"
-icon: "flashlight"
+icon: "flashlight_on"
 order: 12
 featured: false
 duration: "15-60 minutes"
 priceRange: "Starting at $150"
+bookingServiceId: 46
 ---
 
 ## Precision Technology for Total Rejuvenation

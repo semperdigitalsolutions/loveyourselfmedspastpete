@@ -1,6 +1,6 @@
 ---
 title: "Advanced Facials"
-shortDescription: "Clinical-grade facial treatments combining cutting-edge technology with nourishing botanicals."
+shortDescription: "Clinical-grade facial treatments with InstaSculpting modality — RF Micro-needling, exosomes, stem cell, and more."
 image: "/images/services/advanced-facials.jpg"
 icon: "face_retouching_natural"
 order: 15
@@ -13,27 +13,39 @@ priceRange: "Starting at $175"
 
 Our Advanced Facials go far beyond the standard spa facial. By combining clinical-grade technology with luxurious, nourishing botanicals, we deliver transformative results that honor your skin's natural beauty while addressing your unique concerns.
 
-Each treatment is customized to your skin's needs, whether you're seeking deep hydration, anti-aging benefits, acne management, or overall skin rejuvenation. Our expert aestheticians use the latest innovations in skincare science to help you achieve radiant, healthy skin.
+**All Advanced Facials include an InstaSculpting modality** for enhanced skin tightening and rejuvenation benefits.
 
-## Treatment Options
+## Advanced Facial Treatments
 
-### The Signature Glow
-A comprehensive facial combining dermaplaning, enzyme peel, LED therapy, and a customized mask for luminous, renewed skin.
+### RF Micro-Needling
+Radiofrequency micro-needling combines the collagen-stimulating power of micro-needling with the skin-tightening benefits of radiofrequency energy. This dual-action treatment addresses fine lines, wrinkles, acne scars, and skin laxity for comprehensive facial rejuvenation.
 
-### Anti-Aging Restoration
-Targets fine lines, wrinkles, and loss of elasticity using advanced peptides, growth factors, and micro-current technology.
+### Micro-Needling with Exosomes
+Experience the next generation of regenerative skincare. Micro-needling paired with exosome therapy delivers powerful growth factors and signaling molecules deep into the skin, accelerating cellular renewal and repair for a dramatically refreshed complexion.
 
-### Clear Skin Protocol
-Designed for acne-prone skin, this treatment combines deep cleansing, extractions, blue light therapy, and medical-grade serums.
+### Micro-Needling with Stem Cell
+Harness the regenerative power of stem cell technology combined with precision micro-needling. This advanced treatment promotes deep tissue repair, collagen production, and skin renewal for visibly younger, healthier skin.
 
-### Hydration Rescue
-Intense moisture therapy for dry, dehydrated skin using hyaluronic acid infusions and barrier-repairing ingredients.
+### Micro-Stamping
+A gentler alternative to traditional micro-needling, micro-stamping delivers targeted treatment to specific areas of concern with precision and control. Ideal for delicate areas like under-eyes, lips, and areas requiring focused rejuvenation.
+
+### Ultrasound Micro-Dermabrasion
+Advanced ultrasonic technology deeply cleanses, exfoliates, and infuses active ingredients into the skin. This treatment removes dead skin cells, unclogs pores, and enhances product absorption for immediately brighter, smoother skin.
+
+### Micro-Venom Facial
+A unique bio-stimulating facial that uses naturally derived peptides to mimic the effects of venom — stimulating collagen production and tightening the skin for a natural lift. This innovative treatment delivers visible firming and smoothing results.
+
+### Micro-Peel
+Choose from our 30% Glycolic Peel or Collagen Pro Peel — both organic and clean formulations designed to resurface, brighten, and renew the skin. These medical-grade peels remove damaged outer layers to reveal fresh, radiant skin beneath.
+
+### Korean O2 Jet Peel with Oxygen Therapy
+*Breathe Life into your skin.* This innovative Korean beauty treatment uses high-pressure oxygen and nutrient-rich serums to deeply cleanse, hydrate, and rejuvenate the skin. Oxygen therapy infuses vital nutrients at the cellular level for an instant glow and lasting skin health.
 
 ## The Experience
 
-From the moment you enter our treatment room, you'll be enveloped in tranquility. Your facial begins with a thorough skin analysis, followed by a customized protocol designed specifically for you.
+From the moment you enter our treatment room, you'll be enveloped in tranquility. Your facial begins with a thorough skin analysis, followed by a customized protocol designed specifically for you — always including your InstaSculpting modality for enhanced results.
 
-Each step of your treatment is performed with intention and care, from the gentle cleansing ritual to the final application of nourishing serums and SPF protection. You'll leave with a detailed at-home care plan to extend your results.
+Each step of your treatment is performed with intention and care. You'll leave with a detailed at-home care plan to extend your results.
 
 ## Who Benefits Most
 
@@ -41,11 +53,11 @@ Our Advanced Facials are ideal for anyone seeking:
 
 - **Visible improvement** in skin texture and tone
 - **Prevention and treatment** of aging signs
-- **Management** of acne or problematic skin
-- **Deep hydration** and skin barrier repair
-- **A luxurious escape** that delivers real results
+- **Deep skin rejuvenation** and cellular renewal
+- **Collagen stimulation** and skin tightening
+- **A luxurious experience** that delivers real results
 
-Whether you're preparing for a special occasion or maintaining your skin health, our Advanced Facials provide both immediate glow and long-term transformation.
+Results may vary. Consultations are recommended to determine the best facial treatment for your skin type and goals.
 
 ## Book Your Skin Consultation
 

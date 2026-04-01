@@ -1,15 +1,15 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
 // Blog collection
 const blog = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     excerpt: z.string().max(300),
-    author: z.string().default('Love Yourself Enough To Transform'),
+    author: z.string().default("Shari"),
     publishDate: z.date(),
     updatedDate: z.date().optional(),
-    category: z.enum(['Skincare', 'Nutrition', 'Treatments', 'Wellness']),
+    category: z.enum(["Skincare", "Nutrition", "Treatments", "Wellness"]),
     featuredImage: z.string(),
     featuredImageAlt: z.string().optional(),
     readTime: z.number().optional(),
@@ -20,7 +20,7 @@ const blog = defineCollection({
 
 // Services collection
 const services = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     shortDescription: z.string().max(200),
@@ -30,15 +30,21 @@ const services = defineCollection({
     featured: z.boolean().default(false),
     duration: z.string().optional(),
     priceRange: z.string().optional(),
+    bookingServiceId: z.number().optional(),
   }),
 });
 
 // Gallery collection (before/after results)
 const gallery = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({
     title: z.string(),
-    category: z.enum(['Body Contouring', 'Facials', 'Injectables', 'Holistic Wellness']),
+    category: z.enum([
+      "Body Contouring",
+      "Facials",
+      "Injectables",
+      "Holistic Wellness",
+    ]),
     beforeImage: z.string(),
     afterImage: z.string(),
     sessions: z.number(),

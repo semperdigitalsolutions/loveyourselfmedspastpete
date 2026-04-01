@@ -7,8 +7,8 @@ media_folder: public/images/blog
 public_folder: /images/blog
 
 # Site configuration
-site_url: https://loveyourselfenoughspa.com
-display_url: https://loveyourselfenoughspa.com
+site_url: https://loveyourselfmedspastpete.com
+display_url: https://loveyourselfmedspastpete.com
 logo_url: /favicon.svg
 
 # Editorial workflow for draft/review/publish
@@ -35,12 +35,12 @@ collections:
         widget: text
         required: true
         hint: Short description for cards and SEO (max 300 characters)
-        pattern: ['.{1,300}', 'Must be 300 characters or less']
+        pattern: [".{1,300}", "Must be 300 characters or less"]
 
       - name: author
         label: Author
         widget: string
-        default: Love Yourself Enough To Transform
+        default: Love Yourself Med Spa
 
       - name: publishDate
         label: Publish Date
@@ -116,7 +116,7 @@ collections:
         widget: text
         required: true
         hint: Brief description for service cards (max 200 characters)
-        pattern: ['.{1,200}', 'Must be 200 characters or less']
+        pattern: [".{1,200}", "Must be 200 characters or less"]
 
       - name: image
         label: Service Image

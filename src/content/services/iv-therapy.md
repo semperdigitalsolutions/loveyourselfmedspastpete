@@ -1,12 +1,13 @@
 ---
-title: "IV Therapy & Wellness Drips"
-shortDescription: "Deep hydration, radiant skin, energy, and recovery through customized vitamin infusions."
+title: "IV Therapy, Kangen Water & Wellness Drips"
+shortDescription: "Deep hydration, radiant skin, energy, and recovery through customized vitamin infusions and Kangen Water."
 image: "/images/services/iv-therapy.jpg"
 icon: "vaccines"
 order: 3
 featured: true
 duration: "1-3 hours"
 priceRange: "Consultation Required"
+bookingServiceId: 20
 ---
 
 ## Nourish Your Body From Within
@@ -71,6 +72,12 @@ Many clients use this time to read, meditate, or simply rest. Most treatments ta
 - **Better hydration** and skin appearance
 - **Faster recovery** from illness or exertion
 - **Reduced symptoms** of stress and anxiety
+
+## Kangen Water
+
+Elevate your hydration beyond ordinary water. Kangen Water is hydrogen-rich, alkaline water produced by advanced ionization technology. Known for its antioxidant properties and micro-clustered molecular structure, Kangen Water supports optimal cellular hydration, detoxification, and overall wellness.
+
+Available in-spa and as part of your wellness protocol, Kangen Water complements your IV Therapy sessions by supporting your body's hydration at the cellular level — from the inside out.
 
 ## Schedule Your Wellness Drip
 

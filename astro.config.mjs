@@ -6,5 +6,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://loveyourselfenoughspa.com',
+  site: 'https://loveyourselfmedspastpete.com',
 });

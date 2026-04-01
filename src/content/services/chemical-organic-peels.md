@@ -7,6 +7,7 @@ order: 8
 featured: false
 duration: "30-45 minutes"
 priceRange: "Starting at $125"
+bookingServiceId: 43
 ---
 
 ## Reveal Your Most Luminous Skin

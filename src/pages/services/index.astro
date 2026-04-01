@@ -4,6 +4,7 @@ import SectionHeading from '../../components/ui/SectionHeading.astro';
 import ServiceCard from '../../components/cards/ServiceCard.astro';
 import CTABanner from '../../components/sections/CTABanner.astro';
 import { getCollection } from 'astro:content';
+import { siteConfig } from '../../data/siteConfig';
 
 const services = await getCollection('services');
 const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
@@ -18,7 +19,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
         title="Our Treatments"
       />
       <p class="text-center text-text-body max-w-lg mx-auto -mt-8 mb-16">
-        Advanced, medically guided treatments designed to contour, rejuvenate, and awaken your confidence. Every detail is tailored to you.
+        Luxury aesthetic treatments intentionally designed to refresh, restore and enhance your overall well being and natural beauty. Every detail is tailored to YOU.
       </p>
 
       <!-- Services Grid -->
@@ -34,8 +35,8 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
   <CTABanner
     headline="Ready to Begin Your Transformation?"
     body="Schedule a consultation to discover which treatments are right for you."
-    primaryCTA={{ text: "Book Consultation", href: "https://booking.mangomint.com/912584" }}
-    secondaryCTA={{ text: "Call Us", href: "tel:+1234567890" }}
+    primaryCTA={{ text: "Book Consultation", href: siteConfig.booking.url }}
+    secondaryCTA={{ text: "Call Us", href: "tel:+17277395070" }}
     variant="dark"
   />
 </PageLayout>

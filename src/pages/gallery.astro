@@ -4,6 +4,7 @@ import ResultCard from '../components/cards/ResultCard.astro';
 import CTABanner from '../components/sections/CTABanner.astro';
 import CategoryFilter from '../components/ui/CategoryFilter.astro';
 import { getCollection } from 'astro:content';
+import { siteConfig } from '../data/siteConfig';
 
 const galleryItems = await getCollection('gallery');
 const sortedItems = galleryItems.sort((a, b) => a.data.order - b.data.order);
@@ -13,43 +14,47 @@ const categories = ['All Results', 'Body Contouring', 'Facials', 'Injectables', 
 
 <PageLayout title="Gallery" description="View real transformation results from our holistic wellness treatments.">
   <!-- Header -->
-  <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto text-center">
-    <span class="text-gold font-bold tracking-widest text-xs uppercase mb-4 block">
-      Before & After Gallery
-    </span>
-    <h1 class="text-5xl md:text-7xl font-medium italic tracking-tight text-primary font-display mb-6">
-      Real Results.
-    </h1>
-    <p class="max-w-2xl mx-auto text-lg text-text-body leading-relaxed">
-      Confidence in every step, beauty in every reveal. Witness the transformations that go beyond skin deep.
-    </p>
+  <section class="py-16 md:py-24 px-6 text-center">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-gold font-bold tracking-widest text-xs uppercase mb-4 block">
+        Before & After Gallery
+      </span>
+      <h1 class="text-5xl md:text-7xl font-medium italic tracking-tight text-primary font-display mb-6">
+        Real Results.
+      </h1>
+      <p class="max-w-2xl mx-auto text-lg text-text-body leading-relaxed">
+        Confidence in every step, beauty in every reveal. Witness the transformations that go beyond skin deep.
+      </p>
+    </div>
   </section>
 
   <!-- Filter -->
   <CategoryFilter categories={categories} allLabel="All Results" filterId="gallery" />
 
   <!-- Grid -->
-  <section class="max-w-7xl mx-auto px-6 mb-16">
-    <div
-      id="gallery-grid"
-      class="grid grid-cols-1 md:grid-cols-2 gap-8"
-    >
-      {sortedItems.map((item) => (
-        <ResultCard item={item} />
-      ))}
-    </div>
+  <section class="py-16 md:py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div
+        id="gallery-grid"
+        class="grid grid-cols-1 md:grid-cols-2 gap-8"
+      >
+        {sortedItems.map((item) => (
+          <ResultCard item={item} />
+        ))}
+      </div>
 
-    <!-- Results Disclaimer -->
-    <p class="text-xs text-text-body/60 text-center max-w-2xl mx-auto mt-12">
-      Results may vary. All photos used with client consent. Images shown represent actual client outcomes following treatment protocols.
-    </p>
+      <!-- Results Disclaimer -->
+      <p class="text-xs text-text-body/60 text-center max-w-2xl mx-auto mt-12">
+        Results may vary. All photos used with client consent. Images shown represent actual client outcomes following treatment protocols.
+      </p>
+    </div>
   </section>
 
   <!-- CTA Banner -->
   <CTABanner
     headline="Ready to Start Your Journey?"
     body="Every transformation begins with a single step. Schedule your personalized consultation today."
-    primaryCTA={{ text: "Book Your Transformation", href: "https://booking.mangomint.com/912584" }}
+    primaryCTA={{ text: "Book Your Transformation", href: siteConfig.booking.url }}
     secondaryCTA={{ text: "View Treatment Menu", href: "/services" }}
     variant="primary"
   />

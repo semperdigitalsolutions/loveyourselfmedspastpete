@@ -1,6 +1,6 @@
 ---
-title: "Microneedling with PRP & Exosomes"
-shortDescription: "Stimulate collagen, restore radiance, and reveal your skin's youthful glow with next-level regeneration."
+title: "Microneedling with PRP, Exosomes & Stem Cell"
+shortDescription: "Stimulate collagen, restore radiance with PRP, exosomes, or stem cell — next-level regeneration."
 image: "/images/services/microneedling.jpg"
 icon: "dermatology"
 order: 6
@@ -11,6 +11,8 @@ priceRange: "Starting at $300"
 
 ## Next-Level Skin Regeneration
 
+*All Advanced Facials include an InstaSculpting modality for enhanced skin tightening and rejuvenation.*
+
 Microneedling with PRP (Platelet-Rich Plasma) and Exosomes represents the cutting edge of skin rejuvenation. This advanced treatment stimulates your body's own collagen production while delivering powerful growth factors deep into the skin for a naturally radiant, youthful glow.
 
 By creating controlled micro-channels in the skin and infusing them with your body's own healing compounds or exosome technology, we activate a deep regenerative response that refines texture, reduces scarring, and restores luminosity.
@@ -19,6 +21,7 @@ By creating controlled micro-channels in the skin and infusing them with your bo
 
 - **PRP (Platelet-Rich Plasma)** — Your own blood platelets are concentrated and applied to amplify natural healing and collagen production
 - **Exosomes** — Next-generation regenerative technology that delivers growth factors and cellular signals for enhanced skin renewal
+- **Stem Cell** — Harness the regenerative power of stem cell technology for deep tissue repair, collagen production, and visible skin renewal
 - **Microneedling** — Precision-controlled micro-channels stimulate deep collagen remodeling
 
 ## Benefits You May Experience

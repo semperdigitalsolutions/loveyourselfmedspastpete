@@ -1,0 +1,122 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+---
+
+<div
+  id="loyalty-popup-backdrop"
+  class="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-500"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="loyalty-popup-heading"
+>
+  <div
+    id="loyalty-popup-modal"
+    class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 md:p-10 relative scale-95 transition-transform duration-500"
+  >
+    <!-- Close Button -->
+    <button
+      id="loyalty-popup-close"
+      class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+      aria-label="Close membership popup"
+    >
+      <span class="material-symbols-outlined text-xl text-text-body">close</span>
+    </button>
+
+    <!-- Gold Accent Icon -->
+    <div class="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-6">
+      <span class="material-symbols-outlined text-3xl text-gold">loyalty</span>
+    </div>
+
+    <!-- Heading -->
+    <h2
+      id="loyalty-popup-heading"
+      class="text-2xl md:text-3xl font-display font-bold text-text-main mb-3"
+    >
+      Love Yourself Loyalty Membership
+    </h2>
+
+    <!-- Tagline -->
+    <p class="text-gold italic font-display text-sm mb-4">Exclusive Member Benefits</p>
+
+    <!-- Body -->
+    <p class="text-text-body text-base leading-relaxed mb-6">
+      Join our exclusive membership program for special pricing, priority booking, and member-only perks.
+    </p>
+
+    <!-- CTA -->
+    <a
+      href={siteConfig.booking.url}
+      class="btn-primary inline-flex items-center"
+      id="loyalty-popup-cta"
+    >
+      Learn More
+      <span class="material-symbols-outlined ml-2 text-xl">arrow_right_alt</span>
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    // Check if popup was already dismissed this session via sessionStorage
+    try { if (sessionStorage.getItem('loyalty_popup_dismissed')) return; } catch(e) { /* sessionStorage unavailable */ }
+
+    var backdrop = document.getElementById('loyalty-popup-backdrop');
+    var modal = document.getElementById('loyalty-popup-modal');
+    var closeBtn = document.getElementById('loyalty-popup-close');
+    if (!backdrop || !modal || !closeBtn) return;
+
+    function showPopup() {
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100');
+      modal.classList.remove('scale-95');
+      modal.classList.add('scale-100');
+      // Focus the close button for accessibility
+      closeBtn.focus();
+      // Trap focus within modal
+      document.addEventListener('keydown', handleKeydown);
+    }
+
+    function hidePopup() {
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      backdrop.classList.remove('opacity-100');
+      modal.classList.add('scale-95');
+      modal.classList.remove('scale-100');
+      document.removeEventListener('keydown', handleKeydown);
+      // Store dismissal in sessionStorage so it persists across page navigations
+      try { sessionStorage.setItem('loyalty_popup_dismissed', '1'); } catch(e) { /* sessionStorage unavailable */ }
+    }
+
+    function handleKeydown(e) {
+      if (e.key === 'Escape') {
+        hidePopup();
+        return;
+      }
+      // Simple focus trap
+      if (e.key === 'Tab') {
+        var focusable = modal.querySelectorAll(
+          'button, a[href], [tabindex]:not([tabindex="-1"])'
+        );
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    // Close on button click
+    closeBtn.addEventListener('click', hidePopup);
+
+    // Close on backdrop click
+    backdrop.addEventListener('click', function (e) {
+      if (e.target === backdrop) hidePopup();
+    });
+
+    // Show after 4 second delay
+    setTimeout(showPopup, 4000);
+  })();
+</script>

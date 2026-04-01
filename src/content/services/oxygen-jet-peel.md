@@ -1,6 +1,6 @@
 ---
-title: "Oxygen Jet Peel"
-shortDescription: "Infuse hydration and nutrients while gently polishing the skin for an instant glow and luminous finish."
+title: "Korean O2 Jet Peel with Oxygen Therapy"
+shortDescription: "Breathe Life into your skin — Korean oxygen therapy infuses hydration and nutrients for an instant glow."
 image: "/images/services/oxygen-jet-peel.jpg"
 icon: "air"
 order: 9
@@ -9,9 +9,11 @@ duration: "30-45 minutes"
 priceRange: "Starting at $150"
 ---
 
-## Instant Glow and Deep Hydration
+## Breathe Life Into Your Skin
 
-The Oxygen Jet Peel delivers a powerful combination of exfoliation and infusion in one luxurious treatment. Using pressurized oxygen and customized serums, this gentle yet effective procedure polishes the skin's surface while driving hydrating nutrients deep into the dermal layers — leaving you with an immediate, camera-ready glow.
+*All Advanced Facials include an InstaSculpting modality for enhanced skin tightening and rejuvenation.*
+
+The Korean O2 Jet Peel with Oxygen Therapy delivers a powerful combination of exfoliation and infusion in one luxurious treatment. Using high-pressure oxygen and nutrient-rich serums, this innovative Korean beauty treatment deeply cleanses, hydrates, and rejuvenates the skin — infusing vital nutrients at the cellular level for an instant glow and lasting skin health.
 
 This is the perfect treatment before a special event or as part of your regular skincare routine for consistently luminous, healthy-looking skin.
 

@@ -1,0 +1,281 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import Button from '../components/ui/Button.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
+import { siteConfig } from '../data/siteConfig';
+
+const loveskinProducts = [
+  { name: "Fix It Overnight", tagline: "Retinol that means business", icon: "nightlight" },
+  { name: "Turn Back, Babe", tagline: "Anti-aging with attitude", icon: "history" },
+  { name: "Glow Like You Mean It", tagline: "Face oil, but make it confidence", icon: "light_mode" },
+  { name: "Plump It Up", tagline: "Simple, sexy, and effective", icon: "water_drop" },
+  { name: "Behave Yourself", tagline: "Repair + restore glow", icon: "spa" },
+];
+
+const skinVenomProducts = [
+  { name: "Beauty Sleep", tagline: "Beauty repair + restore", icon: "bedtime" },
+  { name: "Don't Touch My Glow", tagline: "Hydration + protection", icon: "shield" },
+  { name: "Blink Twice", tagline: "Hydrating eye cream", icon: "visibility" },
+];
+---
+
+<PageLayout
+  title="Shop Our Skincare"
+  description="Exclusive luxury skincare lines at Love Yourself Med Spa — Loveskin Luxury Clean Skincare and Skin Venom. Vegan, cruelty-free, clean formulations."
+>
+  <!-- Page Hero -->
+  <section class="py-16 md:py-24 px-6 text-center bg-gradient-to-b from-rose-soft/30 to-transparent">
+    <div class="max-w-3xl mx-auto">
+      <span class="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+        Exclusive Skincare
+      </span>
+      <h1 class="text-4xl md:text-6xl font-bold font-display text-text-main mb-8 leading-tight">
+        Luxury Skincare, <span class="text-primary italic">Curated for You</span>
+      </h1>
+      <p class="text-lg md:text-xl text-text-body leading-relaxed">
+        Clean, vegan, cruelty-free formulations designed to complement your in-spa treatments
+        and elevate your daily skincare ritual. Two exclusive lines, one philosophy: love your skin.
+      </p>
+    </div>
+  </section>
+
+  <!-- Loveskin Section -->
+  <section class="py-16 md:py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Image -->
+        <div class="relative">
+          <div class="aspect-[4/5] bg-gradient-to-br from-rose-soft via-white to-rose-soft rounded-2xl overflow-hidden shadow-soft">
+            <img
+              src="/images/products/loveskin.png"
+              alt="Loveskin Luxury Clean Skincare collection — Fix It Overnight, Turn Back Babe, Glow Like You Mean It, Plump It Up, Behave Yourself"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <!-- Badge overlay -->
+          <div class="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-gold block">Luxury Clean</span>
+            <span class="font-display font-bold text-text-main text-sm">Skincare</span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div>
+          <span class="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+            Featured Collection
+          </span>
+          <h2 class="text-3xl md:text-5xl font-bold font-display text-text-main mb-4">
+            Loveskin
+          </h2>
+          <p class="text-xl font-display text-primary font-semibold mb-6">
+            Luxury Clean Skincare
+          </p>
+          <p class="text-text-body text-lg leading-relaxed mb-8">
+            Loveskin is skincare with personality. Every product in this clean, vegan line is formulated
+            to deliver real results — no fillers, no compromises. From overnight retinol repair to
+            glow-boosting face oils, each bottle is designed to make you feel as good as you look.
+          </p>
+
+          <!-- Product Grid -->
+          <div class="space-y-4 mb-10">
+            {loveskinProducts.map((product) => (
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-rose-soft/50 hover:bg-rose-soft transition-colors">
+                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-primary text-lg">{product.icon}</span>
+                </div>
+                <div>
+                  <h3 class="font-display font-bold text-text-main">{product.name}</h3>
+                  <p class="text-text-body text-sm">{product.tagline}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Features -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="inline-flex items-center gap-1.5 bg-white border border-gray-100 px-3 py-1.5 rounded-full text-xs font-bold text-text-body">
+              <span class="material-symbols-outlined text-primary text-sm">eco</span>
+              Vegan
+            </span>
+            <span class="inline-flex items-center gap-1.5 bg-white border border-gray-100 px-3 py-1.5 rounded-full text-xs font-bold text-text-body">
+              <span class="material-symbols-outlined text-primary text-sm">cruelty_free</span>
+              Cruelty-Free
+            </span>
+            <span class="inline-flex items-center gap-1.5 bg-white border border-gray-100 px-3 py-1.5 rounded-full text-xs font-bold text-text-body">
+              <span class="material-symbols-outlined text-primary text-sm">verified</span>
+              Clean Formulas
+            </span>
+            <span class="inline-flex items-center gap-1.5 bg-white border border-gray-100 px-3 py-1.5 rounded-full text-xs font-bold text-text-body">
+              <span class="material-symbols-outlined text-primary text-sm">block</span>
+              No Parabens
+            </span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <Button href={`tel:${siteConfig.phone.replace(/[^0-9+]/g, '')}`} variant="primary" size="lg">
+              <span class="material-symbols-outlined mr-2 text-xl">shopping_bag</span>
+              Call to Order
+            </Button>
+            <Button href={siteConfig.booking.url} variant="secondary" size="lg">
+              Book a Skin Consultation
+              <span class="material-symbols-outlined ml-2 text-xl">arrow_right_alt</span>
+            </Button>
+          </div>
+          <p class="text-text-body/60 text-xs mt-3">
+            <span class="material-symbols-outlined text-xs align-middle mr-1">info</span>
+            Order by phone for in-store pickup · Online purchasing coming soon
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  </div>
+
+  <!-- Skin Venom Section -->
+  <section class="py-16 md:py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Content (left on desktop) -->
+        <div class="order-2 lg:order-1">
+          <span class="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+            Premium Collection
+          </span>
+          <h2 class="text-3xl md:text-5xl font-bold font-display text-text-main mb-4">
+            Skin Venom
+          </h2>
+          <p class="text-xl font-display text-gold font-semibold mb-6">
+            Beauty With Bite
+          </p>
+          <p class="text-text-body text-lg leading-relaxed mb-8">
+            Skin Venom is where luxury meets science. This premium line delivers powerful
+            hydration, overnight repair, and targeted eye care through bold, sophisticated
+            formulations. Vegan and cruelty-free — because beautiful skin shouldn't come at a cost.
+          </p>
+
+          <!-- Product Grid -->
+          <div class="space-y-4 mb-10">
+            {skinVenomProducts.map((product) => (
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-background-offwhite hover:bg-gray-100 transition-colors">
+                <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-gold text-lg">{product.icon}</span>
+                </div>
+                <div>
+                  <h3 class="font-display font-bold text-text-main">{product.name}</h3>
+                  <p class="text-text-body text-sm">{product.tagline}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Features -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="inline-flex items-center gap-1.5 bg-white border border-gray-100 px-3 py-1.5 rounded-full text-xs font-bold text-text-body">
+              <span class="material-symbols-outlined text-gold text-sm">eco</span>
+              Vegan
+            </span>
+            <span class="inline-flex items-center gap-1.5 bg-white border border-gray-100 px-3 py-1.5 rounded-full text-xs font-bold text-text-body">
+              <span class="material-symbols-outlined text-gold text-sm">cruelty_free</span>
+              Cruelty-Free
+            </span>
+            <span class="inline-flex items-center gap-1.5 bg-white border border-gray-100 px-3 py-1.5 rounded-full text-xs font-bold text-text-body">
+              <span class="material-symbols-outlined text-gold text-sm">science</span>
+              Bio-Active
+            </span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <Button href={`tel:${siteConfig.phone.replace(/[^0-9+]/g, '')}`} variant="primary" size="lg">
+              <span class="material-symbols-outlined mr-2 text-xl">shopping_bag</span>
+              Call to Order
+            </Button>
+            <Button href={siteConfig.booking.url} variant="secondary" size="lg">
+              Book a Skin Consultation
+              <span class="material-symbols-outlined ml-2 text-xl">arrow_right_alt</span>
+            </Button>
+          </div>
+          <p class="text-text-body/60 text-xs mt-3">
+            <span class="material-symbols-outlined text-xs align-middle mr-1">info</span>
+            Order by phone for in-store pickup · Online purchasing coming soon
+          </p>
+        </div>
+
+        <!-- Image (right on desktop) -->
+        <div class="relative order-1 lg:order-2">
+          <div class="aspect-[4/5] bg-gradient-to-br from-background-offwhite via-white to-gray-100 rounded-2xl overflow-hidden shadow-soft">
+            <img
+              src="/images/products/venom.png"
+              alt="Skin Venom skincare collection — Beauty Sleep, Don't Touch My Glow, Blink Twice"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <!-- Badge overlay -->
+          <div class="absolute top-6 right-6 bg-background-dark/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-gold block">Premium</span>
+            <span class="font-display font-bold text-white text-sm">Skincare</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Our Skincare Section -->
+  <section class="py-16 md:py-24 px-6 bg-background-offwhite">
+    <div class="max-w-7xl mx-auto">
+      <SectionHeading
+        label="The Difference"
+        title="Why Our Skincare?"
+      />
+      <p class="text-center text-text-body max-w-lg mx-auto -mt-8 mb-16">
+        Products that work as hard as your treatments — extending results and nourishing skin daily.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 text-center shadow-soft">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+            <span class="material-symbols-outlined text-primary text-2xl">science</span>
+          </div>
+          <h3 class="font-display font-bold text-text-main text-lg mb-3">Treatment-Grade</h3>
+          <p class="text-text-body text-sm leading-relaxed">
+            Formulated to complement and extend the results of your in-spa treatments. Professional-level ingredients in every bottle.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 text-center shadow-soft">
+          <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
+            <span class="material-symbols-outlined text-gold text-2xl">eco</span>
+          </div>
+          <h3 class="font-display font-bold text-text-main text-lg mb-3">Clean & Conscious</h3>
+          <p class="text-text-body text-sm leading-relaxed">
+            Vegan, cruelty-free, and free from parabens and harsh chemicals. Skincare that aligns with your values.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 text-center shadow-soft">
+          <div class="w-14 h-14 rounded-full bg-rose/10 flex items-center justify-center mx-auto mb-6">
+            <span class="material-symbols-outlined text-rose text-2xl">favorite</span>
+          </div>
+          <h3 class="font-display font-bold text-text-main text-lg mb-3">Personally Curated</h3>
+          <p class="text-text-body text-sm leading-relaxed">
+            Hand-selected by our team to ensure every product meets our standards for quality, efficacy, and luxury.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner
+    headline="Ready to Glow?"
+    body="Call us to order products for in-store pickup, or book a personalized skin consultation to find your perfect routine."
+    primaryCTA={{ text: `Call ${siteConfig.phone}`, href: `tel:${siteConfig.phone.replace(/[^0-9+]/g, '')}` }}
+    secondaryCTA={{ text: "Book Consultation", href: siteConfig.booking.url }}
+    variant="dark"
+  />
+</PageLayout>

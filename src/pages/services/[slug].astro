@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
+import { siteConfig } from '../../data/siteConfig';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -13,11 +14,15 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props;
 const { Content } = await service.render();
-const { title, shortDescription, image, duration, priceRange } = service.data;
+const { title, shortDescription, image, duration, priceRange, bookingServiceId } = service.data;
+const bookingUrl = bookingServiceId
+  ? `${siteConfig.booking.url}?serviceId=${bookingServiceId}`
+  : siteConfig.booking.url;
 ---
 
 <PageLayout title={title} description={shortDescription}>
-  <article class="max-w-7xl mx-auto px-6 py-16">
+  <section class="py-16 md:py-24 px-6">
+  <article class="max-w-7xl mx-auto">
     <!-- Breadcrumb -->
     <nav class="mb-8 text-sm">
       <a href="/" class="text-text-body hover:text-primary transition-colors">Home</a>
@@ -98,7 +103,7 @@ const { title, shortDescription, image, duration, priceRange } = service.data;
             </div>
           )}
 
-          <Button href="https://booking.mangomint.com/912584" variant="primary" class="w-full justify-center">
+          <Button href={bookingUrl} variant="primary" class="w-full justify-center">
             Book Consultation
           </Button>
 
@@ -109,4 +114,5 @@ const { title, shortDescription, image, duration, priceRange } = service.data;
       </aside>
     </div>
   </article>
+  </section>
 </PageLayout>

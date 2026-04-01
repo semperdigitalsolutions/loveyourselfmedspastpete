@@ -7,6 +7,7 @@ order: 5
 featured: false
 duration: "Consultation-based"
 priceRange: "Custom plans available"
+bookingServiceId: 49
 ---
 
 ## Restore Your Natural Balance

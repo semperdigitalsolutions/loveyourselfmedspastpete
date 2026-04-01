@@ -11,6 +11,8 @@ priceRange: "Starting at $350"
 
 ## Lift, Tighten, and Refine
 
+*All Advanced Facials include an InstaSculpting modality for enhanced skin tightening and rejuvenation.*
+
 RF (Radiofrequency) Microneedling combines the collagen-stimulating power of microneedling with thermal radiofrequency energy delivered deep into the skin. This dual-action treatment tightens, smooths, and rebuilds collagen for a luminous, firm appearance that continues to improve over time.
 
 This advanced technology targets multiple layers of the skin simultaneously, addressing concerns from surface texture to deep tissue laxity — all without surgery or significant downtime.

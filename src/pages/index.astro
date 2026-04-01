@@ -1,32 +1,65 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
-import Hero from '../components/sections/Hero.astro';
-import PhilosophyPillars from '../components/sections/PhilosophyPillars.astro';
-import CTABanner from '../components/sections/CTABanner.astro';
+import PageLayout from "../layouts/PageLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import PhilosophyPillars from "../components/sections/PhilosophyPillars.astro";
+import CTABanner from "../components/sections/CTABanner.astro";
+import LocationMap from "../components/sections/LocationMap.astro";
+import { siteConfig } from "../data/siteConfig";
 ---
 
 <PageLayout
-  title="Luxury Med Spa in Tierra Verde, FL"
-  description="Love Yourself Enough To Transform — A luxury physician-guided med spa devoted to holistic beauty, natural renewal, and total transformation."
+    title="Luxury Med Spa in Tierra Verde, FL"
+    description="Love Yourself Med Spa — A luxury physician-guided med spa devoted to holistic beauty, natural renewal, and total transformation."
 >
-  <Hero
-    badge="Luxury Med Spa"
-    headline="Love Yourself Enough to <em class='text-primary not-italic'>Transform</em>"
-    subheadline="Sculpt. Restore. Elevate. Transform."
-    body="Where medical precision meets luxury indulgence. Advanced, medically guided treatments designed to contour, rejuvenate, and awaken your confidence — so you don't just look refreshed, you look transformed."
-    primaryCTA={{ text: "Book a Consultation", href: "https://booking.mangomint.com/912584" }}
-    secondaryCTA={{ text: "View Treatments", href: "/services" }}
-    featuredCard={{ label: "Signature Experience", title: "Non-Invasive Body Contouring" }}
-    socialProof="Personalized treatments guided by licensed medical professionals"
-  />
+    <Hero
+        badge="Luxury Med Spa"
+        headline="Love Yourself Enough to <em class='text-primary not-italic'>Transform</em>"
+        spaName="Love Yourself Med Spa"
+        subheadline="Restore.Sculpt.Elevate.Transform."
+        body="At Love Yourself, it's about taking time for you. The Spa is a sanctuary where beauty, science and wellness come together to Transform. We specialize in refined aesthetic treatments, thoughtfully designed to enhance natural beauty, restore confidence, and promote overall wellness. Every membership, package and service is intentionally designed to elevate your natural radiance. Where self-love becomes Total Transformation."
+        primaryCTA={{
+            text: "Book a Consultation",
+            href: siteConfig.booking.url,
+        }}
+        secondaryCTA={{ text: "View Treatments", href: "/services" }}
+        featuredCard={{
+            label: "Signature Experience",
+            title: "Non-Invasive Body Contouring",
+        }}
+    />
 
-  <PhilosophyPillars />
+    <!-- Scripture Quote -->
+    <section class="py-16 md:py-24 px-6 bg-white text-center">
+        <div class="max-w-3xl mx-auto">
+            <div class="w-12 h-px bg-gold mx-auto mb-8"></div>
+            <p
+                class="font-display italic text-3xl md:text-4xl text-gray-800 leading-relaxed"
+            >
+                &ldquo;Let <span
+                    class="text-[1.15em] font-semibold tracking-wide">ALL</span
+                > you do be done in love&rdquo;
+            </p>
+            <p
+                class="font-body text-sm text-gray-500 mt-6 tracking-wider uppercase"
+            >
+                1 Corinthians 16:14
+            </p>
+            <div class="w-12 h-px bg-gold mx-auto mt-8"></div>
+        </div>
+    </section>
 
-  <CTABanner
-    headline="Ready to Begin Your Transformation?"
-    body="Every detail is tailored — from our expert medical team and cutting-edge technology to our serene, coastal-luxury atmosphere."
-    primaryCTA={{ text: "Book a Consultation", href: "https://booking.mangomint.com/912584" }}
-    secondaryCTA={{ text: "Explore Services", href: "/services" }}
-    variant="dark"
-  />
+    <PhilosophyPillars />
+
+    <LocationMap />
+
+    <CTABanner
+        headline="Ready to Begin Your Transformation?"
+        body="Every detail is tailored — from our expert medical team and cutting-edge technology to our serene, coastal-luxury atmosphere."
+        primaryCTA={{
+            text: "Book a Consultation",
+            href: siteConfig.booking.url,
+        }}
+        secondaryCTA={{ text: "Explore Services", href: "/services" }}
+        variant="dark"
+    />
 </PageLayout>

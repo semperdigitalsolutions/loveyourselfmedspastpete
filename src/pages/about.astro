@@ -2,6 +2,8 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import ValuePropositions from '../components/sections/ValuePropositions.astro';
 import CTABanner from '../components/sections/CTABanner.astro';
+import LocationMap from '../components/sections/LocationMap.astro';
+import { siteConfig } from '../data/siteConfig';
 ---
 
 <PageLayout
@@ -11,7 +13,7 @@ import CTABanner from '../components/sections/CTABanner.astro';
   <!-- Hero Section -->
   <section class="py-16 md:py-24 px-6 text-center bg-gradient-to-b from-rose-soft/30 to-transparent">
     <div class="max-w-3xl mx-auto">
-      <span class="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-4 block">
+      <span class="text-gold font-bold tracking-widest text-xs uppercase mb-4 block">
         About Us
       </span>
       <h1 class="text-4xl md:text-6xl font-bold font-display text-text-main mb-8 leading-tight">
@@ -27,11 +29,14 @@ import CTABanner from '../components/sections/CTABanner.astro';
   <!-- Value Propositions -->
   <ValuePropositions />
 
+  <!-- Location Map -->
+  <LocationMap />
+
   <!-- CTA Banner -->
   <CTABanner
     headline="Become Who You Always Knew You Could Be"
     body="Step into a serene, nurturing environment where every detail is designed to help you reconnect with your confidence and leave feeling beautifully transformed."
-    primaryCTA={{ text: "Book a Consultation", href: "https://booking.mangomint.com/912584" }}
+    primaryCTA={{ text: "Book a Consultation", href: siteConfig.booking.url }}
     variant="primary"
   />
 </PageLayout>

@@ -2,16 +2,15 @@
 import BaseLayout from './BaseLayout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
+// import LoyaltyPopup from '../components/sections/LoyaltyPopup.astro'; // TODO: Uncomment when memberships are live
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
-  showCTA?: boolean;
 }
 
-const { title, description, ogImage, showCTA: _showCTA = true } = Astro.props;
-// Note: showCTA will be used when CTABanner component is implemented
+const { title, description, ogImage } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} ogImage={ogImage}>
@@ -20,4 +19,5 @@ const { title, description, ogImage, showCTA: _showCTA = true } = Astro.props;
     <slot />
   </main>
   <Footer />
+  <!-- <LoyaltyPopup /> --> <!-- TODO: Uncomment when memberships are live -->
 </BaseLayout>

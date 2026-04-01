@@ -2,10 +2,13 @@
 // Update these values with actual business information
 
 export const siteConfig = {
-  name: 'Love Yourself Enough To Transform',
-  shortName: 'LYETT', // Short version for tight spaces
-  tagline: 'A luxury physician-guided med spa devoted to holistic beauty, natural renewal, and total transformation.',
-  description: 'Luxury med spa in Tierra Verde, FL — advanced medically guided treatments for body contouring, skin rejuvenation, and total wellness transformation.',
+  name: 'Love Yourself Med Spa',
+  shortName: 'LYMS', // Short version for tight spaces
+  tagline:
+    'A luxury physician-guided med spa devoted to holistic beauty, natural renewal, and total transformation.',
+  description:
+    'Luxury med spa in Tierra Verde, FL — advanced medically guided treatments for body contouring, skin rejuvenation, and total wellness transformation.',
+  logo: '/images/general/logo.png',
 
   // Contact Information
   address: {
@@ -15,13 +18,13 @@ export const siteConfig = {
     state: 'FL',
     zip: '33715',
   },
-  phone: '(555) 012-3456',
-  email: 'info@loveyourselfenoughspa.com',
+  phone: '(727) 739-5070',
+  email: 'shari@loveyourselfmedspastpete.com',
 
   // Social Media
   social: {
-    instagram: 'https://instagram.com/loveyourselfenoughspa',
-    facebook: 'https://facebook.com/loveyourselfenoughspa',
+    instagram: '',
+    facebook: '',
   },
 
   // Booking — Mangomint overlay integration (CompanyId 912584)
@@ -31,25 +34,25 @@ export const siteConfig = {
 
   // Business Hours
   hours: {
-    weekdays: '9:00 AM - 6:00 PM',
-    saturday: '10:00 AM - 4:00 PM',
-    sunday: 'Closed',
+    weekdays: '9:00 AM - 9:00 PM',
+    saturday: '9:00 AM - 7:00 PM',
+    sunday: 'By Appointment',
   },
 };
 
 // Navigation links
 export const navItems = [
   { label: 'Services', href: '/services' },
+  { label: 'Products', href: '/products' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Blog', href: '/blog' },
-  { label: 'About', href: '/about' },
 ];
 
 // Footer links
 export const footerLinks = {
   explore: [
-    { label: 'Our Story', href: '/about' },
     { label: 'Services', href: '/services' },
+    { label: 'Products', href: '/products' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Blog', href: '/blog' },
   ],

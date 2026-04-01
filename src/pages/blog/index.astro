@@ -5,6 +5,7 @@ import FeaturedPost from '../../components/blog/FeaturedPost.astro';
 import CategoryFilter from '../../components/ui/CategoryFilter.astro';
 import CTABanner from '../../components/sections/CTABanner.astro';
 import { getCollection } from 'astro:content';
+import { siteConfig } from '../../data/siteConfig';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const sortedPosts = allPosts.sort((a, b) =>
@@ -14,53 +15,52 @@ const sortedPosts = allPosts.sort((a, b) =>
 const featuredPost = sortedPosts.find(post => post.data.featured);
 const regularPosts = sortedPosts.filter(post => post !== featuredPost);
 
-const categories = ['All Posts', 'Skincare', 'Nutrition', 'Treatments', 'Wellness'];
+const categories = ['All Posts', 'Skincare', 'Nutrition', 'Treatments', 'Wellness', 'Faith'];
 ---
 
 <PageLayout title="Blog" description="Wellness insights, self-care tips, and holistic beauty inspiration.">
   <!-- Header -->
-  <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto text-center">
-    <span class="text-gold font-bold tracking-widest text-xs uppercase mb-4 block">
-      Journal of Transformation
-    </span>
-    <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-text-main font-display mb-6">
-      Wellness Insights
-    </h1>
-    <p class="max-w-2xl mx-auto text-lg text-text-body">
-      Stories of beauty, wellness, and holistic renewal.
-    </p>
+  <section class="py-16 md:py-24 px-6 text-center">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-gold font-bold tracking-widest text-xs uppercase mb-4 block">
+        Journal of Transformation
+      </span>
+      <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-text-main font-display mb-6">
+        Wellness Insights
+      </h1>
+      <p class="max-w-2xl mx-auto text-lg text-text-body">
+        Stories of beauty, wellness, and holistic renewal.
+      </p>
+    </div>
   </section>
 
   <!-- Featured Post -->
   {featuredPost && <FeaturedPost post={featuredPost} />}
 
-  <!-- Category Filter -->
-  <CategoryFilter categories={categories} allLabel="All Posts" filterId="blog" />
-
-  <!-- Posts Grid -->
-  <section class="max-w-7xl mx-auto px-6 pb-16">
-    <div
-      id="posts-grid"
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-    >
-      {regularPosts.map((post) => (
-        <BlogCard post={post} />
-      ))}
-    </div>
-
-    {regularPosts.length === 0 && !featuredPost && (
-      <div class="text-center py-16">
-        <span class="material-symbols-outlined text-6xl text-gray-300 mb-4">article</span>
-        <p class="text-text-body">No blog posts available yet. Check back soon!</p>
-      </div>
-    )}
-  </section>
+  <!-- Category Filter & Posts Grid — hidden until more posts are published -->
+  {regularPosts.length > 0 && (
+    <>
+      <CategoryFilter categories={categories} allLabel="All Posts" filterId="blog" />
+      <section class="py-16 md:py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+          <div
+            id="posts-grid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {regularPosts.map((post) => (
+              <BlogCard post={post} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
 
   <!-- CTA Banner -->
   <CTABanner
     headline="Begin Your Transformation"
-    body="Subscribe for weekly inspiration, exclusive wellness tips, and self-care insights."
-    primaryCTA={{ text: "Book Consultation", href: "https://booking.mangomint.com/912584" }}
+    body="Explore weekly inspiration, exclusive wellness tips, and self-care insights."
+    primaryCTA={{ text: "Book Consultation", href: siteConfig.booking.url }}
     secondaryCTA={{ text: "View Services", href: "/services" }}
     variant="dark"
   />

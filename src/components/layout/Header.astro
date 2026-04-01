@@ -8,16 +8,12 @@ const currentPath = Astro.url.pathname;
 <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 group">
-      <span class="material-symbols-outlined text-3xl text-primary">spa</span>
-      <div class="flex flex-col">
-        <span class="font-display font-bold text-base sm:text-lg text-text-main leading-tight">
-          Love Yourself Enough
-        </span>
-        <span class="text-[10px] uppercase tracking-widest text-gold hidden sm:block">
-          To Transform
-        </span>
-      </div>
+    <a href="/" class="flex items-center group">
+      <img
+        src={siteConfig.logo}
+        alt={siteConfig.name}
+        class="h-16 sm:h-20 w-auto"
+      />
     </a>
 
     <!-- Desktop Navigation -->

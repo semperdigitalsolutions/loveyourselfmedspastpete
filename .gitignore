@@ -29,8 +29,12 @@ Thumbs.db
 # Astro
 .astro/
 
+# Playwright MCP
+.playwright-mcp/
+
 # Claude Code
 .claude/
+CLAUDE.local.md
 
 # Netlify
 .netlify/
