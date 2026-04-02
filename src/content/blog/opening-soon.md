@@ -1,11 +1,11 @@
 ---
-title: "A New Chapter in Self-Love: Love Yourself Med Spa is Coming to Tierra Verde"
+title: 'A New Chapter in Self-Love: Love Yourself Med Spa is Coming to Tierra Verde'
 excerpt: "We're thrilled to announce that Love Yourself Med Spa will soon open its doors in Tierra Verde, FL — a luxury sanctuary devoted to holistic beauty, natural renewal, and total transformation."
-author: Love Yourself Med Spa
+author: shari
 publishDate: 2026-03-25
 category: Wellness
 featuredImage: /images/general/hero-treatment.webp
-featuredImageAlt: "Love Yourself Med Spa opening soon in Tierra Verde, FL"
+featuredImageAlt: 'Love Yourself Med Spa opening soon in Tierra Verde, FL'
 readTime: 3
 featured: true
 draft: false
@@ -33,7 +33,7 @@ Every service is guided by licensed medical professionals who share our commitme
 
 At Love Yourself Med Spa, we lead with love. Our name isn't just a brand — it's a daily reminder that self-care is an act of self-love. We're here to help you reconnect with your confidence and embrace the most radiant version of yourself.
 
-*"Let all you do be done in love."* — 1 Corinthians 16:14
+_"Let all you do be done in love."_ — 1 Corinthians 16:14
 
 ## Stay Connected
 
@@ -45,4 +45,4 @@ We can't wait to welcome you. Follow along as we prepare to open our doors and b
 
 **Email:** shari@loveyourselfmedspastpete.com
 
-*Results may vary. Consultations are required prior to all medical aesthetic procedures.*
+_Results may vary. Consultations are required prior to all medical aesthetic procedures._

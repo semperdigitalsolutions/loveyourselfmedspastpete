@@ -4,7 +4,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import BlogCard from '../../components/cards/BlogCard.astro';
 import ShareButtons from '../../components/blog/ShareButtons.astro';
-import { siteConfig } from '../../data/siteConfig';
+import { siteConfig, authors } from '../../data/siteConfig';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -16,164 +16,250 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
-const { title, excerpt, author, publishDate, category, featuredImage, readTime } = post.data;
+const {
+  title,
+  excerpt,
+  author,
+  publishDate,
+  category,
+  featuredImage,
+  readTime,
+} = post.data;
 
 const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
-  year: 'numeric'
+  year: 'numeric',
 });
+
+// Resolve author profile
+const authorKey = author.toLowerCase();
+const authorProfile = authors[authorKey];
 
 // Get related posts
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const currentSlug = post.id.replace(/\.md$/, '');
 const relatedPosts = allPosts
-  .filter(p => p.data.category === category && p.id.replace(/\.md$/, '') !== currentSlug)
+  .filter(
+    (p) =>
+      p.data.category === category && p.id.replace(/\.md$/, '') !== currentSlug,
+  )
   .slice(0, 3);
 ---
 
 <PageLayout title={title} description={excerpt}>
   <section class="py-16 md:py-24 px-6">
-  <article class="max-w-7xl mx-auto">
-    <!-- Breadcrumb -->
-    <nav class="mb-8 text-sm">
-      <a href="/" class="text-text-body hover:text-primary transition-colors">Home</a>
-      <span class="mx-2 text-gray-400">/</span>
-      <a href="/blog" class="text-text-body hover:text-primary transition-colors">Blog</a>
-      <span class="mx-2 text-gray-400">/</span>
-      <span class="text-primary">{title}</span>
-    </nav>
+    <article class="max-w-7xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="mb-8 text-sm">
+        <a href="/" class="text-text-body hover:text-primary transition-colors"
+          >Home</a
+        >
+        <span class="mx-2 text-gray-400">/</span>
+        <a
+          href="/blog"
+          class="text-text-body hover:text-primary transition-colors">Blog</a
+        >
+        <span class="mx-2 text-gray-400">/</span>
+        <span class="text-primary">{title}</span>
+      </nav>
 
-    <div class="grid lg:grid-cols-12 gap-12">
-      <!-- Main Content -->
-      <div class="lg:col-span-8">
-        <!-- Header -->
-        <header class="mb-12">
-          <span class="inline-block text-primary text-sm font-bold uppercase tracking-wider mb-4 bg-primary/10 px-3 py-1 rounded-full">
-            {category}
-          </span>
+      <div class="grid lg:grid-cols-12 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-8">
+          <!-- Header -->
+          <header class="mb-12">
+            <span
+              class="inline-block text-primary text-sm font-bold uppercase tracking-wider mb-4 bg-primary/10 px-3 py-1 rounded-full"
+            >
+              {category}
+            </span>
 
-          <h1 class="text-4xl md:text-5xl font-bold font-display text-text-main mb-6 leading-tight">
-            {title}
-          </h1>
+            <h1
+              class="text-4xl md:text-5xl font-bold font-display text-text-main mb-6 leading-tight"
+            >
+              {title}
+            </h1>
 
-          <div class="flex flex-wrap items-center gap-4 text-sm text-text-body mb-8">
-            <span class="font-medium">{author}</span>
-            <span>•</span>
-            <span>{formattedDate}</span>
-            {readTime && (
-              <>
-                <span>•</span>
-                <span>{readTime} min read</span>
-              </>
-            )}
-          </div>
-
-          <!-- Featured Image -->
-          <div class="aspect-video rounded-2xl overflow-hidden bg-rose-soft">
-            {featuredImage ? (
-              <img
-                src={featuredImage}
-                alt={title}
-                class="w-full h-full object-cover"
-              />
-            ) : (
-              <div class="w-full h-full flex items-center justify-center">
-                <span class="material-symbols-outlined text-8xl text-primary/30">article</span>
-              </div>
-            )}
-          </div>
-        </header>
-
-        <!-- Content -->
-        <div class="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-text-main prose-p:text-text-body prose-a:text-primary prose-strong:text-text-main prose-blockquote:border-l-4 prose-blockquote:border-gold prose-blockquote:bg-rose-soft prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:text-text-main">
-          <Content />
-        </div>
-
-        <!-- Share -->
-        <div class="mt-12 pt-8 border-t border-gray-100">
-          <ShareButtons title={title} />
-        </div>
-      </div>
-
-      <!-- Sidebar -->
-      <aside class="lg:col-span-4">
-        <div class="sticky top-32 space-y-8">
-          <!-- CTA Card -->
-          <div class="bg-background-offwhite rounded-2xl p-8 border border-gray-100">
-            <h3 class="font-display text-xl font-bold text-text-main mb-4">
-              Book a Consultation
-            </h3>
-            <p class="text-text-body text-sm mb-6">
-              Ready to begin your transformation journey? Schedule your personalized consultation today.
-            </p>
-            <Button href={siteConfig.booking.url} variant="primary" class="w-full justify-center">
-              Book Now
-            </Button>
-          </div>
-
-          <!-- Related Articles -->
-          {relatedPosts.length > 0 && (
-            <div>
-              <h4 class="font-display font-bold text-text-main mb-4">
-                Related Articles
-              </h4>
-              <div class="space-y-4">
-                {relatedPosts.map(related => {
-                  const relatedSlug = related.id.replace(/\.md$/, '');
-                  return (
-                    <a
-                      href={`/blog/${relatedSlug}`}
-                      class="flex gap-4 group"
-                    >
-                      <div class="w-20 h-20 rounded-lg bg-rose-soft overflow-hidden flex-shrink-0">
-                        {related.data.featuredImage ? (
-                          <img
-                            src={related.data.featuredImage}
-                            alt={related.data.title}
-                            class="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <div class="w-full h-full flex items-center justify-center">
-                            <span class="material-symbols-outlined text-2xl text-primary/30">article</span>
-                          </div>
-                        )}
-                      </div>
-                      <div>
-                        <h5 class="font-bold text-sm text-text-main group-hover:text-primary transition-colors line-clamp-2">
-                          {related.data.title}
-                        </h5>
-                        {related.data.readTime && (
-                          <span class="text-xs text-text-body/70">
-                            {related.data.readTime} min read
-                          </span>
-                        )}
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
+            <div
+              class="flex flex-wrap items-center gap-4 text-sm text-text-body mb-8"
+            >
+              {
+                authorProfile ? (
+                  <span class="flex items-center gap-2">
+                    <img
+                      src={authorProfile.avatar}
+                      alt={authorProfile.name}
+                      class="w-8 h-8 rounded-full object-cover"
+                    />
+                    <span class="font-medium">{authorProfile.name}</span>
+                  </span>
+                ) : (
+                  <span class="font-medium">{author}</span>
+                )
+              }
+              <span>•</span>
+              <span>{formattedDate}</span>
+              {
+                readTime && (
+                  <>
+                    <span>•</span>
+                    <span>{readTime} min read</span>
+                  </>
+                )
+              }
             </div>
-          )}
+
+            <!-- Featured Image -->
+            <div class="aspect-video rounded-2xl overflow-hidden bg-rose-soft">
+              {
+                featuredImage ? (
+                  <img
+                    src={featuredImage}
+                    alt={title}
+                    class="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center">
+                    <span class="material-symbols-outlined text-8xl text-primary/30">
+                      article
+                    </span>
+                  </div>
+                )
+              }
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div
+            class="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-text-main prose-p:text-text-body prose-a:text-primary prose-strong:text-text-main prose-blockquote:border-l-4 prose-blockquote:border-gold prose-blockquote:bg-rose-soft prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:text-text-main"
+          >
+            <Content />
+          </div>
+
+          <!-- Author Card -->
+          {
+            authorProfile && (
+              <div class="mt-12 pt-8 border-t border-gray-100">
+                <div class="flex items-start gap-5 bg-rose-soft rounded-2xl p-6">
+                  <img
+                    src={authorProfile.avatar}
+                    alt={authorProfile.name}
+                    class="w-20 h-20 rounded-full object-cover flex-shrink-0"
+                  />
+                  <div>
+                    <p class="font-display font-bold text-text-main text-lg">
+                      {authorProfile.name}
+                    </p>
+                    <p class="text-primary text-sm font-medium mb-2">
+                      {authorProfile.role}
+                    </p>
+                    <p class="text-text-body text-sm leading-relaxed">
+                      {authorProfile.bio}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )
+          }
+
+          <!-- Share -->
+          <div class="mt-8 pt-8 border-t border-gray-100">
+            <ShareButtons title={title} />
+          </div>
         </div>
-      </aside>
-    </div>
-  </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-4">
+          <div class="sticky top-32 space-y-8">
+            <!-- CTA Card -->
+            <div
+              class="bg-background-offwhite rounded-2xl p-8 border border-gray-100"
+            >
+              <h3 class="font-display text-xl font-bold text-text-main mb-4">
+                Book a Consultation
+              </h3>
+              <p class="text-text-body text-sm mb-6">
+                Ready to begin your transformation journey? Schedule your
+                personalized consultation today.
+              </p>
+              <Button
+                href={siteConfig.booking.url}
+                variant="primary"
+                class="w-full justify-center"
+              >
+                Book Now
+              </Button>
+            </div>
+
+            <!-- Related Articles -->
+            {
+              relatedPosts.length > 0 && (
+                <div>
+                  <h4 class="font-display font-bold text-text-main mb-4">
+                    Related Articles
+                  </h4>
+                  <div class="space-y-4">
+                    {relatedPosts.map((related) => {
+                      const relatedSlug = related.id.replace(/\.md$/, '');
+                      return (
+                        <a
+                          href={`/blog/${relatedSlug}`}
+                          class="flex gap-4 group"
+                        >
+                          <div class="w-20 h-20 rounded-lg bg-rose-soft overflow-hidden flex-shrink-0">
+                            {related.data.featuredImage ? (
+                              <img
+                                src={related.data.featuredImage}
+                                alt={related.data.title}
+                                class="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <div class="w-full h-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-2xl text-primary/30">
+                                  article
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                          <div>
+                            <h5 class="font-bold text-sm text-text-main group-hover:text-primary transition-colors line-clamp-2">
+                              {related.data.title}
+                            </h5>
+                            {related.data.readTime && (
+                              <span class="text-xs text-text-body/70">
+                                {related.data.readTime} min read
+                              </span>
+                            )}
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              )
+            }
+          </div>
+        </aside>
+      </div>
+    </article>
   </section>
 
   <!-- Continue Reading Section -->
-  {relatedPosts.length > 0 && (
-    <section class="bg-background-offwhite py-16 md:py-24 px-6">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-2xl font-bold font-display text-text-main mb-8">
-          Continue Reading
-        </h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          {relatedPosts.map(related => (
-            <BlogCard post={related} />
-          ))}
+  {
+    relatedPosts.length > 0 && (
+      <section class="bg-background-offwhite py-16 md:py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-2xl font-bold font-display text-text-main mb-8">
+            Continue Reading
+          </h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            {relatedPosts.map((related) => (
+              <BlogCard post={related} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  )}
+      </section>
+    )
+  }
 </PageLayout>

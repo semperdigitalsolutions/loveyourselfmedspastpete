@@ -40,6 +40,19 @@ export const siteConfig = {
   },
 };
 
+// Author profiles for blog posts
+export const authors: Record<
+  string,
+  { name: string; role: string; bio: string; avatar: string }
+> = {
+  shari: {
+    name: 'Shari Irwin',
+    role: 'Owner & CEO',
+    bio: 'With over 15 aesthetic certifications and a foundation in nursing, Shari brings together faith-driven purpose and a passion for transformation to help others achieve beauty, health, and vitality from the inside out.',
+    avatar: '/images/providers/shari_headshot.png',
+  },
+};
+
 // Navigation links
 export const navItems = [
   { label: 'Services', href: '/services' },

@@ -1,19 +1,22 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Button from '../ui/Button.astro';
+import { authors } from '../../data/siteConfig';
 
 interface Props {
   post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
-const { title, excerpt, featuredImage, author, publishDate, readTime } = post.data;
+const { title, excerpt, featuredImage, author, publishDate, readTime } =
+  post.data;
 const slug = post.id.replace(/\.md$/, '');
+const authorProfile = authors[author.toLowerCase()];
 
 const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
-  year: 'numeric'
+  year: 'numeric',
 });
 ---
 
@@ -23,13 +26,17 @@ const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
       <!-- Content -->
       <div class="relative z-10 p-8 md:p-12 lg:p-16">
         <!-- Badge -->
-        <span class="inline-flex items-center gap-2 bg-gold text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-6">
+        <span
+          class="inline-flex items-center gap-2 bg-gold text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-6"
+        >
           <span class="material-symbols-outlined text-sm">auto_awesome</span>
           Editor's Pick
         </span>
 
         <!-- Title -->
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold font-display text-white mb-6 leading-tight">
+        <h2
+          class="text-3xl md:text-4xl lg:text-5xl font-bold font-display text-white mb-6 leading-tight"
+        >
           {title}
         </h2>
 
@@ -39,39 +46,67 @@ const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
         </p>
 
         <!-- Meta -->
-        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-8">
-          <span>{author}</span>
+        <div
+          class="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-8"
+        >
+          {
+            authorProfile ? (
+              <span class="flex items-center gap-2">
+                <img
+                  src={authorProfile.avatar}
+                  alt={authorProfile.name}
+                  class="w-6 h-6 rounded-full object-cover"
+                />
+                <span>{authorProfile.name}</span>
+              </span>
+            ) : (
+              <span>{author}</span>
+            )
+          }
           <span>•</span>
           <span>{formattedDate}</span>
-          {readTime && (
-            <>
-              <span>•</span>
-              <span>{readTime} min read</span>
-            </>
-          )}
+          {
+            readTime && (
+              <>
+                <span>•</span>
+                <span>{readTime} min read</span>
+              </>
+            )
+          }
         </div>
 
         <!-- CTA -->
         <Button href={`/blog/${slug}`} variant="primary">
           Read Article
-          <span class="material-symbols-outlined text-lg ml-2">arrow_right_alt</span>
+          <span class="material-symbols-outlined text-lg ml-2"
+            >arrow_right_alt</span
+          >
         </Button>
       </div>
 
       <!-- Image -->
-      <div class="relative h-64 md:h-full md:absolute md:right-0 md:top-0 md:w-1/2">
-        {featuredImage ? (
-          <img
-            src={featuredImage}
-            alt={title}
-            class="w-full h-full object-cover"
-          />
-        ) : (
-          <div class="w-full h-full bg-primary/20 flex items-center justify-center">
-            <span class="material-symbols-outlined text-8xl text-primary/40">article</span>
-          </div>
-        )}
-        <div class="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/50 to-transparent md:block hidden"></div>
+      <div
+        class="relative h-64 md:h-full md:absolute md:right-0 md:top-0 md:w-1/2"
+      >
+        {
+          featuredImage ? (
+            <img
+              src={featuredImage}
+              alt={title}
+              class="w-full h-full object-cover"
+            />
+          ) : (
+            <div class="w-full h-full bg-primary/20 flex items-center justify-center">
+              <span class="material-symbols-outlined text-8xl text-primary/40">
+                article
+              </span>
+            </div>
+          )
+        }
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-background-dark via-background-dark/50 to-transparent md:block hidden"
+        >
+        </div>
       </div>
     </div>
   </div>
