@@ -39,7 +39,7 @@ _"Let all you do be done in love."_ — 1 Corinthians 16:14
 
 We can't wait to welcome you. Follow along as we prepare to open our doors and begin this beautiful journey together.
 
-**Location:** 1120 Pinellas Bayway S., Suite 208, Tierra Verde, FL 33715
+**Location:** 1120 Pinellas Bayway S., Suite 202, Tierra Verde, FL 33715
 
 **Phone:** (727) 739-5070
 

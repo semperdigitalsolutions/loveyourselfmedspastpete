@@ -13,7 +13,7 @@ export const siteConfig = {
   // Contact Information
   address: {
     street: '1120 Pinellas Bayway S.',
-    suite: 'Suite 208',
+    suite: 'Suite 202',
     city: 'Tierra Verde',
     state: 'FL',
     zip: '33715',
