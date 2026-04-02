@@ -1,12 +1,12 @@
 ---
-title: "Total Transformation Package"
-shortDescription: "GLP-1 Weight Loss, Stacked Peptides, Full Body Lift, and Columbian Wood Therapy — the complete transformation."
-image: "/images/services/total-transformation-package.jpg"
-icon: "diamond"
-order: 34
+title: 'Total Transformation Package'
+shortDescription: 'GLP-1 Weight Loss, Stacked Peptides, Full Body Lift, and Columbian Wood Therapy — the complete transformation.'
+image: '/images/services/total-transformation-package.jpg'
+icon: 'diamond'
+order: 5
 featured: true
-duration: "Ongoing program"
-priceRange: "Custom packages available"
+duration: 'Ongoing program'
+priceRange: 'Custom packages available'
 ---
 
 ## The Complete Transformation Experience

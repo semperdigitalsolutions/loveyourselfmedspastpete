@@ -1,12 +1,12 @@
 ---
-title: "Red Light Therapy"
-shortDescription: "Advanced light energy for anti-aging, inflammation reduction, and deep cellular renewal."
-image: "/images/services/red-light-therapy.jpg"
-icon: "light_mode"
-order: 2
+title: 'Red Light Therapy'
+shortDescription: 'Advanced light energy for anti-aging, inflammation reduction, and deep cellular renewal.'
+image: '/images/services/red-light-therapy.jpg'
+icon: 'light_mode'
+order: 8
 featured: true
-duration: "20-30 minutes"
-priceRange: "Starting at $75"
+duration: '20-30 minutes'
+priceRange: 'Starting at $75'
 ---
 
 ## Illuminate Your Natural Radiance

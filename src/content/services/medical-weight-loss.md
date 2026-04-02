@@ -1,19 +1,19 @@
 ---
-title: "GLP-1 Medical Weight Loss"
-shortDescription: "GLP-1 medically supervised weight loss with stacked peptides, functional nutrition and exercise programs."
-image: "/images/services/medical-weight-loss.jpg"
-icon: "monitor_weight"
-order: 31
+title: 'GLP-1 Medical Weight Loss'
+shortDescription: 'GLP-1 medically supervised weight loss with stacked peptides, functional nutrition and exercise programs.'
+image: '/images/services/medical-weight-loss.jpg'
+icon: 'monitor_weight'
+order: 2
 featured: true
-duration: "Consultation-based"
-priceRange: "Custom plans available"
+duration: 'Consultation-based'
+priceRange: 'Custom plans available'
 ---
 
 ## Your Personalized Path to Total Transformation
 
 Our GLP-1 Medical Weight Loss program goes beyond fad diets and quick fixes. Guided by licensed medical professionals, we create a personalized plan tailored to your body's unique needs, metabolism, and wellness goals — supporting lasting transformation from the inside out.
 
-*Stacked Peptide Program at your call.*
+_Stacked Peptide Program at your call._
 
 This program combines GLP-1 therapy, stacked peptides, functional nutrition, and exercise programs with a holistic understanding of your lifestyle to help you achieve sustainable results that make you feel powerful, confident, and aligned with the best version of yourself.
 

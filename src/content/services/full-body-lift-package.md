@@ -1,12 +1,12 @@
 ---
-title: "Full Body Lift Package"
-shortDescription: "A comprehensive non-invasive body lift combining advanced sculpting, tightening, and contouring for total transformation."
-image: "/images/services/full-body-lift-package.jpg"
-icon: "accessibility_new"
-order: 33
+title: 'Full Body Lift Package'
+shortDescription: 'A comprehensive non-invasive body lift combining advanced sculpting, tightening, and contouring for total transformation.'
+image: '/images/services/full-body-lift-package.jpg'
+icon: 'accessibility_new'
+order: 4
 featured: true
-duration: "Multiple sessions"
-priceRange: "Custom packages available"
+duration: 'Multiple sessions'
+priceRange: 'Custom packages available'
 ---
 
 ## The Ultimate Non-Invasive Body Transformation

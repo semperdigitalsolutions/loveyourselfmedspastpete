@@ -1,12 +1,12 @@
 ---
-title: "IV Therapy, Kangen Water & Wellness Drips"
-shortDescription: "Deep hydration, radiant skin, energy, and recovery through customized vitamin infusions and Kangen Water."
-image: "/images/services/iv-therapy.jpg"
-icon: "vaccines"
-order: 3
+title: 'IV Therapy, Kangen Water & Wellness Drips'
+shortDescription: 'Deep hydration, radiant skin, energy, and recovery through customized vitamin infusions and Kangen Water.'
+image: '/images/services/iv-therapy.jpg'
+icon: 'vaccines'
+order: 10
 featured: true
-duration: "1-3 hours"
-priceRange: "Consultation Required"
+duration: '1-3 hours'
+priceRange: 'Consultation Required'
 bookingServiceId: 20
 ---
 
@@ -19,41 +19,49 @@ Whether you're recovering from illness, preparing for a big event, managing stre
 ## Our IV Therapy Menu
 
 ### Hydration
+
 This IV is designed to match the natural components of the circulatory system. When you choose the Hydration IV, a registered nurse will infuse the exact amount of fluid that's right for your body based on a scientifically proven fluid volume calculation.
 
 **Bag contains:** 0.9% sodium chloride or lactated ringer's solution (based on availability)
 
 ### Myers Cocktail
+
 John Myers, M.D. formulated this mixture of vitamins and minerals to treat various acute and chronic inflammatory conditions such as asthma, migraines, Chronic Fatigue Syndrome, Fibromyalgia, acute muscle spasm, upper respiratory infections, chronic sinusitis, seasonal allergies, and cardiovascular disease. Anyone can benefit from this nutritious blend of nutrients.
 
 **Bag contains:** B-complex, Vitamin C, Magnesium, Calcium Gluconate, & B-12
 
 ### Immunity
+
 Choose this IV if you plan on traveling soon, if you're going to be exposed to large groups of people, or you simply want to maintain a resilient immune system.
 
 **Bag contains:** Mineral blend, b-complex, b-12, glutathione, zinc, magnesium, calcium & vitamin C
 
 ### Nausea & Bellyache
+
 This vitamin and mineral infusion is formulated to help reduce symptoms of nausea or an upset stomach. Pick this treatment if you're pregnant and experiencing morning sickness or just feeling sick to your stomach.
 
 **Bag contains:** Mineral blend, b-complex, b-12, glutathione, zinc, magnesium, calcium, & vitamin C
 
 ### Headache
+
 This IV treatment has been formulated with the components needed to combat a headache or migraine.
 
 **Bag contains:** Magnesium, b-complex, zofran, toradol, benadryl, amino acids, zinc, and B-12 shot
 
 ### Hangover
+
 This IV treatment contains the vitamins, minerals, and drugs needed to help reduce symptoms of a hangover.
 
 **Bag contains:** Magnesium, B-complex, B-12, amino blend, glutathione, Toradol, & Zofran
 
 ### High Dose Vitamin C
+
 Vitamin C is a crucial component of the immune system, and it cuts down the time it takes the body to fight infection. Vitamin C activates and converts other nutrients, like B vitamins and folic acid, into fuel for the metabolism. You can't go wrong with vitamin C, so pick this IV if you're fighting an acute illness such as the common flu or a chronic condition such as cancer.
 
 **Bag contains:** 15 to 100g of vitamin C (dosage varies based on consultation)
 
 ### NAD+
+
 Choose the NAD+ IV if you're serious about your health and you want your body to function at its absolute best. NAD+ is an extremely powerful coenzyme and antioxidant that can be found in all living cells and supports the optimal functioning of all chemical processes in the body.
 
 **Bag contains:** NAD+, amino acids, taurine, & vitamin B-12

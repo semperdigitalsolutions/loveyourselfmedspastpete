@@ -1,12 +1,12 @@
 ---
-title: "Hormone & Peptide Therapy"
-shortDescription: "Restore balance, vitality, and wellness through medically guided hormone and peptide optimization."
-image: "/images/services/hormone-peptide-therapy.jpg"
-icon: "biotech"
-order: 5
+title: 'Hormone & Peptide Therapy'
+shortDescription: 'Restore balance, vitality, and wellness through medically guided hormone and peptide optimization.'
+image: '/images/services/hormone-peptide-therapy.jpg'
+icon: 'biotech'
+order: 11
 featured: false
-duration: "Consultation-based"
-priceRange: "Custom plans available"
+duration: 'Consultation-based'
+priceRange: 'Custom plans available'
 bookingServiceId: 49
 ---
 

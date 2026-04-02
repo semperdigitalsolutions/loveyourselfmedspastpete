@@ -1,12 +1,12 @@
 ---
-title: "Japanese Med Head Spa"
-shortDescription: "A luxurious scalp experience with Red Light Therapy, microneedling exosomes, promoting hair growth, revitalization, and overall scalp health."
-image: "/images/services/med-head-spa.jpg"
-icon: "self_improvement"
+title: 'Hair Rejuvenation Med Head Spa'
+shortDescription: 'A luxurious scalp experience with Red Light Therapy, microneedling exosomes, promoting hair growth, revitalization, and overall scalp health.'
+image: '/images/services/med-head-spa.jpg'
+icon: 'self_improvement'
 order: 14
 featured: false
-duration: "45-60 minutes"
-priceRange: "Starting at $125"
+duration: '45-60 minutes'
+priceRange: 'Starting at $125'
 ---
 
 ## A Sanctuary for Your Scalp and Mind
@@ -18,23 +18,29 @@ In our fast-paced world, we carry stress in our scalp, jaw, and neck—areas oft
 ## The Treatment Journey
 
 ### Scalp Analysis
+
 We begin with a detailed scalp assessment using advanced imaging to identify areas of concern—whether dryness, excess oil, product buildup, or early signs of thinning.
 
 ### Deep Cleansing Ritual
+
 A thorough cleanse removes buildup, environmental pollutants, and dead skin cells that can clog follicles and impede healthy hair growth.
 
 ### Therapeutic Massage
+
 Extended scalp, neck, and shoulder massage using specialized techniques to release tension, improve circulation, and stimulate hair follicles.
 
 ### Treatment Application
+
 Customized serums and treatments are applied based on your scalp's needs—whether for hydration, strengthening, growth stimulation, or oil balancing.
 
 ### Relaxation Experience
+
 The session concludes with aromatherapy and extended relaxation time, allowing the treatments to penetrate and your mind to fully unwind.
 
 ## Benefits of Med Head Spa
 
 ### For Your Hair
+
 - **Stimulates hair growth** through improved circulation
 - **Strengthens follicles** and reduces breakage
 - **Balances scalp** oil production
@@ -42,6 +48,7 @@ The session concludes with aromatherapy and extended relaxation time, allowing t
 - **Creates optimal conditions** for healthy hair
 
 ### For Your Wellbeing
+
 - **Relieves tension** headaches and TMJ discomfort
 - **Reduces stress** and promotes relaxation
 - **Improves sleep** quality

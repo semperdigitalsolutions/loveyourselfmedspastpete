@@ -1,12 +1,12 @@
 ---
-title: "Head Spa"
-shortDescription: "A luxurious scalp therapy experience combining deep cleansing, massage, and relaxation for scalp health."
-image: "/images/services/head-spa.jpg"
-icon: "self_improvement"
+title: 'Japanese Head Spa'
+shortDescription: 'A luxurious scalp therapy experience combining deep cleansing, massage, and relaxation for scalp health.'
+image: '/images/services/head-spa.jpg'
+icon: 'self_improvement'
 order: 25
 featured: false
-duration: "45-60 minutes"
-priceRange: "Starting at $100"
+duration: '45-60 minutes'
+priceRange: 'Starting at $100'
 ---
 
 ## A Sanctuary for Your Scalp and Mind

@@ -1,12 +1,12 @@
 ---
-title: "Non-Invasive Facelift, BBL & Tummy Tuck"
-shortDescription: "Dramatic results without surgery — advanced non-invasive facelift, BBL, and tummy tuck alternatives."
-image: "/images/services/non-invasive-facelift-bbl-tummy-tuck.jpg"
-icon: "auto_awesome"
-order: 32
+title: 'Non-Invasive Facelift, BBL & Tummy Tuck'
+shortDescription: 'Dramatic results without surgery — advanced non-invasive facelift, BBL, and tummy tuck alternatives.'
+image: '/images/services/non-invasive-facelift-bbl-tummy-tuck.jpg'
+icon: 'auto_awesome'
+order: 3
 featured: true
-duration: "60-90 minutes"
-priceRange: "Consultation Required"
+duration: '60-90 minutes'
+priceRange: 'Consultation Required'
 bookingServiceId: 45
 ---
 
@@ -17,12 +17,15 @@ Experience the future of aesthetic enhancement with our non-invasive facelift, B
 ## Our Non-Invasive Treatments
 
 ### Non-Invasive Facelift
+
 Advanced technology lifts, tightens, and rejuvenates the face and neck for a refreshed, youthful appearance. This treatment stimulates collagen production and firms sagging skin without a single incision.
 
 ### Non-Invasive BBL
+
 Sculpt and lift the buttocks naturally with our non-surgical BBL alternative. This treatment contours and enhances your natural shape using advanced body sculpting technology for a fuller, more lifted appearance.
 
 ### Non-Invasive Tummy Tuck
+
 Target stubborn abdominal fat and loose skin with our non-surgical tummy tuck alternative. This treatment combines fat reduction with skin tightening to deliver a flatter, more toned midsection.
 
 ## Benefits

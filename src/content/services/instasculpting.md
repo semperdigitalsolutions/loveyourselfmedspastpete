@@ -1,12 +1,12 @@
 ---
-title: "InstaSculpting HD3 Body Contouring"
-shortDescription: "Revolutionary HD3 body sculpting — 3x the strength, 3x the results. 5 treatments in one session. Ask about 2 inches."
-image: "/images/services/instasculpting.jpg"
-icon: "fitness_center"
+title: 'InstaSculpting HD3 Body Contouring'
+shortDescription: 'Revolutionary HD3 body sculpting — 3x the strength, 3x the results. 5 treatments in one session. Ask about 2 inches.'
+image: '/images/services/instasculpting.jpg'
+icon: 'fitness_center'
 order: 1
 featured: true
-duration: "45-60 minutes"
-priceRange: "Starting at $250"
+duration: '45-60 minutes'
+priceRange: 'Starting at $250'
 bookingServiceId: 19
 ---
 
@@ -14,7 +14,7 @@ bookingServiceId: 19
 
 InstaSculpting HD3 is our revolutionary, next-generation body contouring treatment — delivering 3x the strength and 3x the results of traditional body sculpting. With 5 treatments combined into one powerful session, HD3 technology targets stubborn fat cells while toning and tightening the skin for a dramatically sculpted silhouette.
 
-*Ask about 2 inches.*
+_Ask about 2 inches._
 
 Our state-of-the-art HD3 technology works beneath the surface to break down fat cells, which are then naturally eliminated by your body over the following weeks. The result is a more contoured, sculpted appearance without surgery, needles, or downtime.
 
