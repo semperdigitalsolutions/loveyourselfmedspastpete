@@ -1,15 +1,16 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 // Blog collection
 const blog = defineCollection({
-  type: "content",
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
     excerpt: z.string().max(300),
-    author: z.string().default("Shari"),
+    author: z.string().default('Shari'),
     publishDate: z.date(),
     updatedDate: z.date().optional(),
-    category: z.enum(["Skincare", "Nutrition", "Treatments", "Wellness"]),
+    category: z.enum(['Skincare', 'Nutrition', 'Treatments', 'Wellness']),
     featuredImage: z.string(),
     featuredImageAlt: z.string().optional(),
     readTime: z.number().optional(),
@@ -20,7 +21,7 @@ const blog = defineCollection({
 
 // Services collection
 const services = defineCollection({
-  type: "content",
+  loader: glob({ pattern: '**/*.md', base: './src/content/services' }),
   schema: z.object({
     title: z.string(),
     shortDescription: z.string().max(200),
@@ -36,14 +37,14 @@ const services = defineCollection({
 
 // Gallery collection (before/after results)
 const gallery = defineCollection({
-  type: "data",
+  loader: glob({ pattern: '**/*.json', base: './src/content/gallery' }),
   schema: z.object({
     title: z.string(),
     category: z.enum([
-      "Body Contouring",
-      "Facials",
-      "Injectables",
-      "Holistic Wellness",
+      'Body Contouring',
+      'Facials',
+      'Injectables',
+      'Holistic Wellness',
     ]),
     beforeImage: z.string(),
     afterImage: z.string(),
