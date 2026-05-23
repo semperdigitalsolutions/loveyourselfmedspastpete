@@ -9,7 +9,7 @@ import { siteConfig, authors } from '../../data/siteConfig';
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => ({
-    params: { slug: post.id.replace(/\.md$/, '') },
+    params: { slug: post.id },
     props: { post },
   }));
 }
@@ -38,12 +38,9 @@ const authorProfile = authors[authorKey];
 
 // Get related posts
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-const currentSlug = post.id.replace(/\.md$/, '');
+const currentSlug = post.id;
 const relatedPosts = allPosts
-  .filter(
-    (p) =>
-      p.data.category === category && p.id.replace(/\.md$/, '') !== currentSlug,
-  )
+  .filter((p) => p.data.category === category && p.id !== currentSlug)
   .slice(0, 3);
 ---
 
@@ -201,10 +198,9 @@ const relatedPosts = allPosts
                   </h4>
                   <div class="space-y-4">
                     {relatedPosts.map((related) => {
-                      const relatedSlug = related.id.replace(/\.md$/, '');
                       return (
                         <a
-                          href={`/blog/${relatedSlug}`}
+                          href={`/blog/${related.id}`}
                           class="flex gap-4 group"
                         >
                           <div class="w-20 h-20 rounded-lg bg-rose-soft overflow-hidden flex-shrink-0">

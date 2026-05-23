@@ -7,7 +7,7 @@ interface Props {
 
 const { service } = Astro.props;
 const { title, shortDescription, image } = service.data;
-const slug = service.id.replace(/\.md$/, '');
+const slug = service.id;
 ---
 
 <a

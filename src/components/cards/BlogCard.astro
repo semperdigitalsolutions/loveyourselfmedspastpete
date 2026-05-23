@@ -8,7 +8,7 @@ interface Props {
 const { post } = Astro.props;
 const { title, excerpt, category, featuredImage, publishDate, readTime } =
   post.data;
-const slug = post.id.replace(/\.md$/, '');
+const slug = post.id;
 
 const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
   month: 'long',

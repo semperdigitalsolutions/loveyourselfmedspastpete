@@ -7,7 +7,7 @@ import { siteConfig } from '../../data/siteConfig';
 export async function getStaticPaths() {
   const services = await getCollection('services');
   return services.map((service) => ({
-    params: { slug: service.id.replace(/\.md$/, '') },
+    params: { slug: service.id },
     props: { service },
   }));
 }

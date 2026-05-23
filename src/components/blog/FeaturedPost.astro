@@ -10,7 +10,7 @@ interface Props {
 const { post } = Astro.props;
 const { title, excerpt, featuredImage, author, publishDate, readTime } =
   post.data;
-const slug = post.id.replace(/\.md$/, '');
+const slug = post.id;
 const authorProfile = authors[author.toLowerCase()];
 
 const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
