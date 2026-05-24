@@ -5,6 +5,10 @@ import OfferHero from '../components/offer/OfferHero.astro';
 import TrustStrip from '../components/offer/TrustStrip.astro';
 import OfferServices from '../components/offer/OfferServices.astro';
 import WhyChoose from '../components/offer/WhyChoose.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
+import { siteConfig } from '../data/siteConfig';
+
+const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
 ---
 
 <BaseLayout
@@ -18,5 +22,15 @@ import WhyChoose from '../components/offer/WhyChoose.astro';
     <TrustStrip />
     <OfferServices />
     <WhyChoose />
+    <CTABanner
+      headline="Limited Time: 20% Off Your First Treatment"
+      body="Start your journey to radiant, confident skin today."
+      primaryCTA={{
+        text: 'Book Your Consultation',
+        href: siteConfig.booking.url,
+      }}
+      secondaryCTA={{ text: `Call ${siteConfig.phone}`, href: telHref }}
+      variant="dark"
+    />
   </main>
 </BaseLayout>
