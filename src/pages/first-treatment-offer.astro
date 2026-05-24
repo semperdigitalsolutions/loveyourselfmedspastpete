@@ -37,10 +37,17 @@ const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
   <OfferFooter />
   <script is:inline>
     // Google Ads conversion tracking for this landing page.
-    // Replace AW-XXXXXXXXX and the *_LABEL placeholders with the real Google
-    // Ads conversion ID + labels. The gtag base tag must also be added to
-    // BaseLayout's <head> once the owner provides the ID; until then this is
-    // inert (guarded by the typeof check).
+    //
+    // TO GO LIVE, the owner must do two things:
+    //   1. Add the Google Ads global site tag (gtag.js) to BaseLayout's head:
+    //      load googletagmanager.com/gtag/js?id=AW-XXXXXXXXX (async), then
+    //      initialize with gtag('js', new Date()) and gtag('config','AW-XXXXXXXXX').
+    //   2. Replace AW-XXXXXXXXX and the BOOK_LABEL / CALL_LABEL placeholders
+    //      below with the real conversion ID and conversion labels.
+    //
+    // Until then this is inert (guarded by the typeof check below).
+    // A delegated listener on document is used so any booking/tel link — including
+    // ones injected dynamically (e.g. a Mangomint floating button) — is covered.
     function lymsTrackConversion(label) {
       if (typeof window.gtag === 'function') {
         window.gtag('event', 'conversion', {
@@ -48,15 +55,14 @@ const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
         });
       }
     }
-    document
-      .querySelectorAll('a[href*="booking.mangomint.com"]')
-      .forEach((el) =>
-        el.addEventListener('click', () => lymsTrackConversion('BOOK_LABEL')),
-      );
-    document
-      .querySelectorAll('a[href^="tel:"]')
-      .forEach((el) =>
-        el.addEventListener('click', () => lymsTrackConversion('CALL_LABEL')),
-      );
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link) return;
+      if (link.href.includes('booking.mangomint.com')) {
+        lymsTrackConversion('BOOK_LABEL');
+      } else if (link.href.startsWith('tel:')) {
+        lymsTrackConversion('CALL_LABEL');
+      }
+    });
   </script>
 </BaseLayout>
