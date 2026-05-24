@@ -6,6 +6,7 @@ import TrustStrip from '../components/offer/TrustStrip.astro';
 import OfferServices from '../components/offer/OfferServices.astro';
 import WhyChoose from '../components/offer/WhyChoose.astro';
 import CTABanner from '../components/sections/CTABanner.astro';
+import OfferFooter from '../components/offer/OfferFooter.astro';
 import { siteConfig } from '../data/siteConfig';
 
 const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
@@ -33,4 +34,5 @@ const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
       variant="dark"
     />
   </main>
+  <OfferFooter />
 </BaseLayout>

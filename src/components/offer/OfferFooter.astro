@@ -1,0 +1,60 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+
+const { address, phone } = siteConfig;
+const telHref = `tel:+1${phone.replace(/\D/g, '')}`;
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-background-dark text-white/80 px-6 py-12">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 items-start">
+    <div>
+      <img
+        src="/images/general/logo.png"
+        alt="Love Yourself Med Spa logo"
+        class="h-12 w-auto mb-4"
+      />
+      <p class="text-sm">
+        Physician-guided aesthetic care in a luxurious, welcoming environment.
+      </p>
+    </div>
+    <div class="text-sm space-y-2">
+      <p class="flex items-start gap-2">
+        <span
+          class="material-symbols-outlined text-primary text-lg"
+          aria-hidden="true">location_on</span
+        >
+        <span
+          >{address.street}
+          {address.suite}, {address.city}, {address.state}
+          {address.zip}</span
+        >
+      </p>
+      <p class="flex items-center gap-2">
+        <span
+          class="material-symbols-outlined text-primary text-lg"
+          aria-hidden="true">call</span
+        >
+        <a href={telHref} class="hover:text-primary">{phone}</a>
+      </p>
+      <p class="flex items-center gap-2">
+        <span
+          class="material-symbols-outlined text-primary text-lg"
+          aria-hidden="true">schedule</span
+        >
+        <span>Mon–Fri {siteConfig.hours.weekdays}</span>
+      </p>
+    </div>
+    <div class="text-xs text-white/60 space-y-3">
+      <p>
+        New clients only. Consultation required. Cannot be combined with other
+        offers. Some exclusions may apply.
+      </p>
+      <div class="flex gap-4">
+        <a href="/privacy" class="hover:text-primary">Privacy Policy</a>
+        <a href="/terms" class="hover:text-primary">Terms of Service</a>
+      </div>
+      <p>© {year} Love Yourself Med Spa. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
