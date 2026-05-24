@@ -1,0 +1,61 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+
+const points = [
+  {
+    icon: 'verified',
+    label: 'Medical Expertise',
+    sub: 'Board-certified providers with years of experience',
+  },
+  {
+    icon: 'spa',
+    label: 'Natural Results',
+    sub: 'Enhancing your beauty — never overdone',
+  },
+  {
+    icon: 'favorite',
+    label: 'Compassionate Care',
+    sub: "We listen, we care, we're with you",
+  },
+  {
+    icon: 'science',
+    label: 'Premium Products',
+    sub: 'Only industry-leading, medical-grade solutions',
+  },
+];
+---
+
+<section class="bg-rose-soft px-6 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto">
+    <SectionHeading title="Why Choose Love Yourself Med Spa?" />
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="grid grid-cols-2 gap-8">
+        {
+          points.map((p) => (
+            <div>
+              <span
+                class="material-symbols-outlined text-primary text-3xl mb-2"
+                aria-hidden="true"
+              >
+                {p.icon}
+              </span>
+              <p class="font-display font-bold text-text-main">{p.label}</p>
+              <p class="text-sm text-text-body mt-1">{p.sub}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-soft">
+        <p class="text-gold text-2xl mb-4" aria-hidden="true">★★★★★</p>
+        <p class="font-display text-xl text-text-main italic leading-relaxed">
+          "From your first consultation, our team builds a personalized plan
+          around your goals — so you feel cared for, informed, and confident
+          every step of the way."
+        </p>
+        <p class="mt-4 text-sm text-text-body font-semibold">
+          — The Love Yourself Med Spa Team
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
