@@ -8,28 +8,33 @@ const services = [
     title: 'HydraFacial',
     description: 'Deeply cleanse, hydrate and reveal your natural glow.',
     image: '/images/offer/service-hydrafacial.png',
+    alt: 'HydraFacial hydradermabrasion facial treatment',
   },
   {
     title: 'Microneedling',
     description: 'Stimulate collagen, smooth texture and support skin renewal.',
     image: '/images/offer/service-microneedling.png',
+    alt: 'Microneedling skin-renewal treatment',
   },
   {
     title: 'Body Contouring',
     description:
       'Tone, tighten and sculpt with advanced non-invasive technology.',
     image: '/images/offer/service-body-contouring.png',
+    alt: 'Non-invasive body contouring treatment',
   },
   {
     title: 'Chemical Peels',
     description: 'Refine, brighten and reveal smoother, clearer-looking skin.',
     image: '/images/offer/service-chemical-peels.png',
+    alt: 'Chemical peel being applied to glowing skin',
   },
   {
     title: 'Injectables',
     description:
       'Enhance your natural beauty with personalized aesthetic options.',
     image: '/images/offer/service-injectables.png',
+    alt: 'Aesthetic injectable treatment',
   },
 ];
 ---
@@ -37,14 +42,16 @@ const services = [
 <section class="bg-background-light px-6 py-16 md:py-24">
   <div class="max-w-7xl mx-auto">
     <SectionHeading label="Inside-Out Beauty" title="Our Signature Services" />
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
+    >
       {
         services.map((s) => (
-          <article class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-soft">
+          <article class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-soft hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
             <div class="aspect-[4/3] overflow-hidden bg-rose-soft">
               <img
                 src={s.image}
-                alt={s.title}
+                alt={s.alt}
                 class="w-full h-full object-cover"
               />
             </div>
