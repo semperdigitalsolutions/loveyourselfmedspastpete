@@ -1,53 +1,58 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import OfferHeader from '../components/offer/OfferHeader.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import OfferHero from '../components/offer/OfferHero.astro';
 import TrustStrip from '../components/offer/TrustStrip.astro';
 import OfferServices from '../components/offer/OfferServices.astro';
 import WhyChoose from '../components/offer/WhyChoose.astro';
 import CTABanner from '../components/sections/CTABanner.astro';
-import OfferFooter from '../components/offer/OfferFooter.astro';
 import { siteConfig } from '../data/siteConfig';
 
 const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
 ---
 
-<BaseLayout
+<PageLayout
   title="20% Off Your First Treatment"
   description="New client offer: enjoy 20% off your first treatment at Love Yourself Med Spa in Tierra Verde, near St. Pete."
   noindex={true}
 >
-  <OfferHeader />
-  <main class="flex-1">
-    <OfferHero />
-    <TrustStrip />
-    <OfferServices />
-    <WhyChoose />
-    <CTABanner
-      headline="Limited Time: 20% Off Your First Treatment"
-      body="Start your journey to radiant, confident skin today."
-      primaryCTA={{
-        text: 'Book Your Consultation',
-        href: siteConfig.booking.url,
-      }}
-      secondaryCTA={{ text: `Call ${siteConfig.phone}`, href: telHref }}
-      variant="dark"
-    />
-  </main>
-  <OfferFooter />
+  <OfferHero />
+  <TrustStrip />
+  <OfferServices />
+  <WhyChoose />
+  <CTABanner
+    headline="Limited Time: 20% Off Your First Treatment"
+    body="Start your journey to radiant, confident skin today."
+    primaryCTA={{
+      text: 'Book Your Consultation',
+      href: siteConfig.booking.url,
+    }}
+    secondaryCTA={{ text: `Call ${siteConfig.phone}`, href: telHref }}
+    variant="dark"
+  />
+
+  <!-- Offer terms (the site footer carries the medical disclaimer; this carries the offer-specific fine print) -->
+  <section class="px-6 pb-16">
+    <p class="max-w-3xl mx-auto text-center text-xs text-text-body/70">
+      New clients only. Consultation required. Cannot be combined with other
+      offers. Some exclusions may apply.
+    </p>
+  </section>
+
   <script is:inline>
     // Google Ads conversion tracking for this landing page.
     //
     // TO GO LIVE, the owner must do two things:
-    //   1. Add the Google Ads global site tag (gtag.js) to BaseLayout's head:
-    //      load googletagmanager.com/gtag/js?id=AW-XXXXXXXXX (async), then
-    //      initialize with gtag('js', new Date()) and gtag('config','AW-XXXXXXXXX').
+    //   1. Add the Google Ads global site tag (gtag.js) to the site head
+    //      (BaseLayout): load googletagmanager.com/gtag/js?id=AW-XXXXXXXXX
+    //      (async), then initialize with gtag('js', new Date()) and
+    //      gtag('config','AW-XXXXXXXXX').
     //   2. Replace AW-XXXXXXXXX and the BOOK_LABEL / CALL_LABEL placeholders
     //      below with the real conversion ID and conversion labels.
     //
     // Until then this is inert (guarded by the typeof check below).
-    // A delegated listener on document is used so any booking/tel link — including
-    // ones injected dynamically (e.g. a Mangomint floating button) — is covered.
+    // A delegated listener on document is used so any booking/tel link —
+    // including ones injected dynamically (e.g. a Mangomint floating button) —
+    // is covered.
     function lymsTrackConversion(label) {
       if (typeof window.gtag === 'function') {
         window.gtag('event', 'conversion', {
@@ -65,4 +70,4 @@ const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
       }
     });
   </script>
-</BaseLayout>
+</PageLayout>

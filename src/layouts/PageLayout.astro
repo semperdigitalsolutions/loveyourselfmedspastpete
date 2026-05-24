@@ -8,16 +8,23 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogImage, noindex = false } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} ogImage={ogImage}>
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  noindex={noindex}
+>
   <Header />
   <main class="flex-1">
     <slot />
   </main>
   <Footer />
-  <!-- <LoyaltyPopup /> --> <!-- TODO: Uncomment when memberships are live -->
+  <!-- <LoyaltyPopup /> -->
+  <!-- TODO: Uncomment when memberships are live -->
 </BaseLayout>
