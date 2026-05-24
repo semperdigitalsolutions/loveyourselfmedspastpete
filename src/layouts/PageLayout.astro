@@ -2,7 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-// import LoyaltyPopup from '../components/sections/LoyaltyPopup.astro'; // TODO: Uncomment when memberships are live
+import LoyaltyPopup from '../components/sections/LoyaltyPopup.astro';
 
 interface Props {
   title: string;
@@ -32,6 +32,5 @@ const {
     <slot />
   </main>
   <Footer />
-  <!-- <LoyaltyPopup /> -->
-  <!-- TODO: Uncomment when memberships are live -->
+  <LoyaltyPopup />
 </BaseLayout>

@@ -1,0 +1,46 @@
+{
+  "page": "20% Off First Treatment Landing Page",
+  "business": {
+    "name": "Love Yourself Med Spa",
+    "phone": "(727) 739-5070",
+    "website": "https://loveyourselfmedspastpete.com",
+    "address": "1120 Pinellas Bayway S, Ste 202, Tierra Verde, FL 33715",
+    "instagram": "@loveyourselfenoughtotransform"
+  },
+  "offer": {
+    "headline": "20% Off Your First Treatment",
+    "subheadline": "Physician-guided care and personalized aesthetic treatments designed to help you look radiant, feel confident, and love yourself.",
+    "fine_print": "New clients only. Consultation required. Cannot be combined with other offers. Some exclusions may apply. Confirm terms with the spa before publishing."
+  },
+  "services": [
+    {
+      "title": "HydraFacial",
+      "description": "Deeply cleanse, hydrate and reveal your natural glow.",
+      "image": "assets/images/service-hydrafacial.png"
+    },
+    {
+      "title": "Microneedling",
+      "description": "Stimulate collagen, smooth texture and support skin renewal.",
+      "image": "assets/images/service-microneedling.png"
+    },
+    {
+      "title": "Body Contouring",
+      "description": "Tone, tighten and sculpt with advanced non-invasive technology.",
+      "image": "assets/images/service-body-contouring.png"
+    },
+    {
+      "title": "Chemical Peels",
+      "description": "Refine, brighten and reveal smoother, clearer-looking skin.",
+      "image": "assets/images/service-chemical-peels.png"
+    },
+    {
+      "title": "Injectables",
+      "description": "Enhance your natural beauty with personalized aesthetic options.",
+      "image": "assets/images/service-injectables.png"
+    }
+  ],
+  "cta": {
+    "primary": "Book Your Consultation",
+    "secondary": "Call Now"
+  }
+}
