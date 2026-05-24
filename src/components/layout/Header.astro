@@ -3,11 +3,14 @@ import { siteConfig } from '../../data/siteConfig';
 
 interface Props {
   isHomepage?: boolean;
+  // Hide all site navigation (links + mobile menu), keeping only the logo and
+  // Book Now CTA. Used by focused landing pages to remove escape routes.
+  hideNav?: boolean;
 }
 
 // Auto-detect homepage from URL if prop not explicitly passed
 const currentPath = Astro.url.pathname;
-const { isHomepage = currentPath === '/' } = Astro.props;
+const { isHomepage = currentPath === '/', hideNav = false } = Astro.props;
 
 // Split navigation: left and right groups
 const leftNav = [
@@ -34,24 +37,25 @@ const rightNav = [
     class="max-w-7xl mx-auto px-6 h-24 md:h-28 flex items-center justify-between"
   >
     <!-- Mobile: hamburger left spacer (keeps logo centered) -->
-    <div class="w-10 md:hidden"></div>
+    {!hideNav && <div class="w-10 md:hidden" />}
 
     <!-- Desktop: Left Nav Links -->
     <nav class="hidden md:flex items-center gap-8 flex-1 justify-end pr-8">
       {
-        leftNav.map((item) => (
-          <a
-            href={item.href}
-            class={`text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:text-primary ${
-              currentPath === item.href ||
-              currentPath.startsWith(item.href + '/')
-                ? 'text-primary'
-                : 'text-white'
-            }`}
-          >
-            {item.label}
-          </a>
-        ))
+        !hideNav &&
+          leftNav.map((item) => (
+            <a
+              href={item.href}
+              class={`text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:text-primary ${
+                currentPath === item.href ||
+                currentPath.startsWith(item.href + '/')
+                  ? 'text-primary'
+                  : 'text-white'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))
       }
     </nav>
 
@@ -76,19 +80,20 @@ const rightNav = [
     <!-- Desktop: Right Nav Links + Book Now -->
     <nav class="hidden md:flex items-center gap-8 flex-1 pl-8">
       {
-        rightNav.map((item) => (
-          <a
-            href={item.href}
-            class={`text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:text-primary ${
-              currentPath === item.href ||
-              currentPath.startsWith(item.href + '/')
-                ? 'text-primary'
-                : 'text-white'
-            }`}
-          >
-            {item.label}
-          </a>
-        ))
+        !hideNav &&
+          rightNav.map((item) => (
+            <a
+              href={item.href}
+              class={`text-sm font-semibold uppercase tracking-wider transition-colors duration-200 hover:text-primary ${
+                currentPath === item.href ||
+                currentPath.startsWith(item.href + '/')
+                  ? 'text-primary'
+                  : 'text-white'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))
       }
       <a
         href={siteConfig.booking.url}
@@ -100,23 +105,43 @@ const rightNav = [
       </a>
     </nav>
 
-    <!-- Mobile: Hamburger Button -->
-    <button
-      type="button"
-      class="md:hidden p-2 text-white hover:text-primary transition-colors"
-      aria-label="Open menu"
-      data-mobile-menu-toggle
-    >
-      <span class="material-symbols-outlined text-2xl">menu</span>
-    </button>
+    <!-- Mobile: Hamburger Button (hidden when nav is suppressed) -->
+    {
+      !hideNav && (
+        <button
+          type="button"
+          class="md:hidden p-2 text-white hover:text-primary transition-colors"
+          aria-label="Open menu"
+          data-mobile-menu-toggle
+        >
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      )
+    }
+
+    <!-- Mobile: Book Now CTA (shown in place of the hamburger when nav is hidden) -->
+    {
+      hideNav && (
+        <a
+          href={siteConfig.booking.url}
+          target="_blank"
+          rel="noopener"
+          class="md:hidden text-xs font-semibold uppercase tracking-wider text-white hover:text-primary transition-colors"
+        >
+          Book Now
+        </a>
+      )
+    }
   </div>
 </header>
 
 <!-- Header spacer to prevent content from hiding behind fixed header -->
 <div class={isHomepage ? '' : 'h-24 md:h-28'}></div>
 
-<!-- Mobile Navigation Overlay -->
-<div class="fixed inset-0 z-[60] hidden" data-mobile-menu>
+<!-- Mobile Navigation Overlay (omitted when nav is hidden) -->
+{
+  !hideNav && (
+    <div class="fixed inset-0 z-[60] hidden" data-mobile-menu>
   <!-- Backdrop -->
   <div
     class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"
@@ -185,7 +210,9 @@ const rightNav = [
       </a>
     </div>
   </div>
-</div>
+    </div>
+  )
+}
 
 <script>
   // Scroll behavior: transparent -> solid on scroll

@@ -9,9 +9,16 @@ interface Props {
   description?: string;
   ogImage?: string;
   noindex?: boolean;
+  hideNav?: boolean;
 }
 
-const { title, description, ogImage, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  ogImage,
+  noindex = false,
+  hideNav = false,
+} = Astro.props;
 ---
 
 <BaseLayout
@@ -20,7 +27,7 @@ const { title, description, ogImage, noindex = false } = Astro.props;
   ogImage={ogImage}
   noindex={noindex}
 >
-  <Header />
+  <Header hideNav={hideNav} />
   <main class="flex-1">
     <slot />
   </main>
