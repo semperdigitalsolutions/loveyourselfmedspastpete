@@ -5,12 +5,14 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description = 'Luxury physician-guided med spa in Tierra Verde, FL — advanced treatments for body contouring, skin rejuvenation, and total wellness transformation.',
   ogImage = '/images/general/logo.png',
+  noindex = false,
 } = Astro.props;
 
 const fullTitle = `${title} | Love Yourself Med Spa`;
@@ -23,6 +25,7 @@ const fullTitle = `${title} | Love Yourself Med Spa`;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
