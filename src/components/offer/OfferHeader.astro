@@ -1,0 +1,30 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+import Button from '../ui/Button.astro';
+
+const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
+---
+
+<header
+  class="sticky top-0 z-50 bg-background-dark/95 backdrop-blur border-b border-gold/20"
+>
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <img
+      src="/images/general/logo.png"
+      alt="Love Yourself Med Spa"
+      class="h-12 w-auto"
+    />
+    <div class="flex items-center gap-3">
+      <a
+        href={telHref}
+        class="hidden sm:inline-flex items-center gap-2 text-white font-semibold text-sm hover:text-primary transition-colors"
+      >
+        <span class="material-symbols-outlined text-lg">call</span>
+        {siteConfig.phone}
+      </a>
+      <Button href={siteConfig.booking.url} variant="primary" size="sm">
+        Book Now
+      </Button>
+    </div>
+  </div>
+</header>
