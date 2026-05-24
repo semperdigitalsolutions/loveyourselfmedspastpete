@@ -33,7 +33,9 @@ const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
           Book Your Consultation
         </Button>
         <Button href={telHref} variant="secondary" size="lg">
-          <span class="material-symbols-outlined mr-2">call</span> Call Now
+          <span class="material-symbols-outlined mr-2" aria-hidden="true"
+            >call</span
+          > Call Now
         </Button>
       </div>
     </div>
