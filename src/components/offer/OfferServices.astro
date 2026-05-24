@@ -1,0 +1,67 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+import { siteConfig } from '../../data/siteConfig';
+
+const services = [
+  {
+    title: 'HydraFacial',
+    description: 'Deeply cleanse, hydrate and reveal your natural glow.',
+    image: '/images/offer/service-hydrafacial.png',
+  },
+  {
+    title: 'Microneedling',
+    description: 'Stimulate collagen, smooth texture and support skin renewal.',
+    image: '/images/offer/service-microneedling.png',
+  },
+  {
+    title: 'Body Contouring',
+    description:
+      'Tone, tighten and sculpt with advanced non-invasive technology.',
+    image: '/images/offer/service-body-contouring.png',
+  },
+  {
+    title: 'Chemical Peels',
+    description: 'Refine, brighten and reveal smoother, clearer-looking skin.',
+    image: '/images/offer/service-chemical-peels.png',
+  },
+  {
+    title: 'Injectables',
+    description:
+      'Enhance your natural beauty with personalized aesthetic options.',
+    image: '/images/offer/service-injectables.png',
+  },
+];
+---
+
+<section class="bg-background-light px-6 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto">
+    <SectionHeading label="Inside-Out Beauty" title="Our Signature Services" />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      {
+        services.map((s) => (
+          <article class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-soft">
+            <div class="aspect-[4/3] overflow-hidden bg-rose-soft">
+              <img
+                src={s.image}
+                alt={s.title}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-5">
+              <h3 class="font-display font-bold text-text-main mb-2">
+                {s.title}
+              </h3>
+              <p class="text-sm text-text-body">{s.description}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+    <div class="mt-12 text-center">
+      <Button href={siteConfig.booking.url} variant="primary" size="lg">
+        Book Your Consultation
+      </Button>
+    </div>
+  </div>
+</section>
