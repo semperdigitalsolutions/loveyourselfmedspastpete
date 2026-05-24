@@ -1,0 +1,44 @@
+---
+const items = [
+  {
+    icon: 'health_and_safety',
+    label: 'Physician-Guided Care',
+    sub: 'Expert medical oversight for your safety and results',
+  },
+  {
+    icon: 'person',
+    label: 'Personalized Plans',
+    sub: 'Customized treatments for your unique goals',
+  },
+  {
+    icon: 'diamond',
+    label: 'Luxury Experience',
+    sub: 'Premium products, modern technology, exceptional care',
+  },
+  {
+    icon: 'location_on',
+    label: 'Tierra Verde Location',
+    sub: 'Conveniently serving Tierra Verde, St. Pete & surrounding areas',
+  },
+];
+---
+
+<section class="bg-white px-6 py-10 border-y border-rose-soft">
+  <div
+    class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+  >
+    {
+      items.map((item) => (
+        <div class="flex items-start gap-3">
+          <span class="material-symbols-outlined text-primary text-3xl shrink-0">
+            {item.icon}
+          </span>
+          <div>
+            <p class="font-display font-bold text-text-main">{item.label}</p>
+            <p class="text-sm text-text-body">{item.sub}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
