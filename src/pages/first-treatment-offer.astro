@@ -35,4 +35,28 @@ const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
     />
   </main>
   <OfferFooter />
+  <script is:inline>
+    // Google Ads conversion tracking for this landing page.
+    // Replace AW-XXXXXXXXX and the *_LABEL placeholders with the real Google
+    // Ads conversion ID + labels. The gtag base tag must also be added to
+    // BaseLayout's <head> once the owner provides the ID; until then this is
+    // inert (guarded by the typeof check).
+    function lymsTrackConversion(label) {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-XXXXXXXXX/' + label,
+        });
+      }
+    }
+    document
+      .querySelectorAll('a[href*="booking.mangomint.com"]')
+      .forEach((el) =>
+        el.addEventListener('click', () => lymsTrackConversion('BOOK_LABEL')),
+      );
+    document
+      .querySelectorAll('a[href^="tel:"]')
+      .forEach((el) =>
+        el.addEventListener('click', () => lymsTrackConversion('CALL_LABEL')),
+      );
+  </script>
 </BaseLayout>
