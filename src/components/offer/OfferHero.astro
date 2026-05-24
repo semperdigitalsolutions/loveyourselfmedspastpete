@@ -1,0 +1,45 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+import Button from '../ui/Button.astro';
+
+const telHref = `tel:+1${siteConfig.phone.replace(/\D/g, '')}`;
+---
+
+<section class="bg-rose-soft px-6 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-4">
+        New Client Exclusive
+      </p>
+      <h1 class="font-display font-bold text-text-main leading-none">
+        <span class="block text-6xl md:text-7xl text-primary">20% Off</span>
+        <span class="block text-3xl md:text-4xl mt-2">Your First Treatment</span
+        >
+      </h1>
+      <p class="mt-6 text-text-body text-lg max-w-md">
+        Physician-guided care and personalized aesthetic treatments designed to
+        help you look radiant, feel confident, and love yourself.
+      </p>
+      <p
+        class="mt-4 text-primary font-semibold uppercase tracking-wide text-sm"
+      >
+        Proudly serving Tierra Verde &amp; the St. Pete area
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <Button href={siteConfig.booking.url} variant="primary" size="lg">
+          Book Your Consultation
+        </Button>
+        <Button href={telHref} variant="secondary" size="lg">
+          <span class="material-symbols-outlined mr-2">call</span> Call Now
+        </Button>
+      </div>
+    </div>
+    <div class="rounded-3xl overflow-hidden aspect-[4/5] md:aspect-square">
+      <img
+        src="/images/offer/hero-spa-treatment.png"
+        alt="Relaxing med spa facial treatment"
+        class="w-full h-full object-cover"
+      />
+    </div>
+  </div>
+</section>
